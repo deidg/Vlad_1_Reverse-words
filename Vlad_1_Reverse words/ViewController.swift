@@ -10,23 +10,41 @@ import UIKit
 class ViewController: UIViewController {
 
     var displayButton = UIButton()
+    let mainLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        displayButton.translatesAutoresizingMaskIntoConstraints = false
         
+        //title for Navigation Controller
         self.title = "Reverse words"
         
 //        displayButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
 
-        // displayButton
-        self.displayButton = UIButton(type: .system)
-        self.displayButton.setTitle("Reverse", for: .normal)
-        self.displayButton.frame.size.width = 349
-        self.displayButton.frame.size.height = 60
-        self.displayButton.layer.cornerRadius = 14
-        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+        //mainLabel
+        let mainLabel = UILabel()
+        mainLabel.text = "Reverse words"
+        self.mainLabel.textColor = .white
+        self.mainLabel.backgroundColor = .black
+//        label.font = UIFont(name: "Roboto-Medium", size: 18)
+        self.mainLabel.frame.size.width = 349
+        self.mainLabel.frame.size.height = 60
+//        label.adjustsFontSizeToFitWidth = true
 
+        
+        
+        
+        
+        
+        // displayButton
+//        self.displayButton = UIButton(type: .system)
+//        self.displayButton.setTitle("Reverse", for: .normal)
+//        self.displayButton.frame.size.width = 349
+//        self.displayButton.frame.size.height = 60
+//        self.displayButton.layer.cornerRadius = 14
+//        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+
+        //===
 
 //        self.displayButton.bottomAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutYAxisAnchor>#>)
 
@@ -45,6 +63,7 @@ class ViewController: UIViewController {
                                       
         
         self.view.addSubview(self.displayButton)
+        self.view.addSubview(self.mainLabel)
 //        setupConstraints()
 //        createDisplayButtonConstraints()
         
