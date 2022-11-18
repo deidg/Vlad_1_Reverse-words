@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+            self.view.backgroundColor = UIColor (red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+            
         displayButton.translatesAutoresizingMaskIntoConstraints = false
         
 //        let screenSize: CGRect = UIScreen.main.bounds
