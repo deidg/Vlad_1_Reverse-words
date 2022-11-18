@@ -14,18 +14,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let view = UIView(frame: .zero)
-//        view.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         displayButton.translatesAutoresizingMaskIntoConstraints = false
         
 //        let screenSize: CGRect = UIScreen.main.bounds
         
         //title for Navigation Controller
         self.title = "Reverse words"
-        
-//        sendBtn.frame = CGRect(x: screenSize.width - 80, y: screenSize.height - 88, width: 70, height: 46)
+//        self.title
 
         
         //mainLabel
@@ -43,6 +39,10 @@ class ViewController: UIViewController {
         self.displayButton = UIButton(type: .system)
        
         self.displayButton.setTitle("Reverse", for: .normal)
+        self.displayButton.titleLabel?.font = UIFont.init(name: , size: <#T##CGFloat#>)
+        
+        saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+
         
 //        self.displayButton.frame.size.width = 349
 //        self.displayButton.frame.size.height = 60
@@ -52,7 +52,8 @@ class ViewController: UIViewController {
         
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
-        self.displayButton.frame = CGRect(x: 140, y: 100, width: 349, height:60);
+        self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
+
 
 //        =====
         
