@@ -12,11 +12,12 @@ class ViewController: UIViewController {
     var displayButton = UIButton()
     let mainLabel = UILabel()
     var textField = UITextField()
+    let divider = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-            self.view.backgroundColor = UIColor (red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+    self.view.backgroundColor = UIColor (red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
             
         displayButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -40,16 +41,12 @@ class ViewController: UIViewController {
         //====
         
         //TextField
-        
-        
-        
+                
 //        textField.text = "Text to reverse"
-        
-//        textField.didSetText = false
-        
-//        var textField = UITextField()
+        //        textField.didSetText = false
+        //        var textField = UITextField()
 
-        textField.frame = CGRect(x: 50, y: 285, width: 343, height: 22)
+        textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)
         textField.font = UIFont.systemFont(ofSize: 17)
         textField.text = nil
         textField.placeholder = "Text to reverse"
@@ -62,10 +59,26 @@ class ViewController: UIViewController {
 
 //====
         
+//        divider
+        
+        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)
+//        self.divider.backgroundColor = UIColor()
+
+        
+        self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
+        
+//        (red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
+        
+        self.view.addSubview(divider)
+
+//        =====
+        
       //   displayButton
         self.displayButton = UIButton(type: .system)
        
         self.displayButton.setTitle("Reverse", for: .normal)
+        self.displayButton.setTitleColor(.white, for: .normal)
 //        self.displayButton.titleLabel?.font = UIFont.
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
 
@@ -78,8 +91,17 @@ class ViewController: UIViewController {
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
 
+        self.view.addSubview(self.displayButton)
 
 //        =====
+        
+        
+       
+        
+        
+        
+        
+        
         
 
 //        func createDisplayButtonConstraints() {
@@ -117,7 +139,6 @@ class ViewController: UIViewController {
 //              }
         
         
-        self.view.addSubview(self.displayButton)
 //        createDisplayButtonConstraints()
         
         
