@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     var displayButton = UIButton()
     let mainLabel = UILabel()
+    var textField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,37 @@ class ViewController: UIViewController {
 
         
         //mainLabel
-        let mainLabel = UILabel()
+//        let mainLabel = UILabel() - дубль?
 //        let margins = view.layoutMarginsGuide
         mainLabel.frame = CGRect(x: 140, y: 100, width:150, height:30);
         mainLabel.font = UIFont.systemFont(ofSize: 35)
         mainLabel.text = "Reverse words"
 
         self.view.addSubview(mainLabel)
+        
+        
+        //====
+        
+        //TextField
+        
+        
+        
+//        textField.text = "Text to reverse"
+        
+//        textField.didSetText = false
+        
+//        var textField = UITextField()
+
+        textField.frame = CGRect(x: 50, y: 285, width: 343, height: 22)
+        textField.font = UIFont.systemFont(ofSize: 17)
+        textField.text = nil
+        textField.placeholder = "Text to reverse"
+        
+        self.view.addSubview(textField)
+        
+//        ????
+//        placeholderTextField.isUserInteractionEnabled = false
+//                placeholderTextField.adjustsFontSizeToFitWidth = true
 
 //====
         
@@ -39,17 +64,14 @@ class ViewController: UIViewController {
         self.displayButton = UIButton(type: .system)
        
         self.displayButton.setTitle("Reverse", for: .normal)
-//        self.displayButton.titleLabel?.font = UIFont.init(name: , size: <#T##CGFloat#>)
-        
-//        saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+//        self.displayButton.titleLabel?.font = UIFont.
+        self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
 
-        
 //        self.displayButton.frame.size.width = 349
 //        self.displayButton.frame.size.height = 60
 //            let margins = displayButton.layoutMarginsGuide
 //        displayButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
 
-        
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
@@ -58,43 +80,43 @@ class ViewController: UIViewController {
 //        =====
         
 
-        func createDisplayButtonConstraints() {
-        NSLayoutConstraint(item: displayButton,
-                                     attribute: .leading,
-                                     relatedBy: .equal,
-                                     toItem: view,
-                                     attribute: .leadingMargin,
-                                     multiplier: 1,
-                                     constant: 0).isActive = true
-
-            NSLayoutConstraint(item: displayButton,
-                                         attribute: .trailingMargin,
-                                         relatedBy: .equal,
-                                         toItem: view,
-                                         attribute: .trailingMargin,
-                                         multiplier: 1,
-                                         constant: 0).isActive = true
-
-            NSLayoutConstraint(item: displayButton,
-                                         attribute: .top,
-                                         relatedBy: .equal,
-                                         toItem: view,
-                                         attribute: .topMargin,
-                                         multiplier: 1,
-                                         constant: 88).isActive = true
-
-            NSLayoutConstraint(item: displayButton,
-                                         attribute: .height,
-                                         relatedBy: .equal,
-                                         toItem: view,
-                                         attribute: .width,
-                                         multiplier: 1,
-                                         constant: 0).isActive = true
-              }
+//        func createDisplayButtonConstraints() {
+//        NSLayoutConstraint(item: displayButton,
+//                                     attribute: .leading,
+//                                     relatedBy: .equal,
+//                                     toItem: view,
+//                                     attribute: .leadingMargin,
+//                                     multiplier: 1,
+//                                     constant: 0).isActive = true
+//
+//            NSLayoutConstraint(item: displayButton,
+//                                         attribute: .trailingMargin,
+//                                         relatedBy: .equal,
+//                                         toItem: view,
+//                                         attribute: .trailingMargin,
+//                                         multiplier: 1,
+//                                         constant: 0).isActive = true
+//
+//            NSLayoutConstraint(item: displayButton,
+//                                         attribute: .top,
+//                                         relatedBy: .equal,
+//                                         toItem: view,
+//                                         attribute: .topMargin,
+//                                         multiplier: 1,
+//                                         constant: 88).isActive = true
+//
+//            NSLayoutConstraint(item: displayButton,
+//                                         attribute: .height,
+//                                         relatedBy: .equal,
+//                                         toItem: view,
+//                                         attribute: .width,
+//                                         multiplier: 1,
+//                                         constant: 0).isActive = true
+//              }
         
         
         self.view.addSubview(self.displayButton)
-        createDisplayButtonConstraints()
+//        createDisplayButtonConstraints()
         
         
 //         func setConstraints() {
