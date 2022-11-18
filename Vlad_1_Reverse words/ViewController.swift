@@ -39,9 +39,9 @@ class ViewController: UIViewController {
         self.displayButton = UIButton(type: .system)
        
         self.displayButton.setTitle("Reverse", for: .normal)
-        self.displayButton.titleLabel?.font = UIFont.init(name: , size: <#T##CGFloat#>)
+//        self.displayButton.titleLabel?.font = UIFont.init(name: , size: <#T##CGFloat#>)
         
-        saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+//        saveBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         
 //        self.displayButton.frame.size.width = 349
