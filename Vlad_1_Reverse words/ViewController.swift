@@ -14,35 +14,112 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        displayButton.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let view = UIView(frame: .zero)
+//        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        displayButton.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let screenSize: CGRect = UIScreen.main.bounds
         
         //title for Navigation Controller
         self.title = "Reverse words"
         
-//        displayButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+//        sendBtn.frame = CGRect(x: screenSize.width - 80, y: screenSize.height - 88, width: 70, height: 46)
 
+        
         //mainLabel
         let mainLabel = UILabel()
+//        let margins = view.layoutMarginsGuide
+        mainLabel.frame = CGRect(x: 140, y: 100, width:150, height:30);
+        mainLabel.font = UIFont.systemFont(ofSize: 35)
         mainLabel.text = "Reverse words"
-        self.mainLabel.textColor = .white
-        self.mainLabel.backgroundColor = .black
-//        label.font = UIFont(name: "Roboto-Medium", size: 18)
-        self.mainLabel.frame.size.width = 349
-        self.mainLabel.frame.size.height = 60
-//        label.adjustsFontSizeToFitWidth = true
+
+        self.view.addSubview(mainLabel)
+
+//====
+        
+      //   displayButton
+        self.displayButton = UIButton(type: .system)
+       
+        self.displayButton.setTitle("Reverse", for: .normal)
+        
+//        self.displayButton.frame.size.width = 349
+//        self.displayButton.frame.size.height = 60
+//            let margins = displayButton.layoutMarginsGuide
+//        displayButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+
+        
+        self.displayButton.layer.cornerRadius = 14
+        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+        self.displayButton.frame = CGRect(x: 140, y: 100, width: 349, height:60);
+
+//        =====
+        
+
+        func createDisplayButtonConstraints() {
+        NSLayoutConstraint(item: displayButton,
+                                     attribute: .leading,
+                                     relatedBy: .equal,
+                                     toItem: view,
+                                     attribute: .leadingMargin,
+                                     multiplier: 1,
+                                     constant: 0).isActive = true
+
+            NSLayoutConstraint(item: displayButton,
+                                         attribute: .trailingMargin,
+                                         relatedBy: .equal,
+                                         toItem: view,
+                                         attribute: .trailingMargin,
+                                         multiplier: 1,
+                                         constant: 0).isActive = true
+
+            NSLayoutConstraint(item: displayButton,
+                                         attribute: .top,
+                                         relatedBy: .equal,
+                                         toItem: view,
+                                         attribute: .topMargin,
+                                         multiplier: 1,
+                                         constant: 88).isActive = true
+
+            NSLayoutConstraint(item: displayButton,
+                                         attribute: .height,
+                                         relatedBy: .equal,
+                                         toItem: view,
+                                         attribute: .width,
+                                         multiplier: 1,
+                                         constant: 0).isActive = true
+              }
+        
+        
+        self.view.addSubview(self.displayButton)
+        createDisplayButtonConstraints()
+        
+        
+//         func setConstraints() {
+//                NSLayoutConstraint.activate([
+////                    displayButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+//                    displayButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+////                    displayButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+//                    displayButton.bottomAnchor.constraint(equalTo: textLabel.topAnchor, constant: 20),
+//                ])
+        
+        
+        
+        
+        
+        
+//        self.displayButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10)
 
         
         
+//        addWorkoutButton.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 5),
+//        addWorkoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+//
+//        weatherView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 5),
+//        weatherView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 5),
+//        weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
         
-        
-        
-        // displayButton
-//        self.displayButton = UIButton(type: .system)
-//        self.displayButton.setTitle("Reverse", for: .normal)
-//        self.displayButton.frame.size.width = 349
-//        self.displayButton.frame.size.height = 60
-//        self.displayButton.layer.cornerRadius = 14
-//        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
 
         //===
 
@@ -62,8 +139,14 @@ class ViewController: UIViewController {
 
                                       
         
-        self.view.addSubview(self.displayButton)
-        self.view.addSubview(self.mainLabel)
+//        self.view.addSubview(self.displayButton)
+//        self.view.addSubview(self.mainLabel)
+        
+        
+        
+        
+        
+        
 //        setupConstraints()
 //        createDisplayButtonConstraints()
         
@@ -78,14 +161,7 @@ class ViewController: UIViewController {
 //                displayButton.leadingAnchor.constraint(equalTo: self.)
 //            ])
 //
-////            NSLayoutConstraint(item: displayButton,
-////                               attribute: .leading,
-////                               relatedBy: .equal,
-////                               toItem: view,
-////                               attribute: .leadingMargin,
-////                               multiplier: 1,
-////                               constant: 0).isActive = true
-//        }
+////
         
         //Reverse Button
         
