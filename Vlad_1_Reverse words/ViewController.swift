@@ -73,7 +73,12 @@ class ViewController: UIViewController {
         self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
         self.answerFieldLabel.textAlignment = .left
         self.answerFieldLabel.numberOfLines = 2
-      
+        self.answerFieldLabel.text = "answer"
+        
+        let text = answerFieldLabel.text!
+        let reversedText = String(text.reversed())
+
+        answerFieldLabel.text = reversedText
         
         self.view.addSubview(answerFieldLabel)
 
@@ -93,15 +98,28 @@ class ViewController: UIViewController {
     
     }
 
-    
-//    func answer() {
+//    func enteringText() {
 //
-//        while typing цвет синий
+//        ///   посмотреть как передавать значение введеные
+//        var context =
 //
-//  self.answerFieldLabel.text = "This application will reverse your words. Please type text below"
-//                answerField.isHidden = false
+//        return context
 //    }
 //
+    
+    
+//    func answer() {
+////
+////        while typing цвет синий
+////
+//
+//
+//        answerFieldLabel.text = context
+//
+//        answerFieldLabel.isHidden = false
+//
+//    }
+
                 
     }
 //}
