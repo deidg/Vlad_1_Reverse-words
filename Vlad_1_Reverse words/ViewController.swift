@@ -9,16 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var displayButton = UIButton()
+    
     let largeLabel = UILabel()
     let mainLabel = UILabel()
     var textField = UITextField()
     let divider = UILabel()
+    var answerFieldLabel = UILabel()
+    var displayButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-    self.view.backgroundColor = UIColor (red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//        answerField.isHidden = true
+    self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
             
         displayButton.translatesAutoresizingMaskIntoConstraints = false
                 
@@ -62,6 +65,19 @@ class ViewController: UIViewController {
         self.view.addSubview(divider)
 
 
+        //answerField
+        self.answerFieldLabel.isHidden = false
+        self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
+        self.answerFieldLabel.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        self.answerFieldLabel.textColor = UIColor(red: 0, green: 122, blue: 255, alpha: 1) //in figma #007AFF
+        self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
+        self.answerFieldLabel.textAlignment = .left
+        self.answerFieldLabel.numberOfLines = 2
+      
+        
+        self.view.addSubview(answerFieldLabel)
+
+        
         //displayButton
         self.displayButton = UIButton(type: .system)
         self.displayButton.setTitle("Reverse", for: .normal)
@@ -77,7 +93,18 @@ class ViewController: UIViewController {
     
     }
 
-}
+    
+//    func answer() {
+//
+//        while typing цвет синий
+//
+//  self.answerFieldLabel.text = "This application will reverse your words. Please type text below"
+//                answerField.isHidden = false
+//    }
+//
+                
+    }
+//}
 
     
 
