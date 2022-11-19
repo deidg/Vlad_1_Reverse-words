@@ -75,10 +75,11 @@ class ViewController: UIViewController {
         self.answerFieldLabel.numberOfLines = 2
         self.answerFieldLabel.text = "answer"
         
-        let text = answerFieldLabel.text!
-        let reversedText = String(text.reversed())
-
-        answerFieldLabel.text = reversedText
+        //реверсивный механизм
+//        let text = answerFieldLabel.text!
+//        let reversedText = String(text.reversed())
+//
+//        answerFieldLabel.text = reversedText
         
         self.view.addSubview(answerFieldLabel)
 
@@ -108,23 +109,31 @@ class ViewController: UIViewController {
 //
     
     
-//    func answer() {
-////
-////        while typing цвет синий
-////
+    func answer() {
 //
+//        while typing цвет синий
 //
-//        answerFieldLabel.text = context
-//
-//        answerFieldLabel.isHidden = false
-//
-//    }
+                let text = textField.text!
+                let reversedText = String(text.reversed())
+        
+                answerFieldLabel.text = reversedText
+
+
+        answerFieldLabel.isHidden = false
+
+    }
 
                 
     }
 //}
 
-    
-
+//
+//func buttonPressed(_ sender: UIButton) {
+//        buttonPressed = Int(sender.title(for: .normal)!)!
+//
+//
+//
+//        wolfTurnLabel.text = " Left"
+//    }
 
 
