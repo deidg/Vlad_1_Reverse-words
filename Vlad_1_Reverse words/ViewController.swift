@@ -17,13 +17,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
     
-//    @IBOutlet weak var textField: UITextField!
-//    @IBOutlet weak var answerFieldLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        answerFieldLabel.isHidden = true
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         displayButton.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +54,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.font = UIFont.systemFont(ofSize: 17)
         textField.text = nil
         textField.placeholder = "Text to reverse"
-        //        textField.
         
         self.view.addSubview(textField)
         
@@ -77,22 +73,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
         self.answerFieldLabel.textAlignment = .left
         self.answerFieldLabel.numberOfLines = 2
-        self.answerFieldLabel.text = "answer"
-        
-
-
-
-        //        answerFieldLabel.isHidden = false
-        
-        
-        
-        
-        
-        
-        //        let text = answerFieldLabel.text!
-        //        let reversedText = String(text.reversed())
-        //
-        //        answerFieldLabel.text = reversedText
+        self.answerFieldLabel.isHidden = true
         
         self.view.addSubview(answerFieldLabel)
         
@@ -107,68 +88,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        
         self.view.addSubview(self.displayButton)
-        
-        
-        
-        
         
     }
     
     @objc func buttonPressed(sender: UIButton) {
-       //        buttonPressed = Int(sender.title(for: .normal)!)!
-
-        answerFieldLabel.text = textField.text
-                
-        //реверсивный механизм
         
+        answerFieldLabel.text = textField.text
+        
+        //реверсивный механизм
         let text = textField.text!
         let reversedText = String(text.reversed())
         answerFieldLabel.text = reversedText
         
+        answerFieldLabel.isHidden = false
         
-        
-        
-        print("button pressed")
-
-//     return
-       //        wolfTurnLabel.text = " Left"
-   }
-    
-    //    func enteringText() {
-    //
-    //        ///   посмотреть как передавать значение введеные
-    //        var context =
-    //
-    //        return context
-    //    }
-    //
-    
-    
-    //    func answer() {
-    //
-    //        while typing цвет синий
-    ////
-    //        answerFieldLabel.text = textField.text ????
-    //
-    //             let text = textField.text!
-    //            let reversedText = String(text.reversed())
-    //                answerFieldLabel.text = reversedText
-    
-    
-    //        answerFieldLabel.isHidden = false
-    
-    //
-    //                let reversedText = String(text.reversed())
-    //    }
-    
-    
-    //    }
-    //}
-    
-    //
-         
     }
     
+}
+
 
