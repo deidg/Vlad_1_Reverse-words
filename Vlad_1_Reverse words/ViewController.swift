@@ -79,11 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.answerFieldLabel.numberOfLines = 2
         self.answerFieldLabel.text = "answer"
         
-        //реверсивный механизм
-        
-//        let text = textField.text!
-//        let reversedText = String(text.reversed())
-//        answerFieldLabel.text = reversedText
+
 
 
         //        answerFieldLabel.isHidden = false
@@ -123,7 +119,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @objc func buttonPressed(sender: UIButton) {
        //        buttonPressed = Int(sender.title(for: .normal)!)!
 
-//        answerFieldLabel.text = textField.text
+        answerFieldLabel.text = textField.text
+                
+        //реверсивный механизм
+        
+        let text = textField.text!
+        let reversedText = String(text.reversed())
+        answerFieldLabel.text = reversedText
+        
+        
+        
+        
         print("button pressed")
 
 //     return
