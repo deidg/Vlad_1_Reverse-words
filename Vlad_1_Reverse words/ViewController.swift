@@ -84,7 +84,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.setTitleColor(.white, for: .normal)
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.displayButton.layer.cornerRadius = 14
-        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 0.6)
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
@@ -96,10 +96,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         answerFieldLabel.text = textField.text
         
-        //реверсивный механизм
+        //реверсивный механизм reverse mechanism
         let text = textField.text!
         let reversedText = String(text.reversed())
         answerFieldLabel.text = reversedText
+        
+        //displayButton changing
+        self.displayButton.setTitle("Clear", for: .normal)
+        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+
+
         
         answerFieldLabel.isHidden = false
         
