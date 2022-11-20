@@ -20,6 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let controller = ViewController()
             let navController = UINavigationController(rootViewController: controller)
             window?.rootViewController = navController
+        
+        navController.navigationBar.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
+
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
