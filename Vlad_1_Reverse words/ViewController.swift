@@ -21,9 +21,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        displayButton.translatesAutoresizingMaskIntoConstraints = false
+
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
-        displayButton.translatesAutoresizingMaskIntoConstraints = false
         
         //title for Navigation Controller
         self.title = "Reverse words"
@@ -88,6 +89,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
+
+        
+        //констрейнты, но не работают.
+//        NSLayoutConstraint.activate([
+//           NSLayoutConstraint(item: displayButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 150)
+//           NSLayoutConstraint(item: displayButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)    //без запятой в конце
+//        ])
+        
         self.view.addSubview(self.displayButton)
         
     }
@@ -101,12 +110,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let reversedText = String(text.reversed())
         answerFieldLabel.text = reversedText
         
-        //displayButton changing
+        //displayButton title changing
         self.displayButton.setTitle("Clear", for: .normal)
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
 
 
-        
         answerFieldLabel.isHidden = false
         
     }
