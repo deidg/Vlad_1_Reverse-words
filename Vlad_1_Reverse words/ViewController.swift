@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.answerFieldLabel.isHidden = false
         self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
         self.answerFieldLabel.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        self.answerFieldLabel.textColor = UIColor(red: 0, green: 122, blue: 255, alpha: 1) //in figma #007AFF
+        self.answerFieldLabel.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
         self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
         self.answerFieldLabel.textAlignment = .left
         self.answerFieldLabel.numberOfLines = 2
@@ -85,17 +86,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.setTitleColor(.white, for: .normal)
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.displayButton.layer.cornerRadius = 14
-        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 0.6)
+        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
 
         
         //констрейнты, но не работают.
-//        NSLayoutConstraint.activate([
-//           NSLayoutConstraint(item: displayButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 150)
-//           NSLayoutConstraint(item: displayButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)    //без запятой в конце
-//        ])
+//        make.leading.equalToSuperview().offset(16)
+//        make.trailing.equalToSuperview().offset(-16)
         
         self.view.addSubview(self.displayButton)
         
@@ -112,7 +111,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //displayButton title changing
         self.displayButton.setTitle("Clear", for: .normal)
-        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0)
+        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
 
 
         answerFieldLabel.isHidden = false

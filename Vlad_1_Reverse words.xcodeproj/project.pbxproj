@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4D15D35E902F454A56C87EE /* Pods_Vlad_1_Reverse_words.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24098BF0EFA694BB8CD905A /* Pods_Vlad_1_Reverse_words.framework */; };
 		FA8BDECE2925EF3B00F88713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */; };
 		FA8BDED02925EF3B00F88713 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */; };
 		FA8BDED22925EF3B00F88713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDED12925EF3B00F88713 /* ViewController.swift */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F353E8ACFFF44DCB2E2ACAE /* Pods-Vlad_1_Reverse words.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vlad_1_Reverse words.debug.xcconfig"; path = "Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words.debug.xcconfig"; sourceTree = "<group>"; };
+		C24098BF0EFA694BB8CD905A /* Pods_Vlad_1_Reverse_words.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vlad_1_Reverse_words.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE974731E0896A90E41AC4BE /* Pods-Vlad_1_Reverse words.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vlad_1_Reverse words.release.xcconfig"; path = "Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words.release.xcconfig"; sourceTree = "<group>"; };
 		FA8BDECA2925EF3B00F88713 /* Vlad_1_Reverse words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vlad_1_Reverse words.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +32,7 @@
 		FA8BDEDB2925EF3D00F88713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8BDEE72927729000F88713 /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Roboto; path = ../../../../../../../Downloads/Roboto; sourceTree = "<group>"; };
 		FAF853F8292BE49900FCE681 /* sempl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sempl.swift; sourceTree = "<group>"; };
+		FAF853FB292BE59100FCE681 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile.lock; path = ../../../../../Snapkit3/Podfile.lock; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D15D35E902F454A56C87EE /* Pods_Vlad_1_Reverse_words.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,8 @@
 			children = (
 				FA8BDECC2925EF3B00F88713 /* Vlad_1_Reverse words */,
 				FA8BDECB2925EF3B00F88713 /* Products */,
+				FAF853FA292BE59100FCE681 /* Frameworks */,
+				FE9D2A432590D06712E47B52 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +81,25 @@
 			path = "Vlad_1_Reverse words";
 			sourceTree = "<group>";
 		};
+		FAF853FA292BE59100FCE681 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAF853FB292BE59100FCE681 /* Podfile.lock */,
+				C24098BF0EFA694BB8CD905A /* Pods_Vlad_1_Reverse_words.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE9D2A432590D06712E47B52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F353E8ACFFF44DCB2E2ACAE /* Pods-Vlad_1_Reverse words.debug.xcconfig */,
+				CE974731E0896A90E41AC4BE /* Pods-Vlad_1_Reverse words.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA8BDEDE2925EF3D00F88713 /* Build configuration list for PBXNativeTarget "Vlad_1_Reverse words" */;
 			buildPhases = (
+				631EFF14DABC7C31DA1D2FCA /* [CP] Check Pods Manifest.lock */,
 				FA8BDEC62925EF3B00F88713 /* Sources */,
 				FA8BDEC72925EF3B00F88713 /* Frameworks */,
 				FA8BDEC82925EF3B00F88713 /* Resources */,
+				C0D1EAB462B669FBEEC55D64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +168,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		631EFF14DABC7C31DA1D2FCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vlad_1_Reverse words-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0D1EAB462B669FBEEC55D64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA8BDEC62925EF3B00F88713 /* Sources */ = {
@@ -290,6 +361,7 @@
 		};
 		FA8BDEDF2925EF3D00F88713 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F353E8ACFFF44DCB2E2ACAE /* Pods-Vlad_1_Reverse words.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,6 +392,7 @@
 		};
 		FA8BDEE02925EF3D00F88713 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE974731E0896A90E41AC4BE /* Pods-Vlad_1_Reverse words.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
