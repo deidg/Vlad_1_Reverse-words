@@ -42,6 +42,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(largeLabel)
         
+        largeLabel.snp.makeConstraints { maker in
+            maker.leading.equalTo(view).offset(16)
+            maker.trailing.equalTo(view).offset(-16)
+            maker.top.equalTo(view).offset(152)
+            maker.bottom.equalTo(view).offset(-619)
+        }
+        
         
         //mainLabel
         mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
@@ -53,6 +60,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(mainLabel)
         
+        mainLabel.snp.makeConstraints { maker in
+            maker.leading.equalTo(view).offset(33)
+            maker.trailing.equalTo(view).offset(-34)
+            maker.top.equalTo(largeLabel.snp.bottom).offset(16)
+            maker.bottom.equalTo(view).offset(-559)
+        }
+        
         
         //TextField
         textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)
@@ -62,6 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(textField)
         
+//        textField.snp.makeConstraints { maker in
+//            maker.leading.equalTo(view).offset(16)
+//            maker.trailing.equalTo(view).offset(-16)
+//        }
+        
         
         //divider
         self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)
@@ -69,6 +88,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(divider)
         
+//        divider.snp.makeConstraints { maker in
+//            maker.leading.equalTo(view).offset(16)
+//            maker.trailing.equalTo(view).offset(-16)
+//            maker.top.equalTo(view).offset(352.5)
+//            maker.bottom.equalTo(view).offset(-459)
+//        }
+        
+
         
         //answerField
         self.answerFieldLabel.isHidden = false
@@ -82,6 +109,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(answerFieldLabel)
         
+        answerFieldLabel.snp.makeConstraints { maker in
+            maker.leading.equalTo(view).offset(13)
+            maker.trailing.equalTo(view).offset(-161)
+            maker.top.equalTo(view).offset(377)
+            maker.bottom.equalTo(view).offset(-413)
+        }
+        
         
         //displayButton
         self.displayButton = UIButton(type: .system)
@@ -93,17 +127,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        
-        //
-        //констрейнты, но не работают.
-        
-        
         self.view.addSubview(displayButton)
         
         displayButton.snp.makeConstraints { maker in
-            maker.leading.equalTo(view).offset(16)
-            maker.trailing.equalTo(view).offset(-16)
-            
+            maker.leading.equalTo(view).offset(13)
+            maker.trailing.equalTo(view).offset(-13)
+            maker.bottom.equalTo(view).offset(-66)
         }
     }
     
