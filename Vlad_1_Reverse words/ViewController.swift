@@ -17,7 +17,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let divider = UILabel()
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
-    //    let urlTextBox:UITextField = UITextField()
     
     
     override func viewDidLoad() {
@@ -32,7 +31,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //title for Navigation Controller
         self.title = "Reverse words"
-        
         
         //largeLabel
         largeLabel.frame = CGRect(x: 16, y: 152, width: 343, height: 41);
@@ -49,14 +47,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             maker.bottom.equalTo(view).offset(-619)
         }
         
-        
         //mainLabel
         mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
         mainLabel.font = UIFont.systemFont(ofSize: 17)
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 2
         mainLabel.text = "This application will reverse your words. Please type text below"
-        //mainLabel.textColor = UIColor(red: 60, green: 60, blue: 67, alpha: 1) -  not settled (from CSS code)
         
         self.view.addSubview(mainLabel)
         
@@ -76,25 +72,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(textField)
         
-//        textField.snp.makeConstraints { maker in
-//            maker.leading.equalTo(view).offset(16)
-//            maker.trailing.equalTo(view).offset(-16)
-//        }
-        
-        
         //divider
         self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)
         self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
         
         self.view.addSubview(divider)
-        
-//        divider.snp.makeConstraints { maker in
-//            maker.leading.equalTo(view).offset(16)
-//            maker.trailing.equalTo(view).offset(-16)
-//            maker.top.equalTo(view).offset(352.5)
-//            maker.bottom.equalTo(view).offset(-459)
-//        }
-        
 
         
         //answerField
