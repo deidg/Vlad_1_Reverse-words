@@ -17,13 +17,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let divider = UILabel()
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
+    //    let urlTextBox:UITextField = UITextField()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO:  запихнуть всё в функцию как у чувака https://youtu.be/wTL7Ju4-3Kg?t=557
+        
         displayButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         
@@ -74,7 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.answerFieldLabel.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
         self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
         self.answerFieldLabel.textAlignment = .left
-        self.answerFieldLabel.numberOfLines = 2
+        self.answerFieldLabel.numberOfLines = 0
         self.answerFieldLabel.isHidden = true
         
         self.view.addSubview(answerFieldLabel)
@@ -87,17 +90,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-        self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60);
+        self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-
         
+        //
         //констрейнты, но не работают.
-//        make.leading.equalToSuperview().offset(16)
-//        make.trailing.equalToSuperview().offset(-16)
         
-        self.view.addSubview(self.displayButton)
         
+        self.view.addSubview(displayButton)
+        
+        displayButton.snp.makeConstraints { maker in
+            maker.leading.equalTo(view).offset(16)
+            maker.trailing.equalTo(view).offset(-16)
+            
+        }
     }
     
     @objc func buttonPressed(sender: UIButton) {
@@ -112,8 +119,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //displayButton title changing
         self.displayButton.setTitle("Clear", for: .normal)
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-
-
+        
+        
         answerFieldLabel.isHidden = false
         
     }
