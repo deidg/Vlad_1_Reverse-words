@@ -11,6 +11,7 @@ import SnapKit
 class ViewController: UIViewController, UITextFieldDelegate {
     
     
+    
     let largeLabel = UILabel()
     let mainLabel = UILabel()
     var textField = UITextField()
@@ -21,14 +22,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+//        view.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
+//        view.backgroundColor = .red
+                  
         
         initialize()
+        
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        divider.translatesAutoresizingMaskIntoConstraints = false
+        
     }
         
         private func initialize() {
             displayButton.translatesAutoresizingMaskIntoConstraints = false
+
+
             
             self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//            self.view.backgroundColor = .red
+
             
             
             //title for Navigation Controller
@@ -55,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             mainLabel.textAlignment = .center
             mainLabel.numberOfLines = 2
             mainLabel.text = "This application will reverse your words. Please type text below"
+        
             
             self.view.addSubview(mainLabel)
             
@@ -74,11 +88,60 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             self.view.addSubview(textField)
             
+//            textField.snp.makeConstraints { maker in
+//                maker.leading.equalTo(view).offset(16)
+//                maker.trailing.equalTo(view).offset(-16)
+//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
+////                maker.bottom.equalTo(view).offset(497)
+//            }
+            
+//            lblTimer.snp.bottom
+            
+            
+            
+            
+            
             //divider
             self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)
             self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
             
+//            divider.translatesAutoresizingMaskIntoConstraints = false
+
+            
             self.view.addSubview(divider)
+
+
+//            divider.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.activate([
+//                divider.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 24),
+//                divider.leadingAnchor
+//                .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+//                divider.trailingAnchor
+//                .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+//            ])
+
+
+            divider.snp.makeConstraints { maker in
+                maker.leading.equalTo(view).offset(16)
+                maker.trailing.equalTo(view).offset(-16)
+                maker.top.equalTo(textField.snp.bottom).offset(18.5)
+                maker.bottom.equalTo(displayButton.snp.top).offset(-333.5)
+//                maker.bottom.equalTo(view).offset(-459.5)
+
+                
+//                maker.width.equalTo(343)
+//                maker.height.equalTo(10)
+            }
+            
+//            divider.snp.makeConstraints { maker in
+////                maker.leading.equalTo(view).offset(16)
+////                maker.trailing.equalTo(view).offset(-16)
+//
+////                maker.top.equalTo(textField.snp.bottom).offset(0.5)
+//
+////                maker.top.equalTo(view).offset(352.5)
+////                maker.bottom.equalTo(view).offset(-459.5)
+//            }
             
             
             //answerField
@@ -116,7 +179,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             displayButton.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(13)
                 maker.trailing.equalTo(view).offset(-13)
+                maker.top.equalTo(view).offset(686)
                 maker.bottom.equalTo(view).offset(-66)
+                
             }
         }
         

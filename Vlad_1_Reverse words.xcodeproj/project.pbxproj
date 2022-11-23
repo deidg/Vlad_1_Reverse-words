@@ -14,7 +14,6 @@
 		FA8BDED52925EF3B00F88713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED32925EF3B00F88713 /* Main.storyboard */; };
 		FA8BDED72925EF3D00F88713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED62925EF3D00F88713 /* Assets.xcassets */; };
 		FA8BDEDA2925EF3D00F88713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED82925EF3D00F88713 /* LaunchScreen.storyboard */; };
-		FA8BDEE82927729000F88713 /* Roboto in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDEE72927729000F88713 /* Roboto */; };
 		FAF853F9292BE49900FCE681 /* sempl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF853F8292BE49900FCE681 /* sempl.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		FA8BDED62925EF3D00F88713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8BDED92925EF3D00F88713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8BDEDB2925EF3D00F88713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA8BDEE72927729000F88713 /* Roboto */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Roboto; path = ../../../../../../../Downloads/Roboto; sourceTree = "<group>"; };
 		FAF853F8292BE49900FCE681 /* sempl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sempl.swift; sourceTree = "<group>"; };
 		FAF853FB292BE59100FCE681 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile.lock; path = ../../../../../Snapkit3/Podfile.lock; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +70,6 @@
 				FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */,
 				FA8BDED12925EF3B00F88713 /* ViewController.swift */,
 				FA8BDED32925EF3B00F88713 /* Main.storyboard */,
-				FA8BDEE72927729000F88713 /* Roboto */,
 				FA8BDED62925EF3D00F88713 /* Assets.xcassets */,
 				FA8BDED82925EF3D00F88713 /* LaunchScreen.storyboard */,
 				FA8BDEDB2925EF3D00F88713 /* Info.plist */,
@@ -96,7 +93,6 @@
 				0F353E8ACFFF44DCB2E2ACAE /* Pods-Vlad_1_Reverse words.debug.xcconfig */,
 				CE974731E0896A90E41AC4BE /* Pods-Vlad_1_Reverse words.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -163,7 +159,6 @@
 				FA8BDEDA2925EF3D00F88713 /* LaunchScreen.storyboard in Resources */,
 				FA8BDED72925EF3D00F88713 /* Assets.xcassets in Resources */,
 				FA8BDED52925EF3B00F88713 /* Main.storyboard in Resources */,
-				FA8BDEE82927729000F88713 /* Roboto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
