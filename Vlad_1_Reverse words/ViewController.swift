@@ -53,7 +53,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             largeLabel.textAlignment = .center
             largeLabel.text = "Reverse words"
             
-            self.view.addSubview(largeLabel)
+//            self.view.addSubview(largeLabel)
+            view.addSubview(largeLabel)
+
             
             largeLabel.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(16)
@@ -70,7 +72,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             mainLabel.text = "This application will reverse your words. Please type text below"
         
             
-            self.view.addSubview(mainLabel)
+//            self.view.addSubview(mainLabel)
+            view.addSubview(mainLabel)
+
             
             mainLabel.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(33)
@@ -86,7 +90,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             textField.text = nil
             textField.placeholder = "Text to reverse"
             
-            self.view.addSubview(textField)
+//            self.view.addSubview(textField)
+                        self.view.addSubview(textField)
+
             
 //            textField.snp.makeConstraints { maker in
 //                maker.leading.equalTo(view).offset(16)
@@ -109,40 +115,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             
             self.view.addSubview(divider)
-
-
-//            divider.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                divider.topAnchor.constraint(equalTo: lblTimer.bottomAnchor, constant: 24),
-//                divider.leadingAnchor
-//                .constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//                divider.trailingAnchor
-//                .constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
-//            ])
-
-
+//            view.addSubview(divider)
+//
             divider.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(16)
                 maker.trailing.equalTo(view).offset(-16)
-                maker.top.equalTo(textField.snp.bottom).offset(18.5)
-                maker.bottom.equalTo(displayButton.snp.top).offset(-333.5)
-//                maker.bottom.equalTo(view).offset(-459.5)
+//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
 
+                maker.top.equalTo(textField).offset(18.5)
                 
-//                maker.width.equalTo(343)
-//                maker.height.equalTo(10)
+//                maker.bottom.equalTo(displayButton.snp.top).offset(-333.5)
+                maker.bottom.equalTo(view).offset(-459.5)
+
             }
             
-//            divider.snp.makeConstraints { maker in
-////                maker.leading.equalTo(view).offset(16)
-////                maker.trailing.equalTo(view).offset(-16)
 //
-////                maker.top.equalTo(textField.snp.bottom).offset(0.5)
-//
-////                maker.top.equalTo(view).offset(352.5)
-////                maker.bottom.equalTo(view).offset(-459.5)
-//            }
-            
             
             //answerField
             self.answerFieldLabel.isHidden = false
@@ -154,7 +141,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.answerFieldLabel.numberOfLines = 0
             self.answerFieldLabel.isHidden = true
             
-            self.view.addSubview(answerFieldLabel)
+//            self.view.addSubview(answerFieldLabel)
+            view.addSubview(answerFieldLabel)
+
             
             answerFieldLabel.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(13)
@@ -174,7 +163,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
             self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             
-            self.view.addSubview(displayButton)
+//            self.view.addSubview(displayButton)
+            view.addSubview(displayButton)
+
             
             displayButton.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(13)
