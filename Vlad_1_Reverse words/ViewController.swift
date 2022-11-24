@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let mainLabel = UILabel()
     var textField = UITextField()
     let divider = UILabel()
+//        let divider = UIButton()
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
     
@@ -44,13 +45,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
         
         private func initialize() {
-//            displayButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//            largeLabel.translatesAutoresizingMaskIntoConstraints = false
-//            mainLabel.translatesAutoresizingMaskIntoConstraints = false
-//            textField.translatesAutoresizingMaskIntoConstraints = false
-//            divider.translatesAutoresizingMaskIntoConstraints = false
-//            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
+            displayButton.translatesAutoresizingMaskIntoConstraints = false
+
+            largeLabel.translatesAutoresizingMaskIntoConstraints = false
+            mainLabel.translatesAutoresizingMaskIntoConstraints = false
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            divider.translatesAutoresizingMaskIntoConstraints = false
+            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
 
             
             
@@ -63,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.title = "Reverse words"
             
             //largeLabel
-            largeLabel.frame = CGRect(x: 16, y: 152, width: 343, height: 41);
+//            largeLabel.frame = CGRect(x: 16, y: 152, width: 343, height: 41);
             largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)   // weight from CSS
             largeLabel.textAlignment = .center
             largeLabel.text = "Reverse words"
@@ -80,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
             //mainLabel
-            mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
+//            mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
             mainLabel.font = UIFont.systemFont(ofSize: 17)
             mainLabel.textAlignment = .center
             mainLabel.numberOfLines = 2
@@ -116,41 +117,32 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //                maker.bottom.equalTo(view).offset(497)
             }
             
-            
+//
             //divider
-            self.divider.frame = CGRect(x: 0, y: 0, width: 343, height: 0.5)  //16  352.5
+            self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
             self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
-            
-            divider.translatesAutoresizingMaskIntoConstraints = false
+//            divider.translatesAutoresizingMaskIntoConstraints = false
 
-            
-//            self.view.addSubview(divider)
-            view.addSubview(divider)
+
+            self.view.addSubview(divider)
+//            view.addSubview(divider)
 //
-            divider.snp.makeConstraints { maker in
-                maker.leading.equalTo(view).offset(16)
-                maker.trailing.equalTo(view).offset(-16)
-
-//                maker.height.equalTo(view).offset(0.5)
-//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
-//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
-
-//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
-
-//                maker.bottom.equalTo(displayButton.snp.top).offset(-333.5)
-
-                maker.top.equalTo(view).offset(352.5)
-//                maker.top.equalTo(view).offset(375.5)
-
-                maker.bottom.equalTo(view).offset(-459.5)
-
-            }
-            
+//            divider.snp.makeConstraints { maker in
+//                maker.leading.equalTo(view).offset(16)
+//                maker.trailing.equalTo(view).offset(-16)
 //
+//                maker.top.equalTo(view).offset(352.5)
+//                или
+//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
+//                или
+//                maker.bottom.equalTo(view).offset(459.5)
+//            }
+
+
             
             //answerField
             self.answerFieldLabel.isHidden = false
-            self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
+//            self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
             self.answerFieldLabel.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
             self.answerFieldLabel.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
             self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
@@ -177,7 +169,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             self.displayButton.layer.cornerRadius = 14
             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-            self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
+//            self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
             self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             
 //            self.view.addSubview(displayButton)
