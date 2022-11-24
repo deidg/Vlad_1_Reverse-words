@@ -23,6 +23,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+//
+//        largeLabel.translatesAutoresizingMaskIntoConstraints = false
+//        mainLabel.translatesAutoresizingMaskIntoConstraints = false
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        divider.translatesAutoresizingMaskIntoConstraints = false
+//        answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
+//        displayButton.translatesAutoresizingMaskIntoConstraints = false
+
+        
 //        view.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
 //        view.backgroundColor = .red
                   
@@ -35,9 +44,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
         
         private func initialize() {
-            displayButton.translatesAutoresizingMaskIntoConstraints = false
+//            displayButton.translatesAutoresizingMaskIntoConstraints = false
+//
+//            largeLabel.translatesAutoresizingMaskIntoConstraints = false
+//            mainLabel.translatesAutoresizingMaskIntoConstraints = false
+//            textField.translatesAutoresizingMaskIntoConstraints = false
+//            divider.translatesAutoresizingMaskIntoConstraints = false
+//            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
 
-
+            
             
             self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //            self.view.backgroundColor = .red
@@ -85,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             
             //TextField
-            textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)
+            textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
             textField.font = UIFont.systemFont(ofSize: 17)
             textField.text = nil
             textField.placeholder = "Text to reverse"
@@ -94,37 +109,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         self.view.addSubview(textField)
 
             
-//            textField.snp.makeConstraints { maker in
-//                maker.leading.equalTo(view).offset(16)
-//                maker.trailing.equalTo(view).offset(-16)
-//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
-////                maker.bottom.equalTo(view).offset(497)
-//            }
-            
-//            lblTimer.snp.bottom
-            
-            
-            
+            textField.snp.makeConstraints { maker in
+                maker.leading.equalTo(view).offset(16)
+                maker.trailing.equalTo(view).offset(-16)
+                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
+//                maker.bottom.equalTo(view).offset(497)
+            }
             
             
             //divider
-            self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)
+            self.divider.frame = CGRect(x: 0, y: 0, width: 343, height: 0.5)  //16  352.5
             self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
             
-//            divider.translatesAutoresizingMaskIntoConstraints = false
+            divider.translatesAutoresizingMaskIntoConstraints = false
 
             
-            self.view.addSubview(divider)
-//            view.addSubview(divider)
+//            self.view.addSubview(divider)
+            view.addSubview(divider)
 //
             divider.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(16)
                 maker.trailing.equalTo(view).offset(-16)
+
+//                maker.height.equalTo(view).offset(0.5)
+//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
+//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
+
 //                maker.top.equalTo(textField.snp.bottom).offset(18.5)
 
-                maker.top.equalTo(textField).offset(18.5)
-                
 //                maker.bottom.equalTo(displayButton.snp.top).offset(-333.5)
+
+                maker.top.equalTo(view).offset(352.5)
+//                maker.top.equalTo(view).offset(375.5)
+
                 maker.bottom.equalTo(view).offset(-459.5)
 
             }
