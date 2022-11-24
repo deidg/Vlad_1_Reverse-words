@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //            mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
             mainLabel.font = UIFont.systemFont(ofSize: 17)
             mainLabel.textAlignment = .center
-            mainLabel.numberOfLines = 2
+            mainLabel.numberOfLines = 0
             mainLabel.text = "This application will reverse your words. Please type text below"
         
             
