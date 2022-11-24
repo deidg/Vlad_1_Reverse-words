@@ -46,13 +46,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
         
         private func initialize() {
-            displayButton.translatesAutoresizingMaskIntoConstraints = false
-
-            largeLabel.translatesAutoresizingMaskIntoConstraints = false
-            mainLabel.translatesAutoresizingMaskIntoConstraints = false
-            textField.translatesAutoresizingMaskIntoConstraints = false
-            divider.translatesAutoresizingMaskIntoConstraints = false
-            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
+//            displayButton.translatesAutoresizingMaskIntoConstraints = false
+//
+//            largeLabel.translatesAutoresizingMaskIntoConstraints = false
+//            mainLabel.translatesAutoresizingMaskIntoConstraints = false
+//            textField.translatesAutoresizingMaskIntoConstraints = false
+//            divider.translatesAutoresizingMaskIntoConstraints = false
+//            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
 
             
             
