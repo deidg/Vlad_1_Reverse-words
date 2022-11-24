@@ -38,6 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                   
         
         initialize()
+//        textViewDidBeginEditing()
         
 //        textField.translatesAutoresizingMaskIntoConstraints = false
 //        divider.translatesAutoresizingMaskIntoConstraints = false
@@ -168,7 +169,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.displayButton.setTitleColor(.white, for: .normal)
             self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             self.displayButton.layer.cornerRadius = 14
-            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
 //            self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
             self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             
@@ -189,6 +190,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             answerFieldLabel.text = textField.text
             
+            
+//            divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
+            
             if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
                 textField.text = " "
                 answerFieldLabel.text = " "
@@ -204,11 +208,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 self.displayButton.setTitle("Clear", for: .normal)
                 self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-                
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
                 answerFieldLabel.isHidden = false
             }
         
     }
 }
 
+//extension   ViewController: UITextViewDelegate {
+//    
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        divider.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
+//        displayButton.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
+//        
+//    }
+//}
 
