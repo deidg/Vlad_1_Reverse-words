@@ -189,18 +189,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             answerFieldLabel.text = textField.text
             
-            //реверсивный механизм reverse mechanism
-            let text = textField.text!
-            let reversedText = String(text.reversed())
-            answerFieldLabel.text = reversedText
-            
-            //displayButton title changing
-            self.displayButton.setTitle("Clear", for: .normal)
-            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            
-            
-            answerFieldLabel.isHidden = false
-            
+            if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
+                textField.text = " "
+                answerFieldLabel.text = " "
+                self.displayButton.setTitle("Reverse", for: .normal)
+                
+            } else {
+                //реверсивный механизм reverse mechanism
+                let text = textField.text!
+                let reversedText = String(text.reversed())
+                answerFieldLabel.text = reversedText
+                
+                //displayButton title changing
+                
+                self.displayButton.setTitle("Clear", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+                
+                answerFieldLabel.isHidden = false
+            }
         
     }
 }
