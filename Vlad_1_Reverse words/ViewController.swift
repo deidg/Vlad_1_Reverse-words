@@ -96,6 +96,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             mainLabel.font = UIFont.systemFont(ofSize: 17)
             mainLabel.textAlignment = .center
             mainLabel.numberOfLines = 0
+            mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+            
             mainLabel.text = "This application will reverse your words. Please type text below"
         
             
