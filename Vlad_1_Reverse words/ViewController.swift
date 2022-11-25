@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         myTextView.delegate = self
        
      view.backgroundColor = .red
@@ -33,6 +34,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
         
+    override func viewSafeAreaInsetsDidChange() {
+            super.viewSafeAreaInsetsDidChange()
+            self.tableView.contentInset = UIEdgeInsets(top: self.tableView.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
+        }
+    
+    
+    
         private func initialize() {
 
             self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)

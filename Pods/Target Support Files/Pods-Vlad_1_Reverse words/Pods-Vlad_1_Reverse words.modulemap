@@ -1,0 +1,6 @@
+framework module Pods_Vlad_1_Reverse_words {
+  umbrella header "Pods-Vlad_1_Reverse words-umbrella.h"
+
+  export *
+  module * { export * }
+}
