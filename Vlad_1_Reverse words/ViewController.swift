@@ -14,15 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let largeLabel = UILabel()
     let mainLabel = UILabel()
-    
-//    var placeholder = "Text to reverse"
-
     var myTextView = UITextView()
-   // var textField = UITextField()
-    
-    
     let divider = UILabel()
-//        let divider = UIButton()
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
     
@@ -32,55 +25,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         myTextView.delegate = self
        
-//
-//        largeLabel.translatesAutoresizingMaskIntoConstraints = false
-//        mainLabel.translatesAutoresizingMaskIntoConstraints = false
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        divider.translatesAutoresizingMaskIntoConstraints = false
-//        answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
-//        displayButton.translatesAutoresizingMaskIntoConstraints = false
-
-        
-//        view.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
-//        view.backgroundColor = .red
+     view.backgroundColor = .red
                   
         var placeholder = "Text to reverse"
 
         initialize()
         
-//        textViewDidBeginEditing()
-        
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        divider.translatesAutoresizingMaskIntoConstraints = false
-        
     }
         
         private func initialize() {
-//            displayButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//            largeLabel.translatesAutoresizingMaskIntoConstraints = false
-//            mainLabel.translatesAutoresizingMaskIntoConstraints = false
-//            textField.translatesAutoresizingMaskIntoConstraints = false
-//            divider.translatesAutoresizingMaskIntoConstraints = false
-//            answerFieldLabel.translatesAutoresizingMaskIntoConstraints = false
 
-            
-            
             self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//            self.view.backgroundColor = .red
-
-            
             
             //title for Navigation Controller
             self.title = "Reverse words"
             
             //MARK: - largeLabel
-//            largeLabel.frame = CGRect(x: 16, y: 152, width: 343, height: 41);
             largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)   // weight from CSS
             largeLabel.textAlignment = .center
             largeLabel.text = "Reverse words"
             
-//            self.view.addSubview(largeLabel)
             view.addSubview(largeLabel)
 
             
@@ -92,7 +56,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
             //MARK: - mainLabel
-//            mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
             mainLabel.font = UIFont.systemFont(ofSize: 17)
             mainLabel.textAlignment = .center
             mainLabel.numberOfLines = 0
@@ -100,18 +63,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             mainLabel.text = "This application will reverse your words. Please type text below"
         
-            
-//            self.view.addSubview(mainLabel)
             view.addSubview(mainLabel)
 
-            
             mainLabel.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(33)
                 maker.trailing.equalTo(view).offset(-34)
                 maker.top.equalTo(largeLabel.snp.bottom).offset(16)
                 maker.bottom.equalTo(view).offset(-559)
             }
-            //============================================
             
             //MARK: - myTextView
             
@@ -119,72 +78,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
             myTextView.text = placeholder
             myTextView.textColor = UIColor.lightGray
             
-            myTextView.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312 правильное расстояние
+            myTextView.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
             myTextView.font = UIFont.systemFont(ofSize: 14)
-//            myTextView.backgroundColor = .red
             myTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//            myTextView.textColor = UIColor(red: 100/255, green: 200/255, blue: 255/255, alpha: 1)
-//            myTextView.insertTextPlaceholder(with: <#T##CGSize#>)
-
-//           // myTextView.text = nil   потом удалить
-            //textField.placeholder = "Text to reverse"  потом удалить
+//
             
+            view.addSubview(myTextView)
+
 //            myTextView.snp.makeConstraints { maker in
 //                maker.leading.equalTo(view).offset(16)
 //                maker.trailing.equalTo(view).offset(-16)
-//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
-////                maker.bottom.equalTo(view).offset(497)
+////                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
+//                maker.bottom.equalTo(view).offset(-497)
 //            }
-            view.addSubview(myTextView)
 
-            
-            
-            //==============================================
-            /*
-            //MARK: - TextField
-            textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
-            textField.font = UIFont.systemFont(ofSize: 17)
-            textField.text = nil
-            textField.placeholder = "Text to reverse"
-            
-//            self.view.addSubview(textField)
-                        self.view.addSubview(textField)
 
-            
-            textField.snp.makeConstraints { maker in
-                maker.leading.equalTo(view).offset(16)
-                maker.trailing.equalTo(view).offset(-16)
-                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
-//                maker.bottom.equalTo(view).offset(497)
-            }
-             ===========================
-            */
-//
             //MARK: - divider
             self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
             self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
-//            divider.translatesAutoresizingMaskIntoConstraints = false
 
 
             self.view.addSubview(divider)
-//            view.addSubview(divider)
-//
-//            divider.snp.makeConstraints { maker in
-//                maker.leading.equalTo(view).offset(16)
-//                maker.trailing.equalTo(view).offset(-16)
-//
-//                maker.top.equalTo(view).offset(352.5)
-//                или
-//                maker.top.equalTo(textField.snp.bottom).offset(18.5)
-//                или
-//                maker.bottom.equalTo(view).offset(459.5)
-//            }
-
 
             
             //MARK: - answerField
             self.answerFieldLabel.isHidden = false
-//            self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
             self.answerFieldLabel.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
             self.answerFieldLabel.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
             self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
@@ -192,7 +110,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.answerFieldLabel.numberOfLines = 0
             self.answerFieldLabel.isHidden = true
             
-//            self.view.addSubview(answerFieldLabel)
             view.addSubview(answerFieldLabel)
 
             
@@ -211,10 +128,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             self.displayButton.layer.cornerRadius = 14
             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-//            self.displayButton.frame = CGRect(x: 13, y: 686, width: 349, height:60)
             self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
             
-//            self.view.addSubview(displayButton)
             view.addSubview(displayButton)
 
             
@@ -230,9 +145,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         @objc func buttonPressed(sender: UIButton) {
             
             answerFieldLabel.text = myTextView.text
-            
-            
-//            divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
             
             if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
                 myTextView.text = " "
@@ -250,7 +162,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 self.displayButton.setTitle("Clear", for: .normal)
                 self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-//                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
                 answerFieldLabel.isHidden = false
             }
         
@@ -259,25 +170,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 extension ViewController: UITextViewDelegate {
     
-    //    extension   UITextView: UITextViewDelegate {
-    //    public func textViewDidBeginEditing(_ textView: UITextView) {
-    
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
-//        if  textView.textColor == .lightGray {
             textView.text = " "
             textView.textColor = .black
         self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-
         }
-        
-       
     }
-//}
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        divider.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
-//        displayButton.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
-//        
-//    }
+
 
 
