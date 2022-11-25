@@ -15,7 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let largeLabel = UILabel()
     let mainLabel = UILabel()
     
-    
+//    var placeholder = "Text to reverse"
+
     var myTextView = UITextView()
    // var textField = UITextField()
     
@@ -41,8 +42,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //        view.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
 //        view.backgroundColor = .red
                   
-        
+        var placeholder = "Text to reverse"
+
         initialize()
+        
 //        textViewDidBeginEditing()
         
 //        textField.translatesAutoresizingMaskIntoConstraints = false
@@ -110,12 +113,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             var placeholder = "Text to reverse"
             myTextView.text = placeholder
-            myTextView.textColor = .lightGray
+            myTextView.textColor = UIColor.white
             
             myTextView.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
-            myTextView.font = UIFont.systemFont(ofSize: 17)
+            myTextView.font = UIFont.systemFont(ofSize: 14)
+//            myTextView.backgroundColor = .red
+            myTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //            myTextView.textColor = UIColor(red: 100/255, green: 200/255, blue: 255/255, alpha: 1)
-            myTextView.insertTextPlaceholder(with: <#T##CGSize#>)
+//            myTextView.insertTextPlaceholder(with: <#T##CGSize#>)
 
 //           // myTextView.text = nil   потом удалить
             //textField.placeholder = "Text to reverse"  потом удалить
@@ -126,7 +131,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
 ////                maker.bottom.equalTo(view).offset(497)
 //            }
-            
+            view.addSubview(myTextView)
+
             
             //==============================================
             /*
