@@ -100,6 +100,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             self.view.addSubview(divider)
 
+//            divider.snp.makeConstraints { maker in
+//                  maker.leading.equalTo(view).offset(16)
+//                  maker.trailing.equalTo(view).offset(-16)
+//           //            maker.top.equalTo(myTextView.snp.bottom).offset(59)
+//                  maker.bottom.equalTo(view).offset(-497)
+//                       }
+
             
             //MARK: - answerField
             self.answerFieldLabel.isHidden = false
