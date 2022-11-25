@@ -108,15 +108,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             //MARK: - myTextView
             
+            var placeholder = "Text to reverse"
             myTextView.text = placeholder
             myTextView.textColor = .lightGray
             
-            textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
-            textField.font = UIFont.systemFont(ofSize: 17)
-            textField.text = nil
-            textField.placeholder = "Text to reverse"
+            myTextView.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
+            myTextView.font = UIFont.systemFont(ofSize: 17)
+//            myTextView.textColor = UIColor(red: 100/255, green: 200/255, blue: 255/255, alpha: 1)
+            myTextView.insertTextPlaceholder(with: <#T##CGSize#>)
+
+//           // myTextView.text = nil   потом удалить
+            //textField.placeholder = "Text to reverse"  потом удалить
             
-            
+//            myTextView.snp.makeConstraints { maker in
+//                maker.leading.equalTo(view).offset(16)
+//                maker.trailing.equalTo(view).offset(-16)
+//                maker.top.equalTo(mainLabel.snp.bottom).offset(59)
+////                maker.bottom.equalTo(view).offset(497)
+//            }
             
             
             //==============================================
@@ -209,19 +218,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         @objc func buttonPressed(sender: UIButton) {
             
-            answerFieldLabel.text = textField.text
+            answerFieldLabel.text = myTextView.text
             
             
 //            divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
             
             if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
-                textField.text = " "
+                myTextView.text = " "
                 answerFieldLabel.text = " "
                 self.displayButton.setTitle("Reverse", for: .normal)
                 
             } else {
                 //реверсивный механизм reverse mechanism
-                let text = textField.text!
+                let text = myTextView.text!
                 let reversedText = String(text.reversed())
                 answerFieldLabel.text = reversedText
                 
