@@ -29,6 +29,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myTextView.delegate = self
        
 //
 //        largeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -113,9 +115,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             var placeholder = "Text to reverse"
             myTextView.text = placeholder
-            myTextView.textColor = UIColor.white
+            myTextView.textColor = UIColor.lightGray
             
-            myTextView.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
+            myTextView.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312 правильное расстояние
             myTextView.font = UIFont.systemFont(ofSize: 14)
 //            myTextView.backgroundColor = .red
             myTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
@@ -133,6 +135,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //            }
             view.addSubview(myTextView)
 
+            
             
             //==============================================
             /*
@@ -233,6 +236,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 myTextView.text = " "
                 answerFieldLabel.text = " "
                 self.displayButton.setTitle("Reverse", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.9)
                 
             } else {
                 //реверсивный механизм reverse mechanism
@@ -244,19 +248,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 self.displayButton.setTitle("Clear", for: .normal)
                 self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+//                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
                 answerFieldLabel.isHidden = false
             }
         
     }
 }
 
-//extension   ViewController: UITextViewDelegate {
-//    
+extension ViewController: UITextViewDelegate {
+    
+    //    extension   UITextView: UITextViewDelegate {
+    //    public func textViewDidBeginEditing(_ textView: UITextView) {
+    
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if  textView.textColor == .lightGray {
+            textView.text = " "
+            textView.textColor = .black
+        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+
+        }
+        
+       
+    }
+//}
 //    func textViewDidBeginEditing(_ textView: UITextView) {
 //        divider.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
 //        displayButton.backgroundColor = UIColor(red: 230/255, green: 30/255, blue: 60/255, alpha: 1)
 //        
 //    }
-//}
+
 
