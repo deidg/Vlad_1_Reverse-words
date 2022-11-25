@@ -14,7 +14,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     let largeLabel = UILabel()
     let mainLabel = UILabel()
-    var textField = UITextField()
+    
+    
+    var myTextView = UITextView()
+   // var textField = UITextField()
+    
+    
     let divider = UILabel()
 //        let divider = UIButton()
     var answerFieldLabel = UILabel()
@@ -64,7 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //title for Navigation Controller
             self.title = "Reverse words"
             
-            //largeLabel
+            //MARK: - largeLabel
 //            largeLabel.frame = CGRect(x: 16, y: 152, width: 343, height: 41);
             largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)   // weight from CSS
             largeLabel.textAlignment = .center
@@ -81,7 +86,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 maker.bottom.equalTo(view).offset(-619)
             }
             
-            //mainLabel
+            //MARK: - mainLabel
 //            mainLabel.frame = CGRect(x: 33, y: 209, width: 308, height: 44);
             mainLabel.font = UIFont.systemFont(ofSize: 17)
             mainLabel.textAlignment = .center
@@ -99,9 +104,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 maker.top.equalTo(largeLabel.snp.bottom).offset(16)
                 maker.bottom.equalTo(view).offset(-559)
             }
+            //============================================
+            
+            //MARK: - myTextView
+            
+            myTextView.text = placeholder
+            myTextView.textColor = .lightGray
+            
+            textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
+            textField.font = UIFont.systemFont(ofSize: 17)
+            textField.text = nil
+            textField.placeholder = "Text to reverse"
             
             
-            //TextField
+            
+            
+            //==============================================
+            /*
+            //MARK: - TextField
             textField.frame = CGRect(x: 16, y: 312, width: 343, height: 22)   // 312 правильное расстояние
             textField.font = UIFont.systemFont(ofSize: 17)
             textField.text = nil
@@ -117,9 +137,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 maker.top.equalTo(mainLabel.snp.bottom).offset(59)
 //                maker.bottom.equalTo(view).offset(497)
             }
-            
+             ===========================
+            */
 //
-            //divider
+            //MARK: - divider
             self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
             self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
 //            divider.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +162,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
             
-            //answerField
+            //MARK: - answerField
             self.answerFieldLabel.isHidden = false
 //            self.answerFieldLabel.frame = CGRect(x: 16, y: 377, width: 198, height: 22)
             self.answerFieldLabel.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
@@ -163,7 +184,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
             
-            //displayButton
+            //MARK: - displayButton
             self.displayButton = UIButton(type: .system)
             self.displayButton.setTitle("Reverse", for: .normal)
             self.displayButton.setTitleColor(.white, for: .normal)
