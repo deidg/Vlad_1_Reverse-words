@@ -14,7 +14,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let navigationView = UIView()
     let largeLabel = UILabel()
     let mainLabel = UILabel()
-    var myTextView = UITextView()
+//    var myTextView = UITextView()
+    var myText = UITextField()
+
 //    let divider = UILabel()
     let divider = UIView()
     var answerFieldLabel = UILabel()
@@ -25,9 +27,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
 
-        myTextView.delegate = self
+        myText.delegate = self
        
-     view.backgroundColor = .red
+//     view.backgroundColor = .red
                   
         var placeholder = "Text to reverse"
 
@@ -49,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             //MARK: navigationView
             
             
-            navigationView.frame = CGRect(x: 0, y: 0, width: 375, height: 88)
+            navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
 //            navigationView.backgroundColor = .white
             navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
             
@@ -91,18 +93,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 maker.bottom.equalTo(view).offset(-559)
             }
             
-            //MARK: - myTextView
+            //MARK: - myText
             
-            var placeholder = "Text to reverse"
-            myTextView.text = placeholder
-            myTextView.textColor = UIColor.lightGray
+            myText.placeholder = "Text to reverse"
             
-            myTextView.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
-            myTextView.font = UIFont.systemFont(ofSize: 14)
-            myTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//            var placeholder = "Text to reverse"
+//            myText.text = placeholder
+//            myText.textColor = UIColor.lightGray
+//
+            myText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
+           
+            // размер шрифта???
+            myText.font = UIFont.systemFont(ofSize: 17)
+            myText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //
             
-            view.addSubview(myTextView)
+            view.addSubview(myText)
 
 //            myTextView.snp.makeConstraints { maker in
 //                maker.leading.equalTo(view).offset(16)
@@ -170,17 +176,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         @objc func buttonPressed(sender: UIButton) {
             
-            answerFieldLabel.text = myTextView.text
+            answerFieldLabel.text = myText.text
             
             if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
-                myTextView.text = " "
+                myText.text = " "
                 answerFieldLabel.text = " "
                 self.displayButton.setTitle("Reverse", for: .normal)
                 self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.9)
                 
             } else {
                 //реверсивный механизм reverse mechanism
-                let text = myTextView.text!
+                let text = myText.text!
                 let reversedText = String(text.reversed())
                 answerFieldLabel.text = reversedText
                 
@@ -195,7 +201,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension ViewController: UITextViewDelegate {
-    
+
     func textViewDidBeginEditing(_ textView: UITextView) {
             textView.text = " "
             textView.textColor = .black
@@ -203,5 +209,8 @@ extension ViewController: UITextViewDelegate {
         }
     }
 
-
+//extension  ViewController: UITextField {
+//
+//    func
+//}
 
