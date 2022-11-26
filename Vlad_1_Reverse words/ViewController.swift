@@ -19,7 +19,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 //    let divider = UILabel()
     let divider = UIView()
-    var answerFieldLabel = UILabel()
+    
+//    var answerFieldLabel = UILabel()
+    var answerFieldLabel = UITextView()
+
+    
     var displayButton = UIButton()
     
     
@@ -97,6 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             myText.placeholder = "Text to reverse"
             
+            
 //            var placeholder = "Text to reverse"
 //            myText.text = placeholder
 //            myText.textColor = UIColor.lightGray
@@ -139,7 +144,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.answerFieldLabel.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
             self.answerFieldLabel.font = UIFont.systemFont(ofSize: 24)
             self.answerFieldLabel.textAlignment = .left
-            self.answerFieldLabel.numberOfLines = 0
+//            self.answerFieldLabel.numberOfLines = 0
             self.answerFieldLabel.isHidden = true
             
             view.addSubview(answerFieldLabel)
@@ -200,17 +205,41 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension ViewController: UITextViewDelegate {
-
-    func textViewDidBeginEditing(_ textView: UITextView) {
-            textView.text = " "
-            textView.textColor = .black
-        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-        }
-    }
-
-//extension  ViewController: UITextField {
+//extension ViewController: UITextViewDelegate {
 //
-//    func
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//            textView.text = " "
+//            textView.textColor = .black
+//        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+//        }
+//    }
+
+//extension  UITextField: UITextFieldDelegate {
+//
+//    if var clearsOnBeginEditing = true {
+//        .clearsOnBeginEditing
+//
+//    }
+//
+//    if myText.clearsOnBeginEditing {
+//        myText.clearsOnBeginEditing = true
+//self.divider.backgroundColor = .red
+//
+//    }
+
+
+
+//    myText
+//
+//    clearsOnBeginEditing =
+//
+//    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        textFieldShouldClear(YESSTR)
+//    }
+//    var isEditing =
+
+//    textField.textColor = .black
+//    divider.backgroundColor = textField.textColor = .black
+////    clearsOnBeginEditing
 //}
 
