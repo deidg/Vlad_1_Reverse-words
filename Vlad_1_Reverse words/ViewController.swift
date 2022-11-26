@@ -114,18 +114,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             //MARK: - divider
             self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
-//            self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
-            self.divider.backgroundColor = .red
-
-
+            self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
+//            self.divider.backgroundColor = .red
 
             self.view.addSubview(divider)
 
 //            divider.snp.makeConstraints { maker in
 //                  maker.leading.equalTo(view).offset(16)
 //                  maker.trailing.equalTo(view).offset(-16)
-//           //            maker.top.equalTo(myTextView.snp.bottom).offset(59)
-//                  maker.bottom.equalTo(view).offset(-497)
+//                       maker.top.equalTo(myTextView.snp.bottom).offset(59)
+////                  maker.bottom.equalTo(view).offset(-497)
 //                       }
 
             
@@ -164,7 +162,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             displayButton.snp.makeConstraints { maker in
                 maker.leading.equalTo(view).offset(13)
                 maker.trailing.equalTo(view).offset(-13)
-                maker.top.equalTo(view).offset(686)
+//                maker.top.equalTo(view).offset(686)
                 maker.bottom.equalTo(view).offset(-66)
                 
             }
