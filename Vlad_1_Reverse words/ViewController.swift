@@ -15,7 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let largeLabel = UILabel()
     let mainLabel = UILabel()
     var myTextView = UITextView()
-    let divider = UILabel()
+//    let divider = UILabel()
+    let divider = UIView()
     var answerFieldLabel = UILabel()
     var displayButton = UIButton()
     
@@ -113,7 +114,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             //MARK: - divider
             self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
-            self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
+//            self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
+            self.divider.backgroundColor = .red
+
 
 
             self.view.addSubview(divider)
