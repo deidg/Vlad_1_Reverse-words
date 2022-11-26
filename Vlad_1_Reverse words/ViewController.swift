@@ -11,7 +11,7 @@ import SnapKit
 class ViewController: UIViewController, UITextFieldDelegate {
     
     
-    
+    let navigationView = UIView()
     let largeLabel = UILabel()
     let mainLabel = UILabel()
     var myTextView = UITextView()
@@ -34,16 +34,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
         
-    override func viewSafeAreaInsetsDidChange() {
-            super.viewSafeAreaInsetsDidChange()
-            self.tableView.contentInset = UIEdgeInsets(top: self.tableView.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
-        }
+//    override func viewSafeAreaInsetsDidChange() {
+//            super.viewSafeAreaInsetsDidChange()
+//            self.tableView.contentInset = UIEdgeInsets(top: self.tableView.safeAreaInsets.top, left: 0, bottom: 0, right: 0)
+//        }
     
     
     
         private func initialize() {
 
             self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+            
+            //MARK: navigationView
+            
+            
+            navigationView.frame = CGRect(x: 0, y: 0, width: 375, height: 88)
+//            navigationView.backgroundColor = .white
+            navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
+            
+            view.addSubview(navigationView)
+
             
             //title for Navigation Controller
             self.title = "Reverse words"
