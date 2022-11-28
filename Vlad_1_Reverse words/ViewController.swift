@@ -8,36 +8,37 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController { //UITextFieldDelegate
     
     
-    let navigationView = UIView()
-    let largeLabel = UILabel()
-    let mainLabel = UILabel()
+    let navigationView = UIView() //1
+    let largeLabel = UILabel() //2
+    let mainLabel = UILabel() //3
 //    var myTextView = UITextView()
-    var myText = UITextField()
+    var myText = UITextField() //4
 
 //    let divider = UILabel()
-    let divider = UIView()
+    let divider = UIView()  //5
     
 //    var answerFieldLabel = UILabel()
-    var answerFieldLabel = UITextView()
+    var answerFieldLabel = UITextView()  // 7 - поле с ответом
 
     
-    var displayButton = UIButton()
+    var displayButton = UIButton()  // 6
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
-        myText.delegate = self
+//        myText.delegate = self
        
 //     view.backgroundColor = .red
                   
         var placeholder = "Text to reverse"
 
         initialize()
+        
         
     }
         
@@ -115,6 +116,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             view.addSubview(myText)
 
+            
+            
 //            myTextView.snp.makeConstraints { maker in
 //                maker.leading.equalTo(view).offset(16)
 //                maker.trailing.equalTo(view).offset(-16)
@@ -130,12 +133,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             self.view.addSubview(divider)
 
+//            func dividerChangeColor() {
+//                if myText == " " {
+//                    divider.backgroundColor = .red
+//                } else { nil }
+//
+//            }
+//
+            
 //            divider.snp.makeConstraints { maker in
 //                  maker.leading.equalTo(view).offset(16)
 //                  maker.trailing.equalTo(view).offset(-16)
 //                       maker.top.equalTo(myTextView.snp.bottom).offset(59)
 ////                  maker.bottom.equalTo(view).offset(-497)
 //                       }
+//            func dividerChangeColor() {
+//                if textFieldShouldClear.isEmpty == true {
+//                    self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+//                } else { error }
+//            }
+            
 
             
             //MARK: - answerField
@@ -205,41 +222,62 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-//extension ViewController: UITextViewDelegate {
-//
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//            textView.text = " "
-//            textView.textColor = .black
-//        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-//        }
-//    }
+//MARK: extension
 
-//extension  UITextField: UITextFieldDelegate {
+//extension ViewController: UITextFieldDelegate {
 //
-//    if var clearsOnBeginEditing = true {
-//        .clearsOnBeginEditing
-//
-//    }
-//
-//    if myText.clearsOnBeginEditing {
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
 //        myText.clearsOnBeginEditing = true
-//self.divider.backgroundColor = .red
 //
+//        //        divider.backgroundColor = .red
+//        return true
 //    }
-
-
-
-//    myText
-//
-//    clearsOnBeginEditing =
-//
-//    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-//        textFieldShouldClear(YESSTR)
-//    }
-//    var isEditing =
-
-//    textField.textColor = .black
-//    divider.backgroundColor = textField.textColor = .black
-////    clearsOnBeginEditing
-//}
-
+    
+   
+extension ViewController: UITextViewDelegate {
+    
+    //func clearsOnBeginEditing(_ clearsOnBeginEditing: Bool) -> Self {
+    //    self.clearsOnBeginEditing = clearsOnBeginEditing
+    //    return self
+    //  }
+    
+    
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        //            textView.text = " "
+        //            textView.textColor = .black
+        divider.backgroundColor = .red
+        //        divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+        //        }
+    }
+    
+    //extension  UITextField: UITextFieldDelegate {
+    //
+    //    if var clearsOnBeginEditing = true {
+    //        .clearsOnBeginEditing
+    //
+    //    }
+    //
+    //    if myText.clearsOnBeginEditing {
+    //        myText.clearsOnBeginEditing = true
+    //self.divider.backgroundColor = .red
+    //
+    //    }
+    
+    
+    
+    //    myText
+    //
+    //    clearsOnBeginEditing =
+    //
+    //    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    //        textFieldShouldClear(YESSTR)
+    //    }
+    //    var isEditing =
+    
+    //    textField.textColor = .black
+    //    divider.backgroundColor = textField.textColor = .black
+    ////    clearsOnBeginEditing
+    //}
+    
+}
