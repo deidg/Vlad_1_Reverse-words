@@ -120,6 +120,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         //MARK: - displayButton
         self.displayButton = UIButton(type: .system)
+        self.displayButton.frame = CGRect(x: 0, y: 0, width: 349, height: 60)
         self.displayButton.setTitle("Reverse", for: .normal)
         self.displayButton.setTitleColor(.white, for: .normal)
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -170,6 +171,7 @@ extension ViewController: UITextFieldDelegate {
 
      func textFieldDidBeginEditing (_ textField: UITextField) {
         self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
     }
 }
 
