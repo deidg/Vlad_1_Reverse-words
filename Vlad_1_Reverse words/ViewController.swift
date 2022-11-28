@@ -27,6 +27,8 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         initialize()
         
+        myText.delegate = self
+
     }
     
     private func initialize() {
@@ -170,4 +172,5 @@ extension ViewController: UITextFieldDelegate {
         self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
     }
 }
+
 
