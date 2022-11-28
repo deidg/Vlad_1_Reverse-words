@@ -120,7 +120,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         //MARK: - displayButton
         self.displayButton = UIButton(type: .system)
-        self.displayButton.frame = CGRect(x: 0, y: 0, width: 349, height: 60)
+//        self.displayButton.frame = CGRect(x: 0, y: 0, width: 349, height: 60)
         self.displayButton.setTitle("Reverse", for: .normal)
         self.displayButton.setTitleColor(.white, for: .normal)
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -134,7 +134,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         displayButton.snp.makeConstraints { maker in
             maker.leading.equalTo(view).offset(13)
             maker.trailing.equalTo(view).offset(-13)
-                            maker.top.equalTo(view).offset(686)
+            maker.height.equalTo(60)
             maker.bottom.equalTo(view).offset(-66)
             
         }
