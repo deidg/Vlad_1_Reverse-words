@@ -134,7 +134,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         displayButton.snp.makeConstraints { maker in
             maker.leading.equalTo(view).offset(13)
             maker.trailing.equalTo(view).offset(-13)
-            //                maker.top.equalTo(view).offset(686)
+                            maker.top.equalTo(view).offset(686)
             maker.bottom.equalTo(view).offset(-66)
             
         }
