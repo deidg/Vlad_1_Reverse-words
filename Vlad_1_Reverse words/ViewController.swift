@@ -8,9 +8,7 @@
 import UIKit
 import SnapKit
 
-//protocol DisplayButtonState {
-//    func displayButtonChange()
-//}
+
 
 class ViewController: UIViewController  { //UITextFieldDelegate
     
@@ -167,32 +165,6 @@ class ViewController: UIViewController  { //UITextFieldDelegate
     }
 }
 
-//============================
-//MARK: - State
-/*
-class Normal: DisplayButtonState {
-    func displayButtonChange() {
-        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-    }
-}
-
-class Active: DisplayButtonState {
-    func displayButtonChange() {
-        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-    }
-}
-
-class DisplayButtonClass: DisplayButtonState {
-    var currentState: DisplayButtonState = Normal()
-    
-    func displayButtonChange() {
-        currentState.displayButtonChange()
-    }
-}
-
-var displayButton = DisplayButtonClass()
-
-*/
     
     //MARK: extension
     
