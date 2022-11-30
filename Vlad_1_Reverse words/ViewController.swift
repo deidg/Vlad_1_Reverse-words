@@ -140,6 +140,23 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         }
     }
     
+    enum displayButtonState {
+        case Initial
+        case Typing
+        case Clearing
+    }
+    swith displayButtonState {
+    case .Initial:
+        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+        }
+    case .Typing:
+    displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+        }
+    case .Clearing:
+displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+        }
+    }
+    
     @objc func buttonPressed(sender: UIButton) {
         
         answerTextView.text = myText.text

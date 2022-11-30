@@ -1,87 +1,41 @@
-//
-//  sempl2.swift
-//  Vlad_1_Reverse words
-//
-//  Created by Alex on 25.11.2022.
-//
-
-import Foundation
-import UIKit
-
-//protocol State {
-//    func waiting(displayButton: DisplayButton)
-//    func reverse(displayButton: DisplayButton)
-//    func clear(displayButton: DisplayButton)
+//enum displayButtonState {
+//    case Initial
+//    case Typing
+//    case Clearing
 //}
-
-//class Waiting: State {
-//
-//    func waiting(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
+//swith displayButtonState {
+//case .Initial:
+//    displayButton
 //    }
-//
-//    func reverse(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
+//case .Typing:
+//    displayButton
 //    }
-//
-//    func clear(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//case .Clearing:
+//    displayButton
 //    }
 //}
 //
-//class Reverse: State {
-//
-//    func waiting(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-//    }
-//
-//    func reverse(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
-//    }
-//
-//    func clear(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//    }
+//switch directionToHead {
+//case .north:
+//    print("Lots of planets have a north")
+//case .south:
+//    print("Watch out for penguins")
+//case .east:
+//    print("Where the sun rises")
+//case .west:
+//    print("Where the skies are blue")
 //}
+//// Выводит "Watch out for penguins"
 //
-//class Clear: State {
 //
-//    func waiting(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-//    }
 //
-//    func reverse(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
-//    }
-//
-//    func clear(displayButton: DisplayButton) {
-//        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//    }
+//enum CompassPoint {
+//    case north
+//    case south
+//    case east
+//    case west
 //}
+//var directionToHead = CompassPoint.west
+//directionToHead = .east
 //
-//
-//
-//class DisplayButton() {
-//    var state: State
-//
-//    init() {
-//        self.state = Waiting()
-//    }
-//    func set(state: State) {
-//        self.state = state
-//    }
-//
-//    func waiting() {
-//        state.waiting(displayButton: self)
-//    }
-//
-//    func reverse() {
-//        state.reverse(displayButton: self)
-//    }
-//
-//    func clear() {
-//        state.reverse(displayButton: self)
-//    }
-//}
-
-
+//directionToHead = .south
