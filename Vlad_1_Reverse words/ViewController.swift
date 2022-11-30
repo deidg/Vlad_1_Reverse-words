@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol State {
+    func normal(displayButton: DisplayButton)
+//    func reverse(displayButton: DisplayButton)
+//    func clear(displayButton: DisplayButton)
+}
+
 class ViewController: UIViewController  { //UITextFieldDelegate
+    
     
     
     let navigationView = UIView() //1
@@ -84,7 +91,6 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         myText.placeholder = "Text to reverse"
         myText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
         
-        // размер шрифта???
         myText.font = UIFont.systemFont(ofSize: 17)
         myText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
@@ -101,6 +107,8 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         //MARK: - answerField
         self.answerTextView.isHidden = false
         self.answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//        self.answerTextView.backgroundColor = UIColor.red
+
         self.answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
         self.answerTextView.font = UIFont.systemFont(ofSize: 24)
         self.answerTextView.textAlignment = .left
@@ -136,19 +144,93 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             maker.trailing.equalTo(view).offset(-13)
             maker.height.equalTo(60)
             maker.bottom.equalTo(view).offset(-66)
-            
+        }
+        
+    }
+    
+    //============================
+    //MARK: - State
+    
+    class Waiting: State {
+        
+        func waiting(displayButton: DisplayButton) {
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
         }
     }
+//        func reverse(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
+//        }
+//
+//        func clear(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//        }
+//    }
+
+//    class Reverse: State {
+//
+//        func waiting(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
+//        }
+        
+//        func reverse(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
+//        }
+//
+//        func clear(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//        }
+//    }
+
+//    class Clear: State {
+//
+//        func waiting(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
+//        }
+        
+//        func reverse(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
+//        }
+//
+//        func clear(displayButton: DisplayButton) {
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//        }
+//    }
+
+
+
+    class DisplayButton: UIButton {
+        var state: State
+        
+        init() {
+            self.state = normal()
+        }
+        func set(state: State) {
+            self.state = state
+        }
+        
+        func normal() {
+            state.waiting(displayButton: self)
+        }
+        
+//        func reverse() {
+//            state.reverse(displayButton: self)
+//        }
+//
+//        func clear() {
+//            state.reverse(displayButton: self)
+//        }
+    }
+//    */
     
     @objc func buttonPressed(sender: UIButton) {
         
         answerTextView.text = myText.text
         
-        if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
+        if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) {
             myText.text = " "
             answerTextView.text = " "
             self.displayButton.setTitle("Reverse", for: .normal)
-            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.9)
+            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         } else {
             //реверсивный механизм reverse mechanism
             let text = myText.text!
