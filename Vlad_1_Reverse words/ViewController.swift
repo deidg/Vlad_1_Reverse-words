@@ -8,10 +8,8 @@
 import UIKit
 import SnapKit
 
-protocol State {
-    func normal(displayButton: DisplayButton)
-//    func reverse(displayButton: DisplayButton)
-//    func clear(displayButton: DisplayButton)
+protocol DisplayButtonState {
+    func displayButtonChange()
 }
 
 class ViewController: UIViewController  { //UITextFieldDelegate
@@ -43,7 +41,6 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         //MARK: navigationView
-        
         
         navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
         navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
@@ -151,76 +148,32 @@ class ViewController: UIViewController  { //UITextFieldDelegate
     //============================
     //MARK: - State
     
-    class Waiting: State {
-        
-        func waiting(displayButton: DisplayButton) {
-            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
+    class Normal: DisplayButtonState {
+        func displayButtonChange() {
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
     }
-//        func reverse(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
-//        }
-//
-//        func clear(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//        }
-//    }
-
-//    class Reverse: State {
-//
-//        func waiting(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-//        }
-        
-//        func reverse(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
-//        }
-//
-//        func clear(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//        }
-//    }
-
-//    class Clear: State {
-//
-//        func waiting(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-//        }
-        
-//        func reverse(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
-//        }
-//
-//        func clear(displayButton: DisplayButton) {
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//        }
-//    }
-
-
-
-    class DisplayButton: UIButton {
-        var state: State
-        
-        init() {
-            self.state = normal()
+    
+    class Active: DisplayButtonState {
+        func displayButtonChange() {
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
         }
-        func set(state: State) {
-            self.state = state
-        }
-        
-        func normal() {
-            state.waiting(displayButton: self)
-        }
-        
-//        func reverse() {
-//            state.reverse(displayButton: self)
-//        }
-//
-//        func clear() {
-//            state.reverse(displayButton: self)
-//        }
     }
-//    */
+    
+    class DisplayButtonClass: DisplayButtonState {
+        var currentState: DisplayButtonState = Normal()
+        
+        func displayButtonChange() {
+            currentState.displayButtonChange()
+        }
+    }
+    
+    var displayButton = DisplayButtonClass()
+    
+    
+    
+    
+    
     
     @objc func buttonPressed(sender: UIButton) {
         
