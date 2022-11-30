@@ -79,8 +79,8 @@
 ////
 ////protocol State {
 ////    func buttonPressed
-////    
-////    
+////
+////
 //////    func normal(displayButton: DisplayButton)      // (кнопка -  класс кнопки)
 //////    func selected(displayButton: DisplayButton)
 //////    func clear(displayButton: DisplayButton)
@@ -92,11 +92,11 @@
 //////let imageView = UIImageView(image: image!)
 ////
 ////    class Normal: State {
-////        
+////
 ////        func buttonPressed(displayButton: <<error type>>) {
 ////            <#code#>
 ////        }
-////        
+////
 ////        //State - протокол
 ////
 //////        func normal(displayButton: DisplayButton) {
@@ -105,22 +105,22 @@
 //////            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
 ////////            displayButton = displayBtn: UIButton
 //////        }
-////    
+////
 //////        func selected(displayButton: DisplayButton) {
 //////            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
 //////        }
-////    
+////
 //////        func clear(displayButton: DisplayButton) {
 //////            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
 //////        }
 //////    }
-////   
+////
 ////    class Selected: State {
-////        
+////
 //////        func normal(displayButton: DisplayButton) {
 //////            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
 //////        }
-////    
+////
 //////        func selected(displayButton: DisplayButton) {
 //////            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) //активный цвет
 //////        }
@@ -133,7 +133,7 @@
 ////
 /////*
 ////class Clear: State {
-////    
+////
 ////    func normal(displayButton: DisplayButton) {
 ////        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
 ////    }
@@ -146,9 +146,9 @@
 ////        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
 ////    }
 ////}
-////    
+////
 ////    */
-////    
+////
 ////class DisplayButton: State {
 //////        var buttonState: State
 //////
@@ -157,12 +157,12 @@
 //////        }
 //////
 //////    var displayButton = DisplayButton()
-////    
-////    
+////
+////
 ////        func set(state: State) {
 ////            self.state = state
 ////        }
-////    
+////
 //////        func waiting() {
 //////            state.waiting(displayButton: self)
 //////        }
@@ -182,9 +182,9 @@
 //////displayButton.backgroundColor
 //////
 //////    displa
-////    
-////    
-////    
-////    
+////
+////
+////
+////
 ////
 ////
