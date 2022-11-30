@@ -132,14 +132,14 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        
+        var displayButtonHeight = 60
         view.addSubview(displayButton)
         
         
         displayButton.snp.makeConstraints { maker in
             maker.leading.equalTo(view).offset(13)
             maker.trailing.equalTo(view).offset(-13)
-            maker.height.equalTo(60)
+            maker.height.equalTo(displayButtonHeight)
             maker.bottom.equalTo(view).offset(-66)
         }
         
