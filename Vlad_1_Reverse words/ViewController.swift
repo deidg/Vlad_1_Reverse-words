@@ -8,13 +8,11 @@
 import UIKit
 import SnapKit
 
-protocol DisplayButtonState {
-    func displayButtonChange()
-}
+//protocol DisplayButtonState {
+//    func displayButtonChange()
+//}
 
 class ViewController: UIViewController  { //UITextFieldDelegate
-    
-    
     
     let navigationView = UIView() //1
     let largeLabel = UILabel() //2
@@ -132,7 +130,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
         self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        var displayButtonHeight = 60
+        let displayButtonHeight = 60
         view.addSubview(displayButton)
         
         
@@ -142,16 +140,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             maker.height.equalTo(displayButtonHeight)
             maker.bottom.equalTo(view).offset(-66)
         }
-        
     }
-    
-    //============================
-    //MARK: - State
-    
-    
-    
-    
-    
     
     @objc func buttonPressed(sender: UIButton) {
         
@@ -178,6 +167,8 @@ class ViewController: UIViewController  { //UITextFieldDelegate
     }
 }
 
+//============================
+//MARK: - State
 /*
 class Normal: DisplayButtonState {
     func displayButtonChange() {
@@ -207,10 +198,17 @@ var displayButton = DisplayButtonClass()
     
 extension ViewController: UITextFieldDelegate {
 
-     func textFieldDidBeginEditing (_ textField: UITextField) {
+    func textFieldDidBeginEditing (_ textField: UITextField) {
         self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-//         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
+
 
 
