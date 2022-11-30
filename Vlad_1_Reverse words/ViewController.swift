@@ -101,13 +101,13 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         //MARK: - answerField
         self.answerTextView.isHidden = false
+//        self.answerTextView.frame = CGRect(x: 0, y: 0, width: 198, height: 22)
         self.answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //        self.answerTextView.backgroundColor = UIColor.red
 
         self.answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
         self.answerTextView.font = UIFont.systemFont(ofSize: 24)
         self.answerTextView.textAlignment = .left
-        //            self.answerFieldLabel.numberOfLines = 0
         self.answerTextView.isHidden = true
         
         view.addSubview(answerTextView)
@@ -117,7 +117,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             maker.leading.equalTo(view).offset(13)
             maker.trailing.equalTo(view).offset(-161)
             maker.top.equalTo(view).offset(377)
-            maker.bottom.equalTo(view).offset(-413)
+            maker.bottom.equalTo(view).offset(-403)  //вместо -413
         }
         
         
