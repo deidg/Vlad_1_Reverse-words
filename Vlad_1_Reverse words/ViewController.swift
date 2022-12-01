@@ -28,7 +28,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         initialize()
         
-//        myText.delegate = self
+        myText.delegate = self
         
     }
     
@@ -137,26 +137,7 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             maker.height.equalTo(displayButtonHeight)
             maker.bottom.equalTo(view).offset(-66)
             
-            
-            //MARK: extension
-            
-//            extension ViewController: UITextFieldDelegate {
-//
-//                func textFieldDidBeginEditing (_ textField: UITextField) {
-//                    self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-//                }
-//
-//                internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//                    view.endEditing(true)
-//                }
-//                internal override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//                    view.endEditing(true)
-//                }
-//            }
-            
-            
-            
-            
+      
             
             //MARK: enum
             enum DisplayButtonState {
@@ -169,18 +150,22 @@ class ViewController: UIViewController  { //UITextFieldDelegate
                 
                 switch state {
                 case .changeState:
-                    state = .clearState
-                    let text = myText.text!
-                    let reversedText = String(text.reversed())
-                    answerTextView.text = reversedText
-                    self.displayButton.setTitle("Clear", for: .normal)
-                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-                    answerTextView.isHidden = false
+                    print("hello")
+//                    state = .clearState
+//                    let text = myText.text!
+//                    let reversedText = String(text.reversed())
+//                    answerTextView.text = reversedText
+//                    self.displayButton.setTitle("Clear", for: .normal)
+//                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+//                    answerTextView.isHidden = false
                 case .clearState:
-                    myText.text = " "
-                    answerTextView.text = " "
-                    self.displayButton.setTitle("Reverse", for: .normal)
-                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)                   }
+                    print("hello2")
+//                    myText.text = " "
+//                    answerTextView.text = " "
+//                    self.displayButton.setTitle("Reverse", for: .normal)
+//                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+                    
+                }
             }
         }
             
@@ -191,7 +176,21 @@ class ViewController: UIViewController  { //UITextFieldDelegate
 }
             
             
-            
+//MARK: extension
+
+extension ViewController: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+    }
+
+    internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    internal override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
             
             
             
