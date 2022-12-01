@@ -151,20 +151,20 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         switch state {
         case .changeState:
-            print("hello")
-            //                    state = .clearState
-            //                    let text = myText.text!
-            //                    let reversedText = String(text.reversed())
-            //                    answerTextView.text = reversedText
-            //                    self.displayButton.setTitle("Clear", for: .normal)
-            //                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            //                    answerTextView.isHidden = false
+//            print("hello")
+                                state = .clearState
+                                let text = myText.text!
+                                let reversedText = String(text.reversed())
+                                answerTextView.text = reversedText
+                                self.displayButton.setTitle("Clear", for: .normal)
+                                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+                                answerTextView.isHidden = false
         case .clearState:
-            print("hello2")
-            //                    myText.text = " "
-            //                    answerTextView.text = " "
-            //                    self.displayButton.setTitle("Reverse", for: .normal)
-            //                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+//            print("hello2")
+                                myText.text = " "
+                                answerTextView.text = " "
+                                self.displayButton.setTitle("Reverse", for: .normal)
+                                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
             
         }
     }
