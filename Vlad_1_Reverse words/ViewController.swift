@@ -28,8 +28,8 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         initialize()
         
-        myText.delegate = self
-
+//        myText.delegate = self
+        
     }
     
     private func initialize() {
@@ -92,17 +92,17 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         //MARK: - divider
         self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
         self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
-//                    self.divider.backgroundColor = .red
+        //                    self.divider.backgroundColor = .red
         
         self.view.addSubview(divider)
-    
+        
         
         //MARK: - answerField
         self.answerTextView.isHidden = false
-//        self.answerTextView.frame = CGRect(x: 0, y: 0, width: 198, height: 22)
+        //        self.answerTextView.frame = CGRect(x: 0, y: 0, width: 198, height: 22)
         self.answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//        self.answerTextView.backgroundColor = UIColor.red
-
+        //        self.answerTextView.backgroundColor = UIColor.red
+        
         self.answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1) //in figma #007AFF
         self.answerTextView.font = UIFont.systemFont(ofSize: 24)
         self.answerTextView.textAlignment = .left
@@ -121,13 +121,13 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         
         //MARK: - displayButton
         self.displayButton = UIButton(type: .system)
-//        self.displayButton.frame = CGRect(x: 0, y: 0, width: 349, height: 60)
+        //        self.displayButton.frame = CGRect(x: 0, y: 0, width: 349, height: 60)
         self.displayButton.setTitle("Reverse", for: .normal)
         self.displayButton.setTitleColor(.white, for: .normal)
         self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.displayButton.layer.cornerRadius = 14
         self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6) //стартовый цвет
-        self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        self.displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         let displayButtonHeight = 60
         view.addSubview(displayButton)
         
@@ -136,68 +136,128 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             maker.trailing.equalTo(view).offset(-13)
             maker.height.equalTo(displayButtonHeight)
             maker.bottom.equalTo(view).offset(-66)
-        }
-    }
-    
-    @objc func buttonPressed(sender: UIButton) {
-        
-        enum DisplayButtonsState: CaseIterable {
-            switch displayButton {
-            case activeState {
-                let text = myText.text!
-                let reversedText = String(text.reversed())
-                answerTextView.text = reversedText
-                self.displayButton.setTitle("Clear", for: .normal)
-                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-                answerTextView.isHidden = false
+            
+            
+            //MARK: extension
+            
+//            extension ViewController: UITextFieldDelegate {
+//
+//                func textFieldDidBeginEditing (_ textField: UITextField) {
+//                    self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+//                }
+//
+//                internal override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//                    view.endEditing(true)
+//                }
+//                internal override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//                    view.endEditing(true)
+//                }
+//            }
+            
+            
+            
+            
+            
+            //MARK: enum
+            enum DisplayButtonState {
+                case changeState, clearState
             }
-            case clearState {
-                myText.text = " "
-                answerTextView.text = " "
-                self.displayButton.setTitle("Reverse", for: .normal)
-                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6
+            var state: DisplayButtonState = .changeState
+            
+//            @objc func buttonPressed(sender: UIButton) {
+            func buttonPressed(sender: UIButton) {
+                
+                switch state {
+                case .changeState:
+                    state = .clearState
+                    let text = myText.text!
+                    let reversedText = String(text.reversed())
+                    answerTextView.text = reversedText
+                    self.displayButton.setTitle("Clear", for: .normal)
+                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+                    answerTextView.isHidden = false
+                case .clearState:
+                    myText.text = " "
+                    answerTextView.text = " "
+                    self.displayButton.setTitle("Reverse", for: .normal)
+                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)                   }
             }
-        
         }
-        
-}
-        
-        
-        /*
-        if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) {
-            myText.text = " "
-            answerTextView.text = " "
-            self.displayButton.setTitle("Reverse", for: .normal)
-            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-        } else {
-            //реверсивный механизм reverse mechanism
-            let text = myText.text!
-            let reversedText = String(text.reversed())
-            answerTextView.text = reversedText
-            self.displayButton.setTitle("Clear", for: .normal)
-            self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            answerTextView.isHidden = false
-            */
-//        }
-//    }
-}
-
-    
-    //MARK: extension
-    
-extension ViewController: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+            
+            
+            
+            
     }
 }
-
-
+            
+            
+            
+            
+            
+            
+            //                    l
+            //                case 1:
+            //
+            //                default:
+            //                    self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            //                }
+            //
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            //        enum DisplayButtonsState {
+            //            switch sender {
+            //            case activeState {
+            //                let text = myText.text!
+            //                let reversedText = String(text.reversed())
+            //                answerTextView.text = reversedText
+            //                self.displayButton.setTitle("Clear", for: .normal)
+            //                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+            //                answerTextView.isHidden = false
+            //            }
+            //            case clearState {
+            //                myText.text = " "
+            //                answerTextView.text = " "
+            //                self.displayButton.setTitle("Reverse", for: .normal)
+            //                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6
+            //            }
+            //
+            //        }
+            //
+            //}
+            
+            
+            /*
+             if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) {
+             myText.text = " "
+             answerTextView.text = " "
+             self.displayButton.setTitle("Reverse", for: .normal)
+             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+             } else {
+             //реверсивный механизм reverse mechanism
+             let text = myText.text!
+             let reversedText = String(text.reversed())
+             answerTextView.text = reversedText
+             self.displayButton.setTitle("Clear", for: .normal)
+             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+             answerTextView.isHidden = false
+             */
+            //        }
+            //    }
+            //}
+            
+            
+          
+            
+            
+     
 
