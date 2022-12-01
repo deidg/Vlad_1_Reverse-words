@@ -3,7 +3,7 @@
 //    case Typing
 //    case Clearing
 //}
-//swith displayButtonState {
+//switch displayButtonState {
 //case .Initial:
 //    displayButton
 //    }
