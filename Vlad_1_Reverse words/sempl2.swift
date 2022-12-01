@@ -1,3 +1,39 @@
+
+//enum DisplayButtonsState {
+//    case defaultState {
+//        display
+//    }
+//    
+//    case activeState
+//    case clearState
+//    
+////    init (sender: sender,  )
+//}
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //enum displayButtonState {
 //    case Initial
 //    case Typing

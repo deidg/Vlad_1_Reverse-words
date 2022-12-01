@@ -131,7 +131,6 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         let displayButtonHeight = 60
         view.addSubview(displayButton)
         
-        
         displayButton.snp.makeConstraints { maker in
             maker.leading.equalTo(view).offset(13)
             maker.trailing.equalTo(view).offset(-13)
@@ -140,9 +139,31 @@ class ViewController: UIViewController  { //UITextFieldDelegate
         }
     }
     
-    
     @objc func buttonPressed(sender: UIButton) {
         
+        enum DisplayButtonsState: CaseIterable {
+            switch displayButton {
+            case activeState {
+                let text = myText.text!
+                let reversedText = String(text.reversed())
+                answerTextView.text = reversedText
+                self.displayButton.setTitle("Clear", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+                answerTextView.isHidden = false
+            }
+            case clearState {
+                myText.text = " "
+                answerTextView.text = " "
+                self.displayButton.setTitle("Reverse", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6
+            }
+        
+        }
+        
+}
+        
+        
+        /*
         if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1) {
             myText.text = " "
             answerTextView.text = " "
@@ -153,15 +174,12 @@ class ViewController: UIViewController  { //UITextFieldDelegate
             let text = myText.text!
             let reversedText = String(text.reversed())
             answerTextView.text = reversedText
-            
-//            displayButton title changing
-            
             self.displayButton.setTitle("Clear", for: .normal)
             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
             answerTextView.isHidden = false
-            
-        }
-    }
+            */
+//        }
+//    }
 }
 
     
