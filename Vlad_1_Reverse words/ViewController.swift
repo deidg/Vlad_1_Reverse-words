@@ -57,7 +57,7 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-//        answerTextView.frame = CGRect(x: 15, y: 500, width: 400, height: 30)
+        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 22)
 
         answerTextView.backgroundColor = UIColor.red
 //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
@@ -65,7 +65,7 @@ class ViewController: UIViewController  {
         answerTextView.font = UIFont.systemFont(ofSize: 24)
         answerTextView.textAlignment = .left
 //        !!! перенести его вниз в функцию (на выполнение)
-//        answerTextView.isHidden = true
+        answerTextView.isHidden = true
 //        answerTextView.isHidden = false
         return answerTextView
     }()
@@ -132,14 +132,15 @@ class ViewController: UIViewController  {
         
         //answerField
         view.addSubview(answerTextView)   //7
-        answerTextView.snp.makeConstraints { maker in
-            maker.top.equalTo(view).offset(403)  //  перепривязать к верху или к нижней кнопке?
-            maker.leading.equalToSuperview().offset(13)
-            maker.trailing.equalTo(view).offset(-161)
-            maker.top.equalTo(divider.snp.bottom).offset(24)
+//        answerTextView.snp.makeConstraints { maker in
+//            maker.top.equalTo(view).offset(403)  //  перепривязать к верху или к нижней кнопке?
+//            maker.leading.equalToSuperview().offset(13)
+//            maker.trailing.equalTo(view).offset(-161)
+            
+//            maker.top.equalTo(divider.snp.bottom).offset(24)
 
 //            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
-        }
+//        }
         
         //displayButton
         view.addSubview(displayButton)  //6
@@ -193,6 +194,7 @@ class ViewController: UIViewController  {
         func applyTypingState(hasEnteredText: Bool) {
             if hasEnteredText {
                 print("apply typing")
+                answerTextView.isHidden = false
                 displayButton.isEnabled = true
                 displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
             } else {
