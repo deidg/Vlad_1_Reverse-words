@@ -5,7 +5,7 @@
 //  Created by Alex on 17.11.2022.
 //
 
-//TODO: сделать констрейнты для user Text and divide. Потом Убрать их значения из defaultConfiguration
+//TODO: сделать новую ветку и начать проверять логику приложения
 
 import UIKit
 import SnapKit
@@ -61,7 +61,8 @@ class ViewController: UIViewController  {
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 24)
         answerTextView.textAlignment = .left
-        answerTextView.isHidden = true
+//        !!! перенести его вниз в функцию (на выполнение)
+//        answerTextView.isHidden = true
 //        answerTextView.isHidden = false
         return answerTextView
     }()
@@ -181,20 +182,27 @@ class ViewController: UIViewController  {
     private func applyState(_ state: State) {
         func applyInitialState() {
             answerTextView.isHidden = true
-            displayButton.isEnabled = false
-            //color button
-            
+            displayButton.isEnabled = false // работает???
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
         func applyTypingState(hasEnteredText: Bool) {
             if hasEnteredText {
                 print("apply typing")
-                
+                displayButton.isEnabled = true
+                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
             } else {
                 applyInitialState()
             }
         }
         func applyResultState(result: String) {
             //add property for result state
+            
+            
+            
+            
+                    answerTextView.isHidden = false
+
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
         
         switch state {
