@@ -50,14 +50,17 @@ class ViewController: UIViewController  {
     
     var divider: UIView = { //5
         let divider = UIView()
-        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 5)  //16  352.
-        divider.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)  // отрегулировать цвет
+//        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
+        divider.backgroundColor = UIColor(red: 0/255, green: 100/255, blue: 200/255, alpha: 1)  // отрегулировать цвет
         return divider
     }()
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//        answerTextView.frame = CGRect(x: 15, y: 500, width: 400, height: 30)
+
+        answerTextView.backgroundColor = UIColor.red
+//        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 24)
         answerTextView.textAlignment = .left
@@ -115,27 +118,27 @@ class ViewController: UIViewController  {
             make.leading.equalTo(view).offset(16)
             make.trailing.equalTo(view).offset(-16)
             make.top.equalTo(mainLabel.snp.bottom).offset(59)
-            //                                     make.bottom.equalTo(view).offset(-559)
+            // make.bottom.equalTo(view).offset(-559)
         }
         //TODO: constraints
         
 //        divider
         view.addSubview(divider)  //5
-        divider.snp.makeConstraints { make in
-            make.leading.equalTo(view).offset(16)
-            make.trailing.equalTo(view).offset(-16)
-            make.top.equalTo(userText.snp.bottom).offset(18.5)
-//            make.top.equalToSuperview().offset(352.5)
-
-        }
+//        divider.snp.makeConstraints { make in
+//            make.leading.equalTo(view).offset(16)
+//            make.trailing.equalTo(view).offset(-16)
+//            make.top.equalTo(userText.snp.bottom).offset(18.5)// либо констрейнт либо координаты.
+//        }
         
         //answerField
         view.addSubview(answerTextView)   //7
         answerTextView.snp.makeConstraints { maker in
+            maker.top.equalTo(view).offset(403)  //  перепривязать к верху или к нижней кнопке?
             maker.leading.equalToSuperview().offset(13)
             maker.trailing.equalTo(view).offset(-161)
-//            maker.top.equalTo(divider.snp.bottom).offset(24)
-            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
+            maker.top.equalTo(divider.snp.bottom).offset(24)
+
+//            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
         }
         
         //displayButton
@@ -171,6 +174,8 @@ class ViewController: UIViewController  {
         
         //MARK: - divider
 //        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.
+        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
+
         
         //MARK: - answerField
         
@@ -181,7 +186,7 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            answerTextView.isHidden = true
+//            answerTextView.isHidden = true
             displayButton.isEnabled = false // работает???
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
@@ -200,7 +205,7 @@ class ViewController: UIViewController  {
             
             
             
-                    answerTextView.isHidden = false
+//                    answerTextView.isHidden = false
 
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
@@ -222,6 +227,9 @@ extension ViewController: UITextFieldDelegate {
 
     func textFieldDidBeginEditing (_ textField: UITextField) {
         self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//        answerTextView.isHidden = false
+
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
