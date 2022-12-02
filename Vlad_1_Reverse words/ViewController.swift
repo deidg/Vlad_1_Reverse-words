@@ -5,6 +5,8 @@
 //  Created by Alex on 17.11.2022.
 //
 
+//TODO: сделать констрейнты для user Text and divide. Потом Убрать их значения из defaultConfiguration
+
 import UIKit
 import SnapKit
 
@@ -38,31 +40,44 @@ class ViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-    var myText: UITextField = { //4
-        let userText
-        myText.font = UIFont.systemFont(ofSize: 17)
-        myText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        myText.placeholder = "Text to reverse"
-        return mainLabel
-
+    var userText: UITextField = { //4
+        let userText = UITextField()
+        userText.font = UIFont.systemFont(ofSize: 17)
+        userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        userText.placeholder = "Text to reverse"
+        return userText
     }()
     
-    myText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
+    var divider: UIView = { //5
+        let divider = UIView()
+        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 5)  //16  352.
+        divider.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)  // отрегулировать цвет
+        return divider
+    }()
     
+    var answerTextView: UITextView = { // 7 - поле с ответом
+        let answerTextView = UITextView()
+        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
+        answerTextView.font = UIFont.systemFont(ofSize: 24)
+        answerTextView.textAlignment = .left
+        answerTextView.isHidden = true
+//        answerTextView.isHidden = false
+        return answerTextView
+    }()
     
-    view.addSubview(myText)
-    
-    
-    
-    
-    
-    //4
-    let divider = UIView()  //5
-    
-    var answerTextView = UITextView()  // 7 - поле с ответом
-    
-    var displayButton = UIButton()  // 6
-    
+    var displayButton: UIButton = { // 6
+        var displayButton = UIButton()
+        
+        displayButton = UIButton(type: .system)
+        displayButton.setTitle("Reverse", for: .normal)
+        displayButton.setTitleColor(.white, for: .normal)
+        displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        displayButton.layer.cornerRadius = 14
+        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+        var displayButtonHeight = 60
+        return displayButton
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +85,12 @@ class ViewController: UIViewController  {
         defaultConfiguration()
         setupUI()
         //reverseTextField
-        myText.delegate = self
+        userText.delegate = self
     }
+    
     
     private func setupUI() {
         // Title label
-        
         
         //largeLabel
         view.addSubview(largeLabel)  //2
@@ -83,17 +98,53 @@ class ViewController: UIViewController  {
             make.leading.equalTo(view).offset(16)
             make.trailing.equalTo(view).offset(-16)
             make.top.equalTo(view).offset(152)
-            make.bottom.equalTo(view).offset(-619)
+//            make.bottom.equalTo(view).offset(-619)
         }
-        // second label
+        // mainLabel
         view.addSubview(mainLabel)  //3
         mainLabel.snp.makeConstraints { make in
             make.leading.equalTo(view).offset(33)
             make.trailing.equalTo(view).offset(-34)
             make.top.equalTo(largeLabel.snp.bottom).offset(16)
-            make.bottom.equalTo(view).offset(-559)
+//            make.bottom.equalTo(view).offset(-559)
+        }
+        //userTextField
+        view.addSubview(userText) //4
+        userText.snp.makeConstraints { make in
+            make.leading.equalTo(view).offset(16)
+            make.trailing.equalTo(view).offset(-16)
+            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+            //                                     make.bottom.equalTo(view).offset(-559)
+        }
+        //TODO: constraints
+        
+//        divider
+        view.addSubview(divider)  //5
+        divider.snp.makeConstraints { make in
+            make.leading.equalTo(view).offset(16)
+            make.trailing.equalTo(view).offset(-16)
+            make.top.equalTo(userText.snp.bottom).offset(18.5)
+//            make.top.equalToSuperview().offset(352.5)
+
         }
         
+        //answerField
+        view.addSubview(answerTextView)   //7
+        answerTextView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview().offset(13)
+            maker.trailing.equalTo(view).offset(-161)
+//            maker.top.equalTo(divider.snp.bottom).offset(24)
+            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
+        }
+        
+        //displayButton
+        view.addSubview(displayButton)  //6
+        displayButton.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview().offset(13)
+            maker.trailing.equalTo(view).offset(-13)
+//            maker.height.equalTo(displayButtonHeight)
+            maker.bottom.equalTo(view).offset(-66)
+        }
         
     }
     
@@ -110,67 +161,21 @@ class ViewController: UIViewController  {
         
         //MARK: - largeLabel
         
-        
-        
-        
         //MARK: - mainLabel
         
-        
-        
-        
-        //MARK: - myText
-        
-        
+        //MARK: - userText
+//        userText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
+//        userText.frame = CGRect(x: 0, y: 0, width: 343, height: 22)   // 312
+
         
         //MARK: - divider
-        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.5
-        self.divider.backgroundColor = UIColor(red: 34, green: 34, blue: 34, alpha: 1)
-        
-        self.view.addSubview(divider)
-        
-        divider.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(myText.snp.bottom).offset(18.5)
-        }
-        
+//        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.
         
         //MARK: - answerField
-        self.answerTextView.isHidden = false
-        self.answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
-        self.answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        self.answerTextView.font = UIFont.systemFont(ofSize: 24)
-        self.answerTextView.textAlignment = .left
-        self.answerTextView.isHidden = true
-        
-        view.addSubview(answerTextView)
-        
-        
-        answerTextView.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().offset(13)
-            maker.trailing.equalTo(view).offset(-161)
-            maker.top.equalTo(divider.snp.bottom).offset(24)
-            maker.bottom.equalTo(view).offset(-403)
-        }
         
         
         //MARK: - displayButton
-        self.displayButton = UIButton(type: .system)
-        self.displayButton.setTitle("Reverse", for: .normal)
-        self.displayButton.setTitleColor(.white, for: .normal)
-        self.displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        self.displayButton.layer.cornerRadius = 14
-        self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-        let displayButtonHeight = 60
-        view.addSubview(displayButton)
         
-        displayButton.snp.makeConstraints { maker in
-            maker.leading.equalToSuperview().offset(13)
-            maker.trailing.equalTo(view).offset(-13)
-            maker.height.equalTo(displayButtonHeight)
-            maker.bottom.equalTo(view).offset(-66)
-            
-        }
     }
     
     private func applyState(_ state: State) {
