@@ -51,19 +51,28 @@ class ViewController: UIViewController  {
     var divider: UIView = { //5
         let divider = UIView()
 //        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
-        divider.backgroundColor = UIColor(red: 0/255, green: 100/255, blue: 200/255, alpha: 1)  // отрегулировать цвет
+        divider.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)  // отрегулировать цвет
         return divider
     }()
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 22)
+        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
 
-        answerTextView.backgroundColor = UIColor.red
+//        answerTextView.backgroundColor = UIColor.red
 //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        answerTextView.font = UIFont.systemFont(ofSize: 24)
+        answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
+        
+        
+        
+//        answerTextView.attributedText =
+//        посмотреть атрибуцию текста и продолжить выравни вать результат.
+//        потом посмотреть изменения настроек кнопки.
+        
+        
+        
 //        !!! перенести его вниз в функцию (на выполнение)
         answerTextView.isHidden = true
 //        answerTextView.isHidden = false
@@ -79,7 +88,7 @@ class ViewController: UIViewController  {
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
         displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-        var displayButtonHeight = 60
+//        var displayButtonHeight = 60
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return displayButton
     }()
@@ -95,7 +104,7 @@ class ViewController: UIViewController  {
     
     @objc func buttonPressed(sender: UIButton!) -> Bool {
 //        let buttonPressed = UIButton()
-        print("button pressed")
+        print("button pressed in objc func")
         
         let buttonPressedString = String()
 //        return buttonPressedString
@@ -106,7 +115,8 @@ class ViewController: UIViewController  {
     
     private func setupUI() {
         // Title label
-        
+        var displayButtonHeight = 60
+
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
@@ -158,7 +168,7 @@ class ViewController: UIViewController  {
         displayButton.snp.makeConstraints { maker in
             maker.leading.equalToSuperview().offset(13)
             maker.trailing.equalTo(view).offset(-13)
-//            maker.height.equalTo(displayButtonHeight)
+            maker.height.equalTo(displayButtonHeight)  //где расположить инициализацию
             maker.bottom.equalTo(view).offset(-66)
         }
         
@@ -213,11 +223,11 @@ class ViewController: UIViewController  {
         }
         func applyResultState(result: String) {
             //add property for result state
-            print("text changed  str 216")
-//            answerTextView.isHidden = false
+//            print("text changed  str 216")
             let text = userText.text!
             let reversedText = String(text.reversed())
             answerTextView.text = reversedText
+            answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
             displayButton.setTitle("Clear", for: .normal)
                     answerTextView.isHidden = false
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
@@ -284,5 +294,6 @@ extension ViewController {
 //             let text = myText.text!
 //             let reversedText = String(text.reversed())
 //             answerFieldLabel.text = reversedText
+
 
 
