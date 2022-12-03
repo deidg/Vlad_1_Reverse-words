@@ -232,6 +232,13 @@ class ViewController: UIViewController  {
                     answerTextView.isHidden = false
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
+//        func clearing(clear: String) {
+//            answerTextView.isHidden = true
+//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+//            displayButton.setTitle("Reverse", for: .normal)
+//            displayButton.setTitleColor(.white, for: .normal)
+//            userText.placeholder = "Text to reverse"
+//        }
         
         switch state {
         case .initial:
@@ -241,6 +248,8 @@ class ViewController: UIViewController  {
         case .result(let result):
             //            applyResultState(result: result) -  правильная
             applyResultState(result: result)
+        case .clear(let clear):
+            clearing(clear: clear)
         }
     }
 }
@@ -273,6 +282,7 @@ extension ViewController {
         case initial
         case typing(text: String)     //str253
         case result(result: String)
+        case clear(result: String)
     }
 }
 
