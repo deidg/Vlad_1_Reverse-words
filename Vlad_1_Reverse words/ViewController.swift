@@ -227,14 +227,14 @@ class ViewController: UIViewController  {
         func applyResultState(result: String) {
             //add property for result state
             //            print("text changed  str 216")
-            var counter: Int = 0
-            counter += 1
-            if counter % 2 == counter {
-                userText.text = " "
-                answerTextView.text = " "
-                self.displayButton.setTitle("Reverse", for: .normal)
-                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-            } else {
+//            var counter: Int = 0
+//            counter += 1
+//            if counter % 2 == counter {
+//                userText.text = " "
+//                answerTextView.text = " "
+//                self.displayButton.setTitle("Reverse", for: .normal)
+//                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//            } else {
                 let text = userText.text!
                 let reversedText = String(text.reversed())
                 answerTextView.text = reversedText
@@ -266,7 +266,7 @@ class ViewController: UIViewController  {
             }
         }
     }
-    }
+//    }
     
     //MARK: extension
     extension ViewController: UITextFieldDelegate {
