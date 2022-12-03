@@ -206,13 +206,13 @@ class ViewController: UIViewController  {
         //MARK: - displayButton
         
     }
+    private var clearAction = false
     
     private func applyState(_ state: State) {
         func applyInitialState() {
             //            answerTextView.isHidden = true
             //            displayButton.isEnabled = false // работает???
             //            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-            
             
         }
         func applyTypingState(hasEnteredText: Bool) {
@@ -225,16 +225,7 @@ class ViewController: UIViewController  {
             }
         }
         func applyResultState(result: String) {
-            //add property for result state
-            //            print("text changed  str 216")
-//            var counter: Int = 0
-//            counter += 1
-//            if counter % 2 == counter {
-//                userText.text = " "
-//                answerTextView.text = " "
-//                self.displayButton.setTitle("Reverse", for: .normal)
-//                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//            } else {
+            if clearAction == false {
                 let text = userText.text!
                 let reversedText = String(text.reversed())
                 answerTextView.text = reversedText
@@ -242,7 +233,34 @@ class ViewController: UIViewController  {
                 displayButton.setTitle("Clear", for: .normal)
                 answerTextView.isHidden = false
                 displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-            }
+                clearAction = true
+                print("clear action is false")
+                //               } else if textField.text != " " {
+            } else if state = .typing(text: textField.text ?? "") {
+                   userText.text = " "
+                   answerTextView.text = " "
+                   self.displayButton.setTitle("Reverse", for: .normal)
+                   self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
+                                                                blue: 255/255, alpha: 1)
+                  clearAction = false
+               }
+        }
+                                                                
+            
+            
+//                userText.text = " "
+//                answerTextView.text = " "
+//                self.displayButton.setTitle("Reverse", for: .normal)
+//                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+//            } else {
+//                let text = userText.text!
+//                let reversedText = String(text.reversed())
+//                answerTextView.text = reversedText
+//                answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+//                displayButton.setTitle("Clear", for: .normal)
+//                answerTextView.isHidden = false
+//                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+//            }
             //        func clearing(clear: String) {
             //            answerTextView.isHidden = true
             //            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
@@ -265,6 +283,9 @@ class ViewController: UIViewController  {
                 //            clearing(clear: clear)
             }
         }
+    
+
+    
     }
 //    }
     
