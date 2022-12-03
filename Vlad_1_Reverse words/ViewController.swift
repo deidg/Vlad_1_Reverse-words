@@ -192,9 +192,8 @@ class ViewController: UIViewController  {
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
         func applyTypingState(hasEnteredText: Bool) {
-            if hasEnteredText {
+            if hasEnteredText {   // вставить проверку текста
                 print("apply typing")
-                answerTextView.isHidden = false
                 displayButton.isEnabled = true
                 displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
             } else {
@@ -203,10 +202,14 @@ class ViewController: UIViewController  {
         }
         func applyResultState(result: String) {
             //add property for result state
+            print("text changed")
             
-            
-            
-            
+//            answerTextView.isHidden = false
+
+            let text = userText.text!
+            let reversedText = String(text.reversed())
+            answerTextView.text = reversedText
+            displayButton.setTitle("Clear", for: .normal)
 //                    answerTextView.isHidden = false
 
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
@@ -218,13 +221,14 @@ class ViewController: UIViewController  {
         case .typing(let text):
             applyTypingState(hasEnteredText: !text.isEmpty)
         case .result(let result):
+            //            applyResultState(result: result) -  правильная
             applyResultState(result: result)
         }
     }
 }
+//}
 
 //MARK: extension
-
 extension ViewController: UITextFieldDelegate {
 
     func textFieldDidBeginEditing (_ textField: UITextField) {
@@ -244,9 +248,8 @@ extension ViewController: UITextFieldDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-}
-            
-     
+    }
+
 extension ViewController {
     enum State {
         case initial
@@ -254,3 +257,27 @@ extension ViewController {
         case result(result: String)
     }
 }
+
+@objc func buttonPressed(_ sender: UIButton) {
+     print("button was pressed")
+}
+
+
+    
+
+
+
+//         if displayButton.backgroundColor == UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0) {
+//             myText.text = " "
+//             answerFieldLabel.text = " "
+//             self.displayButton.setTitle("Reverse", for: .normal)
+//             self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.9)
+//
+//
+//         } else {
+//             //реверсивный механизм reverse mechanism
+//             let text = myText.text!
+//             let reversedText = String(text.reversed())
+//             answerFieldLabel.text = reversedText
+
+
