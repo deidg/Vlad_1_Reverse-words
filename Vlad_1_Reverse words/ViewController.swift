@@ -80,7 +80,7 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         var displayButtonHeight = 60
-        displayButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return displayButton
     }()
     
@@ -91,22 +91,18 @@ class ViewController: UIViewController  {
         setupUI()
         //reverseTextField
         userText.delegate = self
+    }
+    
+    @objc func buttonPressed(sender: UIButton!) -> Bool {
+//        let buttonPressed = UIButton()
+        print("button pressed")
         
-
+        let buttonPressedString = String()
+//        return buttonPressedString
+        state = .result(result: buttonPressedString)
+        return true
     }
-    
-    @objc func buttonAction(sender: UIButton!) {
-      print("Button tapped")
-    }
-    
-    
-    
-    //@objc func buttonPressed(_ sender: UIButton) {
-    //     print("button was pressed")
-    //}
-
-    
-    
+ 
     
     private func setupUI() {
         // Title label
@@ -217,22 +213,15 @@ class ViewController: UIViewController  {
         }
         func applyResultState(result: String) {
             //add property for result state
-            print("text changed")
-            
+            print("text changed  str 216")
 //            answerTextView.isHidden = false
-
             let text = userText.text!
             let reversedText = String(text.reversed())
             answerTextView.text = reversedText
             displayButton.setTitle("Clear", for: .normal)
-//                    answerTextView.isHidden = false
-
+                    answerTextView.isHidden = false
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
-        
-        
-        
-        
         
         switch state {
         case .initial:
@@ -272,7 +261,7 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController {
     enum State {
         case initial
-        case typing(text: String)
+        case typing(text: String)     //str253
         case result(result: String)
     }
 }
