@@ -16,7 +16,7 @@ class ViewController: UIViewController  {
     
     private var state: State = .initial {
         didSet {
-           applyState(state)
+            applyState(state)
         }
     }
     
@@ -24,7 +24,7 @@ class ViewController: UIViewController  {
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
-//        label.text = "Reverse Button"
+        //        label.text = "Reverse Button"
         // font, color
         largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         largeLabel.textAlignment = .center
@@ -50,7 +50,7 @@ class ViewController: UIViewController  {
     
     var divider: UIView = { //5
         let divider = UIView()
-//        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
+        //        divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
         divider.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)  // отрегулировать цвет
         return divider
     }()
@@ -58,24 +58,24 @@ class ViewController: UIViewController  {
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
         answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
-
-//        answerTextView.backgroundColor = UIColor.red
-//        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
+        //        answerTextView.backgroundColor = UIColor.red
+        //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         
         
         
-//        answerTextView.attributedText =
-//        посмотреть атрибуцию текста и продолжить выравни вать результат.
-//        потом посмотреть изменения настроек кнопки.
+        //        answerTextView.attributedText =
+        //        посмотреть атрибуцию текста и продолжить выравни вать результат.
+        //        потом посмотреть изменения настроек кнопки.
         
         
         
-//        !!! перенести его вниз в функцию (на выполнение)
+        //        !!! перенести его вниз в функцию (на выполнение)
         answerTextView.isHidden = true
-//        answerTextView.isHidden = false
+        //        answerTextView.isHidden = false
         return answerTextView
     }()
     
@@ -88,7 +88,8 @@ class ViewController: UIViewController  {
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
         displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-//        var displayButtonHeight = 60
+        
+        //        var displayButtonHeight = 60
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return displayButton
     }()
@@ -103,27 +104,27 @@ class ViewController: UIViewController  {
     }
     
     @objc func buttonPressed(sender: UIButton!) -> Bool {
-//        let buttonPressed = UIButton()
+        //        let buttonPressed = UIButton()
         print("button pressed in objc func")
         
         let buttonPressedString = String()
-//        return buttonPressedString
+        //        return buttonPressedString
         state = .result(result: buttonPressedString)
         return true
     }
- 
+    
     
     private func setupUI() {
         // Title label
         var displayButtonHeight = 60
-
+        
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
             make.leading.equalTo(view).offset(16)
             make.trailing.equalTo(view).offset(-16)
             make.top.equalTo(view).offset(152)
-//            make.bottom.equalTo(view).offset(-619)
+            //            make.bottom.equalTo(view).offset(-619)
         }
         // mainLabel
         view.addSubview(mainLabel)  //3
@@ -131,7 +132,7 @@ class ViewController: UIViewController  {
             make.leading.equalTo(view).offset(33)
             make.trailing.equalTo(view).offset(-34)
             make.top.equalTo(largeLabel.snp.bottom).offset(16)
-//            make.bottom.equalTo(view).offset(-559)
+            //            make.bottom.equalTo(view).offset(-559)
         }
         //userTextField
         view.addSubview(userText) //4
@@ -143,25 +144,25 @@ class ViewController: UIViewController  {
         }
         //TODO: constraints
         
-//        divider
+        //        divider
         view.addSubview(divider)  //5
-//        divider.snp.makeConstraints { make in
-//            make.leading.equalTo(view).offset(16)
-//            make.trailing.equalTo(view).offset(-16)
-//            make.top.equalTo(userText.snp.bottom).offset(18.5)// либо констрейнт либо координаты.
-//        }
+        //        divider.snp.makeConstraints { make in
+        //            make.leading.equalTo(view).offset(16)
+        //            make.trailing.equalTo(view).offset(-16)
+        //            make.top.equalTo(userText.snp.bottom).offset(18.5)// либо констрейнт либо координаты.
+        //        }
         
         //answerField
         view.addSubview(answerTextView)   //7
-//        answerTextView.snp.makeConstraints { maker in
-//            maker.top.equalTo(view).offset(403)  //  перепривязать к верху или к нижней кнопке?
-//            maker.leading.equalToSuperview().offset(13)
-//            maker.trailing.equalTo(view).offset(-161)
-            
-//            maker.top.equalTo(divider.snp.bottom).offset(24)
-
-//            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
-//        }
+        //        answerTextView.snp.makeConstraints { maker in
+        //            maker.top.equalTo(view).offset(403)  //  перепривязать к верху или к нижней кнопке?
+        //            maker.leading.equalToSuperview().offset(13)
+        //            maker.trailing.equalTo(view).offset(-161)
+        
+        //            maker.top.equalTo(divider.snp.bottom).offset(24)
+        
+        //            maker.bottom.equalTo(view).offset(-403)  //  перепривязать к верху или к нижней кнопке?
+        //        }
         
         //displayButton
         view.addSubview(displayButton)  //6
@@ -190,14 +191,14 @@ class ViewController: UIViewController  {
         //MARK: - mainLabel
         
         //MARK: - userText
-//        userText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
-//        userText.frame = CGRect(x: 0, y: 0, width: 343, height: 22)   // 312
-
+        //        userText.frame = CGRect(x: 16, y: 310, width: 343, height: 22)   // 312
+        //        userText.frame = CGRect(x: 0, y: 0, width: 343, height: 22)   // 312
+        
         
         //MARK: - divider
-//        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.
+        //        self.divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 0.5)  //16  352.
         divider.frame = CGRect(x: 16, y: 352.5, width: 343, height: 1)  //16  352.
-
+        
         
         //MARK: - answerField
         
@@ -208,9 +209,11 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-//            answerTextView.isHidden = true
-            displayButton.isEnabled = false // работает???
-            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            //            answerTextView.isHidden = true
+            //            displayButton.isEnabled = false // работает???
+            //            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            
+            
         }
         func applyTypingState(hasEnteredText: Bool) {
             if hasEnteredText {   // вставить проверку текста
@@ -223,68 +226,78 @@ class ViewController: UIViewController  {
         }
         func applyResultState(result: String) {
             //add property for result state
-//            print("text changed  str 216")
-            let text = userText.text!
-            let reversedText = String(text.reversed())
-            answerTextView.text = reversedText
-            answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-            displayButton.setTitle("Clear", for: .normal)
-                    answerTextView.isHidden = false
-            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-        }
-//        func clearing(clear: String) {
-//            answerTextView.isHidden = true
-//            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
-//            displayButton.setTitle("Reverse", for: .normal)
-//            displayButton.setTitleColor(.white, for: .normal)
-//            userText.placeholder = "Text to reverse"
-//        }
-        
-        switch state {
-        case .initial:
-            applyInitialState()
-        case .typing(let text):
-            applyTypingState(hasEnteredText: !text.isEmpty)
-        case .result(let result):
-            //            applyResultState(result: result) -  правильная
-            applyResultState(result: result)
-        case .clear(let clear):
-            clearing(clear: clear)
+            //            print("text changed  str 216")
+            var counter: Int = 0
+            counter += 1
+            if counter % 2 == counter {
+                userText.text = " "
+                answerTextView.text = " "
+                self.displayButton.setTitle("Reverse", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+            } else {
+                let text = userText.text!
+                let reversedText = String(text.reversed())
+                answerTextView.text = reversedText
+                answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+                displayButton.setTitle("Clear", for: .normal)
+                answerTextView.isHidden = false
+                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            }
+            //        func clearing(clear: String) {
+            //            answerTextView.isHidden = true
+            //            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
+            //            displayButton.setTitle("Reverse", for: .normal)
+            //            displayButton.setTitleColor(.white, for: .normal)
+            //            userText.placeholder = "Text to reverse"
+            //        }
+            
+            switch state {
+            case .initial:
+                applyInitialState()
+            case .typing(let text):
+                applyTypingState(hasEnteredText: !text.isEmpty)
+            case .result(let result):
+                            applyResultState(result: result)
+                
+//                applyResultState(result: result)
+                //        default:
+                //        case .clear(let clear):
+                //            clearing(clear: clear)
+            }
         }
     }
-}
-//}
-
-//MARK: extension
-extension ViewController: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-        displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
-//        answerTextView.isHidden = false
-
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        state = .typing(text: textField.text ?? "")
-        return true
+    //MARK: extension
+    extension ViewController: UITextFieldDelegate {
+        
+        func textFieldDidBeginEditing (_ textField: UITextField) {
+            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+            displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1)
+            //        answerTextView.isHidden = false
+            
+        }
+        
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            state = .typing(text: textField.text ?? "")
+            return true
+        }
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+    
+    extension ViewController {
+        enum State {
+            case initial
+            case typing(text: String)     //str253
+            case result(result: String)
+            //        case clear(result: String)
+        }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    }
-
-extension ViewController {
-    enum State {
-        case initial
-        case typing(text: String)     //str253
-        case result(result: String)
-        case clear(result: String)
-    }
-}
 
 
 
