@@ -80,6 +80,7 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         var displayButtonHeight = 60
+        displayButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return displayButton
     }()
     
@@ -90,7 +91,21 @@ class ViewController: UIViewController  {
         setupUI()
         //reverseTextField
         userText.delegate = self
+        
+
     }
+    
+    @objc func buttonAction(sender: UIButton!) {
+      print("Button tapped")
+    }
+    
+    
+    
+    //@objc func buttonPressed(_ sender: UIButton) {
+    //     print("button was pressed")
+    //}
+
+    
     
     
     private func setupUI() {
@@ -215,6 +230,10 @@ class ViewController: UIViewController  {
             displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
         }
         
+        
+        
+        
+        
         switch state {
         case .initial:
             applyInitialState()
@@ -258,9 +277,6 @@ extension ViewController {
     }
 }
 
-@objc func buttonPressed(_ sender: UIButton) {
-     print("button was pressed")
-}
 
 
     
