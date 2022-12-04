@@ -62,7 +62,7 @@ class ViewController: UIViewController  {
     }()
     
     var displayButton: UIButton = { // 6
-        var displayButton = UIButton()
+        let displayButton = UIButton()
         
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
@@ -123,10 +123,14 @@ class ViewController: UIViewController  {
         
         //displayButton
         view.addSubview(displayButton)  //6
-        displayButton.snp.makeConstraints { maker in
-            maker.leading.trailing.equalToSuperview().inset(16)
-            maker.height.equalTo(60)  //где расположить инициализацию?
-            maker.bottom.equalToSuperview().offset(-66)
+        displayButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)  //где расположить инициализацию?
+            make.bottom.equalToSuperview().offset(-66)
+            
+//            make.bottom.equalTo(view).offset(-66)
+
+            
 //            maker.top.equalTo(divider.snp.bottom).offset(333)
         }
     }
@@ -136,13 +140,12 @@ class ViewController: UIViewController  {
         
         //MARK: navigationView
         navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
-        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,
-                                                 blue: 249/255, alpha: 0.94)
+        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
         view.addSubview(navigationView)
         //title for Navigation Controller
         self.title = "Reverse words"
 
-        //MARK: - divider
+        displayButton.backgroundColor = UIColor(red: 200, green: 100, blue: 200, alpha: 1) // поменять потом цвет на нужный
         
     }
     private var clearAction = false
@@ -153,7 +156,8 @@ class ViewController: UIViewController  {
             userText.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 1)
             displayButton.isEnabled = false
-            displayButton.backgroundColor = UIColor(red: 200, green: 100, blue: 200, alpha: 1)
+//            displayButton.backgroundColor = UIColor(red: 200, green: 100, blue: 200, alpha: 1) // поменять потом цвет на нужный
+//            displayButton.backgroundColor = .red
             answerTextView.text = ""
             answerTextView.isHidden = true
             displayButton.setTitle("Reverse", for: .normal)
