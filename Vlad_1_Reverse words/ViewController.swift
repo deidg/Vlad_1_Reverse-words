@@ -225,7 +225,7 @@ class ViewController: UIViewController  {
             }
         }
         func applyResultState(result: String) {
-            if clearAction == false {
+            if clearAction == false && userText.text != " " {
                 let text = userText.text!
                 let reversedText = String(text.reversed())
                 answerTextView.text = reversedText
@@ -234,15 +234,31 @@ class ViewController: UIViewController  {
                 answerTextView.isHidden = false
                 displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 0.6)
                 clearAction = true
-                print("clear action is false")
-                //               } else if textField.text != " " {
-            } else if state = .typing(text: textField.text ?? "") {
-                   userText.text = " "
-                   answerTextView.text = " "
-                   self.displayButton.setTitle("Reverse", for: .normal)
-                   self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
-                                                                blue: 255/255, alpha: 1)
-                  clearAction = false
+                print("clear action is true")
+//            } else if userText.text != " " {
+            } else if userText.text != " " {
+//                посмотри clearAction == false
+                answerTextView.isHidden = true
+                userText.text = " "
+                answerTextView.text = " "
+                self.displayButton.setTitle("Reverse", for: .normal)
+                self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
+                                                             blue: 255/255, alpha: 1)
+               clearAction = false
+               } else {
+                   print("ты тут")
+//                   answerTextView.text = "Write your text in upper text field"
+//                   userText.alpha = 0.4
+                   userText.placeholder = "Write your text here"    // не срабатывает почему то
+                   displayButton.isEnabled = false
+                   
+//                               displayButton.isEnabled = false // работает???
+   //                   userText.text = " "
+   //                   answerTextView.text = " "
+   //                   self.displayButton.setTitle("Reverse", for: .normal)
+   //                   self.displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
+   //                                                                blue: 255/255, alpha: 1)
+   //                  clearAction = false
                }
         }
                                                                 
