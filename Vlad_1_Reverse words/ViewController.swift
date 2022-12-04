@@ -247,9 +247,9 @@ class ViewController: UIViewController  {
                clearAction = false
                } else {
                    print("ты тут")
-//                   answerTextView.text = "Write your text in upper text field"
-//                   userText.alpha = 0.4
-                   userText.placeholder = "Write your text here"    // не срабатывает почему то
+                   userText.text = "I knew, you would do it :)"
+                   userText.alpha = 0.4
+//                   userText.placeholder = "Write your text here"    // не срабатывает почему то
                    displayButton.isEnabled = false
                    
 //                               displayButton.isEnabled = false // работает???
