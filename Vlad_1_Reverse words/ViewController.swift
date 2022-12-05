@@ -63,11 +63,21 @@ class ViewController: UIViewController  {
     
     var displayButton: UIButton = { // 6
         let displayButton = UIButton()
-        
+//        displayButton.isEnabled = true
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        displayButton.setTitle("Reverse", for: .normal)
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
-//        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
+        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
         return displayButton
+    }()
+    
+    var button2: UIButton = {
+        let button2 = UIButton()
+        button2.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        button2.frame = CGRect(x: 15, y: 400, width: 300, height: 60)
+        button2.setTitle("Button2", for: .normal)
+        return button2
     }()
     
     override func viewDidLoad() {
@@ -76,16 +86,32 @@ class ViewController: UIViewController  {
         defaultConfiguration()
         setupUI()
         userText.delegate = self
+        
     }
     
+//    посмотреть еще раз как разботает objc функция.
+//    если не получиться - гуглить
+        
+//    @objc func buttonPressed(sender: UIButton!) -> Bool {
+//
+//        let buttonPressedString = String()
+//        state = .result(result: buttonPressedString)
+//        return true
+//    }
+    
     @objc func buttonPressed(sender: UIButton!) -> Bool {
-
+        
         let buttonPressedString = String()
         state = .result(result: buttonPressedString)
         return true
     }
+        
     
     private func setupUI() {
+        
+        //button2
+        view.addSubview(button2)
+        
         
         //largeLabel
         view.addSubview(largeLabel)  //2
@@ -127,10 +153,7 @@ class ViewController: UIViewController  {
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)  //где расположить инициализацию?
             make.bottom.equalToSuperview().offset(-66)
-            
 //            make.bottom.equalTo(view).offset(-66)
-
-            
 //            maker.top.equalTo(divider.snp.bottom).offset(333)
         }
     }
@@ -145,7 +168,7 @@ class ViewController: UIViewController  {
         //title for Navigation Controller
         self.title = "Reverse words"
 
-        displayButton.backgroundColor = UIColor(red: 200, green: 100, blue: 200, alpha: 1) // поменять потом цвет на нужный
+       
         
     }
     private var clearAction = false
@@ -155,16 +178,15 @@ class ViewController: UIViewController  {
             print("мы тут")
             userText.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 1)
-            displayButton.isEnabled = false
-//            displayButton.backgroundColor = UIColor(red: 200, green: 100, blue: 200, alpha: 1) // поменять потом цвет на нужный
-//            displayButton.backgroundColor = .red
+//            displayButton.isEnabled = true  // ?? блокировка тут нужна?
             answerTextView.text = ""
             answerTextView.isHidden = true
-            displayButton.setTitle("Reverse", for: .normal)
         }
         func applyTypingState(hasEnteredText: Bool) {
             if hasEnteredText {
-             
+//                displayButton.isEnabled = true
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+                displayButton.setTitle("Reverse", for: .normal)
             } else {
                 applyInitialState()
             }
@@ -187,9 +209,15 @@ class ViewController: UIViewController  {
             case .result(let result):
                             applyResultState(result: result)
             }
-        }
-    }
     
+        }
+   
+    }
+
+//    }
+    
+
+
     //MARK: extension
     extension ViewController: UITextFieldDelegate {
         
@@ -198,7 +226,8 @@ class ViewController: UIViewController  {
 
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
-            divider.backgroundColor = .gray  // выставить нужный цвет
+            divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+
         }
         
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -209,6 +238,8 @@ class ViewController: UIViewController  {
         }
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             view.endEditing(true)
+//            displayButton.isEnabled = true  // ?? блокировка тут нужна?
+
         }
     }
     
