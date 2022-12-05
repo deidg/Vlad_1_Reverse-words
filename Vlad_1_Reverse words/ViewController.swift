@@ -75,7 +75,7 @@ class ViewController: UIViewController  {
     var button2: UIButton = {
         let button2 = UIButton()
         button2.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-        button2.frame = CGRect(x: 15, y: 400, width: 300, height: 60)
+        button2.frame = CGRect(x: 15, y: 500, width: 300, height: 60)
         button2.setTitle("Button2", for: .normal)
         return button2
     }()
@@ -182,52 +182,62 @@ class ViewController: UIViewController  {
             answerTextView.text = ""
             answerTextView.isHidden = true
         }
+     
+        
+        
+        
+        
         func applyTypingState(hasEnteredText: Bool) {
             if hasEnteredText {
 //                displayButton.isEnabled = true
-                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+                                                        blue: 255/255, alpha: 0.6)
+                displayButton.setTitle("Reverse", for: .normal)
+                answerTextView.isHidden = false
+                let text = userText.text!  //change text
+                let reversedText = String(text.reversed())   //change text
+                answerTextView.text = reversedText   //change text
+                
                 displayButton.setTitle("Reverse", for: .normal)
             } else {
                 applyInitialState()
             }
         }
-        func applyResultState(result: String) {
-           
-           
-            
-            
-            
-            
-            
-        }
-            
-            switch state {
-            case .initial:
-                applyInitialState()
-            case .typing(let text):
-                applyTypingState(hasEnteredText: !text.isEmpty)
-            case .result(let result):
-                            applyResultState(result: result)
-            }
     
+        
+        
+        
+        
+        
+        func applyResultState(result: String) {
+            
         }
-   
+            
+        switch state {                                             // переключение экранов
+            case .initial:                                         // первый экран
+                applyInitialState()                           //функция первого экрана   стр 176
+            case .typing(let text):                               // второй экран
+                applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
+            case .result(let result):                              // третий экран
+                            applyResultState(result: result)        //функция третьего экрана    стр 212
+            }
+        }
     }
 
 //    }
-    
-
 
     //MARK: extension
-    extension ViewController: UITextFieldDelegate {
+extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
         
         func textFieldDidBeginEditing (_ textField: UITextField) {
             self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+            print("text entering")
 
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
             divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-
+            displayButton.isEnabled = true  // ?? блокировка тут нужна?
+            print("Entering text finished")
         }
         
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -243,11 +253,11 @@ class ViewController: UIViewController  {
         }
     }
     
-    extension ViewController {
+    extension ViewController {   // варианты состояний
         enum State {
-            case initial
-            case typing(text: String)
-            case result(result: String)
+            case initial                 // первый экран. экран загрузки
+            case typing(text: String)    // второй экран. когда набирают текст
+            case result(result: String)  // третий экран. результат + подготовка к очистке
         }
     }
 
