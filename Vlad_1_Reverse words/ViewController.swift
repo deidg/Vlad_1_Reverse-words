@@ -231,21 +231,18 @@ class ViewController: UIViewController  {
         func applyResultState(result: String) {
             
         }
+        
+        
+        switch state {                                             // переключение экранов
+        case .initial:                                         // первый экран
+            applyInitialState()                           //функция первого экрана   стр 176
+        case .typing(let text):                               // второй экран
+            applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
+        case .result(let result):                              // третий экран
+            applyResultState(result: result)        //функция третьего экрана    стр 212
+        }
     }
-    
-    switch state {                                             // переключение экранов
-    case .initial:                                         // первый экран
-        applyInitialState()                           //функция первого экрана   стр 176
-    case .typing(let text):                               // второй экран
-        applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
-    case .result(let result):                              // третий экран
-        applyResultState(result: result)        //функция третьего экрана    стр 212
-    default:
-        break
-     }
-    
-    
-  }
+}
 
 //MARK: extension
 extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
