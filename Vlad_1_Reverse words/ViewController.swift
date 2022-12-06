@@ -233,8 +233,6 @@ class ViewController: UIViewController  {
         }
     }
     
-    
-    //}
     switch state {                                             // переключение экранов
     case .initial:                                         // первый экран
         applyInitialState()                           //функция первого экрана   стр 176
@@ -242,11 +240,12 @@ class ViewController: UIViewController  {
         applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
     case .result(let result):                              // третий экран
         applyResultState(result: result)        //функция третьего экрана    стр 212
-    }
-}
-//    }
-
-//        }
+    default:
+        break
+     }
+    
+    
+  }
 
 //MARK: extension
 extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
@@ -272,6 +271,7 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
         
         //            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
@@ -279,11 +279,13 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
         //
         view.endEditing(true)
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
         view.endEditing(true)
         //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
     }
-    
+}
+
     //    func isValid(with userText: String) -> Bool {
     //            guard let text = self.userText,
     //                  !text.isEmpty else {
@@ -299,7 +301,7 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
             case result(result: String)  // третий экран. результат + подготовка к очистке
         }
     }
-    //        }
+//            }
     
     
     //=================================================================================//
@@ -351,4 +353,4 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
     //        }
     //    }
     //}
-}
+//}
