@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Foundation
 
 
 
@@ -175,12 +176,14 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            print("мы тут")
+            print("func applyInitialState сработала")
             userText.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 1)
 //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
             answerTextView.text = ""
             answerTextView.isHidden = true
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+                                                    blue: 255/255, alpha: 0.6)
         }
      
         
@@ -228,11 +231,15 @@ class ViewController: UIViewController  {
 
     //MARK: extension
 extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
-        
-        func textFieldDidBeginEditing (_ textField: UITextField) {
-            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            print("text entering")
-
+    
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+                if resignFirstResponder(){
+                    state = .initial
+                } else {
+        //            func applyInitialState()
+        //            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+        print("text entering")
+    }
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
             divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
@@ -243,13 +250,17 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             return true
         }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
+            
+            //            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+            //                                                    blue: 255/255, alpha: 1)
+            //
             view.endEditing(true)
         }
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
             view.endEditing(true)
-//            displayButton.isEnabled = true  // ?? блокировка тут нужна?
-
+            //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
+            
         }
     }
     
@@ -260,51 +271,52 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
             case result(result: String)  // третий экран. результат + подготовка к очистке
         }
     }
-
-
-
-//=================================================================================//
-/*
- Экран 1
- 
- Загружается экран.
- Прогружаются заголовки
- 
- загружается userText c placeholder
- 
- загружается divider - цвет default (серый)
- 
- загружается answerfield пустой, isHidden - true
- 
- загружается displayButton - слабо голубая, isEnable?????, title Reverse
- 
- 
- Экран 2
- 
- userTextfield:
-    текст выводиться. черный.
     
- divider
-    закрашивается в цвет кнопки, если textfield пустой, то цвет серый возвращается
- после того как закончил ввод текста и убрал клаву - цвет снова серый
- answerfield
+
+    
+    //=================================================================================//
+    /*
+     Экран 1
+     
+     Загружается экран. +
+     Прогружаются заголовки  +
+     
+     загружается userText c placeholder +
+     
+     загружается divider - цвет default (серый) +
+     
+     загружается answerfield пустой, isHidden - true  +
+     
+     загружается displayButton - слабо голубая, isEnable?????, title Reverse
+     
+     
+     Экран 2
+     
+     userTextfield:
+     текст выводиться. черный. +
+     
+     divider
+     закрашивается в цвет кнопки, если textfield пустой, то цвет серый возвращается
+     после того как закончил ввод текста и убрал клаву - цвет снова серый
+     answerfield
      выключен (isHidden true)
- displayButton
+     displayButton
      цвет насыщенный, is Enable?? (кнопка прожимается при наличии текста, если текста нет - кнопка не прожимается)
- 
-
-
-Экран 3
-
- userTextfield
+     
+     
+     
+     Экран 3
+     
+     userTextfield
      без изменений
- divider
+     divider
      серый снова????
- answerfield
- выводиться перевернутый текст.  При этом каждое слово наоборот, а не вся фраза
- цвет текста как кнопки
- если usertext пустой то пустеет и answerfield, при этом ввод текста запрещен
+     answerfield
+     выводиться перевернутый текст.  При этом каждое слово наоборот, а не вся фраза
+     цвет текста как кнопки
+     если usertext пустой то пустеет и answerfield, при этом ввод текста запрещен
+     
+     displayButton.     меняется title - Clear
+     
+     */
 
- displayButton.     меняется title - Clear
-
-*/
