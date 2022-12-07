@@ -64,12 +64,14 @@ class ViewController: UIViewController  {
     
     var displayButton: UIButton = { // 6
         let displayButton = UIButton()
-        //        displayButton.isEnabled = true
+//                displayButton.isEnabled = true
         displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         displayButton.setTitle("Reverse", for: .normal)
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
 //        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
+        displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+
         return displayButton
     }()
     
@@ -88,12 +90,14 @@ class ViewController: UIViewController  {
         setupUI()
         userText.delegate = self
         
+        
     }
     
     
     @objc func buttonPressed(sender: UIButton!) -> Bool {
         
 //        let buttonPressedString = String()
+//        applyTypingState()
         state = .typing
         print("Button pressed str 97")
         return true
@@ -189,7 +193,10 @@ class ViewController: UIViewController  {
         }
         
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
+//                        state = .typing
+
             print("включился 2 applyTypingState")
+            self.state = .result
         }
         
         func applyResultState() { //applyResultState(result: String)
