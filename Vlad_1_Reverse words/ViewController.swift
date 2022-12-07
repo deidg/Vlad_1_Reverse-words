@@ -94,7 +94,7 @@ class ViewController: UIViewController  {
     @objc func buttonPressed(sender: UIButton!) -> Bool {
         
         let buttonPressedString = String()
-        state = .result(result: buttonPressedString)
+//        state = .result(result: buttonPressedString)
         print("Button pressed str 97")
         return true
     }
@@ -183,46 +183,40 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            print("func applyInitialState сработала")
+            print("func 1 applyInitialState сработала")
             
-            userText.text = ""
-            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 1)
-            //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
-            answerTextView.text = ""
-            answerTextView.isHidden = true
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-                                                    blue: 255/255, alpha: 1) // покраска когда ВВОДЯТ текст?
-            self.state = .typing(reversedText: userText.text!)
-                        print("state поменялся на typing")
+//            state = .typing
         }
         
-        func applyTypingState(hasEnteredText: Bool) {
-            //            print("func applyTypingState сработала")
-            
-//            func conversion() {
-//                var text = userText.text!//change text
-//                let reversedText = String(text.reversed())
-//                return reversedText
-                displayButton.setTitle("Clear", for: .normal)
-
-            }
-            
-            
-            
-            func applyResultState(result: String) {
-                
-            }
-            
-            
-            switch state {                                             // переключение экранов
-            case .initial:                                         // первый экран
-                applyInitialState()                           //функция первого экрана   стр 176
-            case .typing(let text):                               // второй экран
-                applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
-            case .result(let result):                              // третий экран
-                applyResultState(result: result)        //функция третьего экрана    стр 212
-            }
+        func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
+            print("включился 2 applyTypingState")
         }
+        
+        func applyResultState() { //applyResultState(result: String)
+            print("включился 3 applyResultState")
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         switch state {                                             // переключение экранов
+         case .initial:                                         // первый экран
+                         applyInitialState()                           //функция первого экрана   стр 176
+         //            case .typing(let text):                               //оригинал второй экран
+         case .typing:                               // второй экран
+                         applyTypingState()   //функция второго экрана   стр 190
+         //            case .result(let result):                              //оригинал третий экран
+         case .result:                              //оригинал третий экран
+                         applyResultState()        //функция третьего экрана    стр 212
+         }
+         
+    }
     }
     
     //MARK: extension
@@ -277,8 +271,11 @@ class ViewController: UIViewController  {
         enum State {
             case initial                 // первый экран. экран загрузки
             //            case typing(text: String)    //  text - текст юзера? второй экран. когда набирают текст
-            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
-            case result(result: String)  // третий экран. результат + подготовка к очистке
+//            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
+            case typing    //  text - текст юзера? второй экран. когда набирают текст
+            
+//            case result(result: String)  // третий экран. результат + подготовка к очистке
+            case result
         }
     }
     
