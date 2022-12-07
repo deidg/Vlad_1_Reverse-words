@@ -69,7 +69,7 @@ class ViewController: UIViewController  {
         displayButton.setTitle("Reverse", for: .normal)
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
-        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
+//        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
         return displayButton
     }()
     
@@ -95,8 +95,11 @@ class ViewController: UIViewController  {
         
         let buttonPressedString = String()
         state = .result(result: buttonPressedString)
+        print("Button pressed str 97")
         return true
     }
+    
+    
     
     
     private func setupUI() {
@@ -189,9 +192,8 @@ class ViewController: UIViewController  {
             answerTextView.isHidden = true
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
                                                     blue: 255/255, alpha: 1) // покраска когда ВВОДЯТ текст?
-            displayButton.setTitle("Clear", for: .normal)
-            //            self.state = .typing(text: userText.text!)
-            //            print("state поменялся на typing")
+            self.state = .typing(reversedText: userText.text!)
+                        print("state поменялся на typing")
         }
         
         func applyTypingState(hasEnteredText: Bool) {
@@ -201,6 +203,7 @@ class ViewController: UIViewController  {
 //                var text = userText.text!//change text
 //                let reversedText = String(text.reversed())
 //                return reversedText
+                displayButton.setTitle("Clear", for: .normal)
 
             }
             
