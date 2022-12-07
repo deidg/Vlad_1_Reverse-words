@@ -93,8 +93,8 @@ class ViewController: UIViewController  {
     
     @objc func buttonPressed(sender: UIButton!) -> Bool {
         
-        let buttonPressedString = String()
-//        state = .result(result: buttonPressedString)
+//        let buttonPressedString = String()
+        state = .typing
         print("Button pressed str 97")
         return true
     }
@@ -223,47 +223,32 @@ class ViewController: UIViewController  {
     extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
         
         func textFieldDidBeginEditing (_ textField: UITextField) {
-            //                if resignFirstResponder(){
-            //                state = .initial
             print("textFieldDidBeginEditing 1")
-            //                } else {
-            //            func applyInitialState()
-            //            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            //        print("textFieldDidBeginEditing after Else work")
-        }
-        //        }
+            state = .initial
+            print(".initial сработал")
+                return
+            }
+       
         func textFieldDidEndEditing(_ textField: UITextField) {
-            divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-                                                    blue: 255/255, alpha: 1)
-            //        displayButton.isEnabled = true  // ?? блокировка тут нужна?
-            //                    state = .typing(text: <#T##String#>)
-            
-            print("Entering text finished")
-            //        var userTextString: String = userText.text
-            
-            //        var userTextNew = String()
-            //        userTextNew = userText.text
-            //        state = .typing(text: userTextNew)
-            //        print(userTextNew)
+//            print("Entering text finished")
+//            state = .typing
+            return
         }
-        
+
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             return true
         }
-        
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
-            
-            
-            view.endEditing(true)
+    }
+func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
+//            view.endEditing(true)
         }
         
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
-            view.endEditing(true)
+func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
+//            view.endEditing(true)
             //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
             //        print("func touchesEnded сработала")
         }
-    }
+//    }
     
     
     
