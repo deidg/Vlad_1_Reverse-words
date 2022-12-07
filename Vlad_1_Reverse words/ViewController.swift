@@ -197,108 +197,125 @@ class ViewController: UIViewController  {
         func applyTypingState(hasEnteredText: Bool) {
             //            print("func applyTypingState сработала")
             
-            //            if let text = userText.text,
-            //               text.isEmpty {
-            //                            displayButton.isEnabled = true
+//            func conversion() {
+//                var text = userText.text!//change text
+//                let reversedText = String(text.reversed())
+//                return reversedText
+//
+//                //               text.isEmpty {
+//                //                            displayButton.isEnabled = true
+//
+//                //
+//                //                // myTextField is not empty here
+//                //            } else {
+//                //                answerTextView.text = "Please, enter your text above"
+//                //            }
+            }
             
+            
+            
+            
+            
+            //            if hasEnteredText {
+            //                displayButton.isEnabled = true
+            //                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+            //                                                        blue: 255/255, alpha: 0.6)
+            //                displayButton.setTitle("Reverse", for: .normal)
+            //                answerTextView.isHidden = false
+            //                let text = userText.text!  //change text
+            //                let reversedText = String(text.reversed())   //change text
+            //                answerTextView.text = reversedText   //change text
             //
-            //                // myTextField is not empty here
+            //                displayButton.setTitle("Reverse", for: .normal)
             //            } else {
-            //                answerTextView.text = "Please, enter your text above"
+            //                applyInitialState()
             //            }
-        }
-        
-        
-        
-        
-        
-        //            if hasEnteredText {
-        //                displayButton.isEnabled = true
-        //                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-        //                                                        blue: 255/255, alpha: 0.6)
-        //                displayButton.setTitle("Reverse", for: .normal)
-        //                answerTextView.isHidden = false
-        //                let text = userText.text!  //change text
-        //                let reversedText = String(text.reversed())   //change text
-        //                answerTextView.text = reversedText   //change text
-        //
-        //                displayButton.setTitle("Reverse", for: .normal)
-        //            } else {
-        //                applyInitialState()
-        //            }
-        
-        
-        func applyResultState(result: String) {
             
+            
+            func applyResultState(result: String) {
+                
+            }
+            
+            
+            switch state {                                             // переключение экранов
+            case .initial:                                         // первый экран
+                applyInitialState()                           //функция первого экрана   стр 176
+            case .typing(let text):                               // второй экран
+                applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
+            case .result(let result):                              // третий экран
+                applyResultState(result: result)        //функция третьего экрана    стр 212
+            }
+        }
+    }
+    
+    //MARK: extension
+    extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
+        
+        func textFieldDidBeginEditing (_ textField: UITextField) {
+            //                if resignFirstResponder(){
+            //                state = .initial
+            print("textFieldDidBeginEditing 1")
+            //                } else {
+            //            func applyInitialState()
+            //            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+            //        print("textFieldDidBeginEditing after Else work")
+        }
+        //        }
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+                                                    blue: 255/255, alpha: 1)
+            //        displayButton.isEnabled = true  // ?? блокировка тут нужна?
+            //                    state = .typing(text: <#T##String#>)
+            
+            print("Entering text finished")
+            //        var userTextString: String = userText.text
+            
+            //        var userTextNew = String()
+            //        userTextNew = userText.text
+            //        state = .typing(text: userTextNew)
+            //        print(userTextNew)
         }
         
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return true
+        }
         
-        switch state {                                             // переключение экранов
-        case .initial:                                         // первый экран
-            applyInitialState()                           //функция первого экрана   стр 176
-        case .typing(let text):                               // второй экран
-            applyTypingState(hasEnteredText: !text.isEmpty)   //функция второго экрана   стр 190
-        case .result(let result):                              // третий экран
-            applyResultState(result: result)        //функция третьего экрана    стр 212
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
+            
+            //            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
+            //                                                    blue: 255/255, alpha: 1)
+            //
+            view.endEditing(true)
+        }
+        
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
+            view.endEditing(true)
+            //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
+            //        print("func touchesEnded сработала")
         }
     }
-}
-
-//MARK: extension
-extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
     
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        //                if resignFirstResponder(){
-        //                state = .initial
-        print("textFieldDidBeginEditing 1")
-        //                } else {
-        //            func applyInitialState()
-        //            self.divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-        //        print("textFieldDidBeginEditing after Else work")
-    }
-    //        }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0.0, green: 122/255, blue: 255/255, alpha: 1.0)
-        displayButton.isEnabled = true  // ?? блокировка тут нужна?
-        //            state = .typing(text: <#T##String#>)
-        
-        print("Entering text finished")
-    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
-        
-        //            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-        //                                                    blue: 255/255, alpha: 1)
-        //
-        view.endEditing(true)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
-        view.endEditing(true)
-        //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
-    }
-}
-
-    //    func isValid(with userText: String) -> Bool {
-    //            guard let text = self.userText,
-    //                  !text.isEmpty else {
-    //                print("Please fill the field.")
-    //                return false
-    //            }
-    //        }
     
     extension ViewController {   // варианты состояний
         enum State {
             case initial                 // первый экран. экран загрузки
-            case typing(text: String)    // второй экран. когда набирают текст
+            //            case typing(text: String)    //  text - текст юзера? второй экран. когда набирают текст
+            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
             case result(result: String)  // третий экран. результат + подготовка к очистке
         }
     }
-//            }
+    
+    //        enum State {
+    //            case initial                 // первый экран. экран загрузки
+    //            //            case typing(text: String)    //  text - текст юзера? второй экран. когда набирают текст
+    //            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
+    //            case result(result: String)  // третий экран. результат + подготовка к очистке
+    //        }
+    //    }
+    
+    
     
     
     //=================================================================================//
@@ -350,4 +367,6 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
     //        }
     //    }
     //}
-//}
+    //}
+    
+
