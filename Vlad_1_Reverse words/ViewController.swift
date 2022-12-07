@@ -201,35 +201,9 @@ class ViewController: UIViewController  {
 //                var text = userText.text!//change text
 //                let reversedText = String(text.reversed())
 //                return reversedText
-//
-//                //               text.isEmpty {
-//                //                            displayButton.isEnabled = true
-//
-//                //
-//                //                // myTextField is not empty here
-//                //            } else {
-//                //                answerTextView.text = "Please, enter your text above"
-//                //            }
+
             }
             
-            
-            
-            
-            
-            //            if hasEnteredText {
-            //                displayButton.isEnabled = true
-            //                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-            //                                                        blue: 255/255, alpha: 0.6)
-            //                displayButton.setTitle("Reverse", for: .normal)
-            //                answerTextView.isHidden = false
-            //                let text = userText.text!  //change text
-            //                let reversedText = String(text.reversed())   //change text
-            //                answerTextView.text = reversedText   //change text
-            //
-            //                displayButton.setTitle("Reverse", for: .normal)
-            //            } else {
-            //                applyInitialState()
-            //            }
             
             
             func applyResultState(result: String) {
@@ -283,9 +257,7 @@ class ViewController: UIViewController  {
         
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
             
-            //            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255,
-            //                                                    blue: 255/255, alpha: 1)
-            //
+            
             view.endEditing(true)
         }
         
@@ -307,66 +279,4 @@ class ViewController: UIViewController  {
         }
     }
     
-    //        enum State {
-    //            case initial                 // первый экран. экран загрузки
-    //            //            case typing(text: String)    //  text - текст юзера? второй экран. когда набирают текст
-    //            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
-    //            case result(result: String)  // третий экран. результат + подготовка к очистке
-    //        }
-    //    }
-    
-    
-    
-    
-    //=================================================================================//
-    /*
-     Экран 1
-     
-     Загружается экран. +
-     Прогружаются заголовки  +
-     
-     загружается userText c placeholder +
-     
-     загружается divider - цвет default (серый) +
-     
-     загружается answerfield пустой, isHidden - true  +
-     
-     загружается displayButton - слабо голубая, isEnable?????, title Reverse
-     
-     
-     Экран 2
-     
-     userTextfield:
-     текст выводиться. черный. +
-     
-     divider
-     закрашивается в цвет кнопки, если textfield пустой, то цвет серый возвращается
-     после того как закончил ввод текста и убрал клаву - цвет снова серый
-     answerfield
-     выключен (isHidden true)
-     displayButton
-     цвет насыщенный, is Enable?? (кнопка прожимается при наличии текста, если текста нет - кнопка не прожимается)
-     
-     
-     
-     Экран 3
-     
-     userTextfield
-     без изменений
-     divider
-     серый снова????
-     answerfield
-     выводиться перевернутый текст.  При этом каждое слово наоборот, а не вся фраза
-     цвет текста как кнопки
-     если usertext пустой то пустеет и answerfield, при этом ввод текста запрещен
-     
-     displayButton.     меняется title - Clear
-     
-     */
-    
-    //        }
-    //    }
-    //}
-    //}
-    
-
+   
