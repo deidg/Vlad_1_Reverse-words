@@ -145,7 +145,7 @@ class ViewController: UIViewController  {
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(userText.snp.bottom).offset(18.5)
-            make.height.equalTo(1)
+            make.height.equalTo(5)
         }
         
         //answerTextView
@@ -211,7 +211,7 @@ class ViewController: UIViewController  {
                 answerTextView.isEditable = false
 
                 //            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-                divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+//                divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 displayButton.setTitle("Reverse", for: .normal)
                 userText.isUserInteractionEnabled = true
@@ -275,7 +275,8 @@ class ViewController: UIViewController  {
 //            divider.backgroundColor = .red
             print("дошел до 255 строки")
                 // почему то не срабатывает смена цвета
-            clearAction = true
+//            clearAction = true
+            clearAction = false
 
             
             self.state = .initial
@@ -311,6 +312,7 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
         print("textFieldDidBeginEditing 1")
         state = .initial
         print(".initial сработал")
+        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         return
     }
     
