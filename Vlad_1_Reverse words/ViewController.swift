@@ -50,7 +50,7 @@ class ViewController: UIViewController  {
     
     var divider: UIView = {  //5
         let divider = UIView()
-        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)  // выставить нужный цвет
+        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return divider
     }()
     
@@ -104,8 +104,9 @@ class ViewController: UIViewController  {
         
 //        let buttonPressedString = String()
 //        applyTypingState()
+        
         state = .typing
-        print("Button pressed str 97")
+        print("Button pressed str 108")
         return true
     }
     
@@ -190,6 +191,9 @@ class ViewController: UIViewController  {
     private var clearAction = false
 //    private var userTextEditable = false
     
+//    private var displayButtonChangeColor(touchesEnded) {
+//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+//    }
     
     
     
@@ -198,7 +202,7 @@ class ViewController: UIViewController  {
         func applyInitialState() {
             print("func 1 applyInitialState сработала")
             answerTextView.isHidden = true
-//            divider.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)    пустой цвет
+//            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
             divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.setTitle("Reverse", for: .normal)
@@ -229,7 +233,7 @@ class ViewController: UIViewController  {
                 
                 displayButton.setTitle("Clear", for: .normal)
                 displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
-                                                        blue: 255/255, alpha: 0.6)
+                                                        blue: 255/255, alpha: 1)
                 clearAction = true
 
             } else {
@@ -244,9 +248,12 @@ class ViewController: UIViewController  {
             userText.text = ""
             answerTextView.text = ""
             self.displayButton.setTitle("Reverse", for: .normal)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)  
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+                // почему то не срабатывает смена цвета
+            clearAction = false
 
+            
             self.state = .initial
         }
         
@@ -284,7 +291,9 @@ class ViewController: UIViewController  {
             }
        
         func textFieldDidEndEditing(_ textField: UITextField) {
-//            print("Entering text finished")
+            print("Entering text finished")
+            
+
 //            state = .typing
             return
         }
@@ -301,6 +310,7 @@ func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //overrid
 //            view.endEditing(true)
             //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
             //        print("func touchesEnded сработала")
+//    return true
         }
 //    }
     
