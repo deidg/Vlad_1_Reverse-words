@@ -44,12 +44,13 @@ class ViewController: UIViewController  {
         userText.font = UIFont.systemFont(ofSize: 17)
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userText.placeholder = "Text to reverse"
+        userText.isUserInteractionEnabled = true
         return userText
     }()
     
     var divider: UIView = {  //5
         let divider = UIView()
-        divider.backgroundColor = .gray  // выставить нужный цвет
+        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)  // выставить нужный цвет
         return divider
     }()
     
@@ -187,6 +188,8 @@ class ViewController: UIViewController  {
     
     
     private var clearAction = false
+//    private var userTextEditable = false
+    
     
     
     
@@ -199,6 +202,10 @@ class ViewController: UIViewController  {
             divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.setTitle("Reverse", for: .normal)
+            userText.isUserInteractionEnabled = true
+            //TODO divivder color\
+//
+
 //            state = .typing
         }
 //
@@ -207,6 +214,8 @@ class ViewController: UIViewController  {
             if clearAction == false {
                 print("включился 2 applyTypingState")
                 answerTextView.isHidden = false
+                answerTextView.isEditable = false
+                userText.isUserInteractionEnabled = false
                 //            answerTextView.backgroundColor = .red
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 let text = userText.text!
@@ -236,6 +245,8 @@ class ViewController: UIViewController  {
             answerTextView.text = ""
             self.displayButton.setTitle("Reverse", for: .normal)
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)  
+
             self.state = .initial
         }
         
