@@ -232,8 +232,9 @@ class ViewController: UIViewController  {
                 //            answerTextView.backgroundColor = UIColor.red
                 
                 displayButton.setTitle("Clear", for: .normal)
-                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
-                                                        blue: 255/255, alpha: 1)
+//                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
+//                                                        blue: 255/255, alpha: 1)
+                                
                 clearAction = true
 
             } else {
@@ -248,8 +249,12 @@ class ViewController: UIViewController  {
             userText.text = ""
             answerTextView.text = ""
             self.displayButton.setTitle("Reverse", for: .normal)
+            
+            
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+//            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            divider.backgroundColor = .red
+            print("дошел до 255 строки")
                 // почему то не срабатывает смена цвета
             clearAction = false
 
@@ -281,38 +286,37 @@ class ViewController: UIViewController  {
     }
     
     //MARK: extension
-    extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
-        
-        func textFieldDidBeginEditing (_ textField: UITextField) {
-            print("textFieldDidBeginEditing 1")
-            state = .initial
-            print(".initial сработал")
-                return
-            }
-       
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            print("Entering text finished")
-            
-
-//            state = .typing
-            return
-        }
-
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return true
-        }
+extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
+    
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+        print("textFieldDidBeginEditing 1")
+        state = .initial
+        print(".initial сработал")
+        return
     }
-func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {  //override?
-//            view.endEditing(true)
-        }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Entering text finished")
+        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         
-func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {     //override?
-//            view.endEditing(true)
-            //            displayButton.isEnabled = true  // ?? блокировка тут нужна?
-            //        print("func touchesEnded сработала")
-//    return true
-        }
-//    }
+        
+        //            state = .typing
+        return
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    //включение клавиатуры
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    //выключение клавиатуры
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
     
     
     
