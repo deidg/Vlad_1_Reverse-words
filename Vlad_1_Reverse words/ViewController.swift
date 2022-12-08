@@ -3,7 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//  посмотрить сервис по развитию мозгов. на который была подписка. в библиотеке приложений
+//   смог сделать чтобы зеркалился текст, стирался, но при этом не могу залочить кнопки(можно гонять кнопку)
 
 
 
@@ -106,6 +106,8 @@ class ViewController: UIViewController  {
 //        applyTypingState()
         
         state = .typing
+//        state = .result   -не работает - сразу кидает на 3й экран
+
         print("Button pressed str 108")
         return true
     }
@@ -200,21 +202,38 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            print("func 1 applyInitialState сработала")
-            answerTextView.isHidden = true
-//            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            displayButton.setTitle("Reverse", for: .normal)
-            userText.isUserInteractionEnabled = true
-            //TODO divivder color\
-//
+            
+//            guard userText.text?.isEmpty
+                
+//            if clearAction == false {
+                print("func 1 applyInitialState сработала")
+                answerTextView.isHidden = true
+                answerTextView.isEditable = false
 
-//            state = .typing
-        }
+                //            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+                divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                displayButton.setTitle("Reverse", for: .normal)
+                userText.isUserInteractionEnabled = true
+//                state = .typing
+//            } else {
+//                    self.state = .result
+//                displayButton.isEnabled = true
+//                userText.text = "Enter your text here"
+//                print("here")
+                    clearAction = false
+                }
+
+//        }
+                //TODO divivder color\
+                
+                //            state = .typing
+//            }
+//        }
 //
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
             //                        state = .typing
+            
             if clearAction == false {
                 print("включился 2 applyTypingState")
                 answerTextView.isHidden = false
@@ -236,11 +255,12 @@ class ViewController: UIViewController  {
 //                                                        blue: 255/255, alpha: 1)
                                 
                 clearAction = true
+//            self.state = .result
 
-            } else {
-                    self.state = .result
-                    clearAction = false
-                }
+        } else {
+            self.state = .result
+            clearAction = false
+        }
         }
         
         func applyResultState() { //applyResultState(result: String)
@@ -250,13 +270,12 @@ class ViewController: UIViewController  {
             answerTextView.text = ""
             self.displayButton.setTitle("Reverse", for: .normal)
             
-            
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
 //            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            divider.backgroundColor = .red
+//            divider.backgroundColor = .red
             print("дошел до 255 строки")
                 // почему то не срабатывает смена цвета
-            clearAction = false
+            clearAction = true
 
             
             self.state = .initial
