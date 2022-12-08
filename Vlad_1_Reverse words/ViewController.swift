@@ -3,7 +3,8 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//
+//  посмотрить сервис по развитию мозгов. на который была подписка. в библиотеке приложений
+
 
 
 import UIKit
@@ -56,9 +57,13 @@ class ViewController: UIViewController  {
         let answerTextView = UITextView()
         answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
+        //        answerTextView.textColor = .red
+        //        answerTextView.backgroundColor = .red
+        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        //        answerTextView.text = "fdg"
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
-        answerTextView.isHidden = true
+//        answerTextView.isHidden = true
         return answerTextView
     }()
     
@@ -141,10 +146,11 @@ class ViewController: UIViewController  {
         
         //answerTextView
         view.addSubview(answerTextView) //7
-        answerTextView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(divider.snp.bottom).offset(24.5)
-        }
+//        answerTextView.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+//            make.top.equalTo(divider.snp.bottom).offset(24.5)
+////            make.bottom.equalToSuperview().offset(-366)
+//        }
         
         //displayButton
         view.addSubview(displayButton)  //6
@@ -188,19 +194,49 @@ class ViewController: UIViewController  {
     private func applyState(_ state: State) {
         func applyInitialState() {
             print("func 1 applyInitialState сработала")
-            
+            answerTextView.isHidden = true
+//            divider.backgroundColor = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)    пустой цвет
+            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.setTitle("Reverse", for: .normal)
 //            state = .typing
         }
-        
+//
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
-//                        state = .typing
+            //                        state = .typing
+            if clearAction == false {
+                print("включился 2 applyTypingState")
+                answerTextView.isHidden = false
+                //            answerTextView.backgroundColor = .red
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                let text = userText.text!
+                let reversedText = String(text.reversed())
+                answerTextView.text = reversedText
+                print(reversedText)
+                
+                //            answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898,
+                //                                                     blue: 0.898, alpha: 1)
+                //            answerTextView.backgroundColor = UIColor.red
+                
+                displayButton.setTitle("Clear", for: .normal)
+                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
+                                                        blue: 255/255, alpha: 0.6)
+                clearAction = true
 
-            print("включился 2 applyTypingState")
-            self.state = .result
+            } else {
+                    self.state = .result
+                    clearAction = false
+                }
         }
         
         func applyResultState() { //applyResultState(result: String)
-            print("включился 3 applyResultState")
+            print("включился 3 applyResultState 203")
+            answerTextView.isHidden = true
+            userText.text = ""
+            answerTextView.text = ""
+            self.displayButton.setTitle("Reverse", for: .normal)
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+            self.state = .initial
         }
         
         
