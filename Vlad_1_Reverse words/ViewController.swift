@@ -104,11 +104,16 @@ class ViewController: UIViewController  {
         
 //        let buttonPressedString = String()
 //        applyTypingState()
-        if flag == true && userText.text == "" {
-            userText.text = "enter yout text here"
+        if flag == false && userText.text == "" {
+            answerTextView.isHidden = false
+            answerTextView.isEditable = false
+            answerTextView.textColor = .red
+            answerTextView.text = "Enter yout text above"
+//            userText.placeholder = "Enter your text here"
         } else {
-            
             state = .typing
+            displayButton.isEnabled = true
+
         }
 //        state = .result   -не работает - сразу кидает на 3й экран
 
@@ -269,7 +274,7 @@ print("func 1 applyInitialState сработала")
                 // почему то не срабатывает смена цвета
 //            clearAction = true
             clearAction = false
-//            displayButton.isEnabled = false
+            displayButton.isEnabled = false
 //            flag =  true
             
             self.state = .initial
