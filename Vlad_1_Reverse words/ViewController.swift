@@ -3,7 +3,6 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//   смог сделать чтобы зеркалился текст, стирался, но при этом не могу залочить кнопки(можно гонять кнопку)
 
 
 
@@ -58,36 +57,23 @@ class ViewController: UIViewController  {
         let answerTextView = UITextView()
         answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        //        answerTextView.textColor = .red
-        //        answerTextView.backgroundColor = .red
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        //        answerTextView.text = "fdg"
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
-//        answerTextView.isHidden = true
         return answerTextView
     }()
     
     var displayButton: UIButton = { // 6
         let displayButton = UIButton()
-//                displayButton.isEnabled = true
         displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         displayButton.setTitle("Reverse", for: .normal)
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
-//        displayButton.addTarget(ViewController.self, action: #selector(buttonPressed), for: .touchUpInside)
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-
+        
         return displayButton
     }()
     
-    var button2: UIButton = {
-        let button2 = UIButton()
-        button2.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-        button2.frame = CGRect(x: 15, y: 500, width: 300, height: 60)
-        button2.setTitle("Button2", for: .normal)
-        return button2
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,23 +88,18 @@ class ViewController: UIViewController  {
     
     @objc func buttonPressed(sender: UIButton!) -> Bool {
         
-//        let buttonPressedString = String()
-//        applyTypingState()
         if flag == false && userText.text == "" {
             answerTextView.isHidden = false
             answerTextView.isEditable = false
             answerTextView.textColor = .red
             answerTextView.text = "Enter yout text above"
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-//            userText.placeholder = "Enter your text here"
         } else {
             state = .typing
             displayButton.isEnabled = true
-
+            
         }
-//        state = .result   -не работает - сразу кидает на 3й экран
-
-        print("Button pressed str 108")
+        
         return true
     }
     
@@ -126,10 +107,6 @@ class ViewController: UIViewController  {
     
     
     private func setupUI() {
-        
-        //button2
-        view.addSubview(button2)
-        
         
         //largeLabel
         view.addSubview(largeLabel)  //2
@@ -160,20 +137,14 @@ class ViewController: UIViewController  {
         
         //answerTextView
         view.addSubview(answerTextView) //7
-//        answerTextView.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            make.top.equalTo(divider.snp.bottom).offset(24.5)
-////            make.bottom.equalToSuperview().offset(-366)
-//        }
+        
         
         //displayButton
         view.addSubview(displayButton)  //6
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)  //где расположить инициализацию?
+            make.height.equalTo(60)
             make.bottom.equalToSuperview().offset(-66)
-            //            make.bottom.equalTo(view).offset(-66)
-            //            maker.top.equalTo(divider.snp.bottom).offset(333)
         }
     }
     
@@ -188,54 +159,22 @@ class ViewController: UIViewController  {
         self.title = "Reverse words"
     }
     
-    //=========================================================================================/
-    
-    //=========================================================================================/
-    
-    //=========================================================================================/
-    
-    //=========================================================================================/
-    
-    //=========================================================================================/
-    
-    
     
     private var clearAction = false
-    private var flag =  false
-//    private var userTextEditable = false
-    
-//    private var displayButtonChangeColor(touchesEnded) {
-//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-//    }
-    
-    
-    
+    private var flag =  false // one more flag
     
     private func applyState(_ state: State) {
         func applyInitialState() {
             
-//            guard userText.text?.isEmpty
-//
-//            if clearAction == false && flag == false
-//            if userText.text == "" && clearAction == true
-//                {
-////                self.state = .result
-//                              displayButton.isEnabled = true
-//                              userText.text = "Enter your text here"
-//                              print("here")
-//            } else {
-print("func 1 applyInitialState сработала")
-                answerTextView.isHidden = true
-                answerTextView.isEditable = false
-                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                displayButton.setTitle("Reverse", for: .normal)
-                userText.isUserInteractionEnabled = true
-//                state = .typing
-                }
-//        }
-         
+            print("func 1 applyInitialState сработала")
+            answerTextView.isHidden = true
+            answerTextView.isEditable = false
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.setTitle("Reverse", for: .normal)
+            userText.isUserInteractionEnabled = true
+        }
+        
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
-            //                        state = .typing
             
             if clearAction == false {
                 print("включился 2 applyTypingState")
@@ -243,24 +182,18 @@ print("func 1 applyInitialState сработала")
                 answerTextView.isEditable = false
                 answerTextView.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 userText.isUserInteractionEnabled = false
-                //            answerTextView.backgroundColor = .red
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 let text = userText.text!
                 let reversedText = String(text.reversed())
                 answerTextView.text = reversedText
                 print(reversedText)
-                
-                
                 displayButton.setTitle("Clear", for: .normal)
-//
                 clearAction = true
-//            self.state = .result
-
-        } else {
-            print("ты пришёл сюда")
-            self.state = .result
-//            clearAction = true
-        }
+                
+            } else {
+                print("ты пришёл сюда")
+                self.state = .result
+            }
         }
         
         func applyResultState() { //applyResultState(result: String)
@@ -273,34 +206,27 @@ print("func 1 applyInitialState сработала")
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             
             print("дошел до 255 строки")
-                // почему то не срабатывает смена цвета
-//            clearAction = true
+            // почему то не срабатывает смена цвета
             clearAction = false
             displayButton.isEnabled = false
-//            flag =  true
             
             self.state = .initial
         }
         
+        switch state {
+        case .initial:
+            applyInitialState()
+        case .typing:
+            applyTypingState()
+        case .result:
+            applyResultState()
+        }
         
-        
-        
-        
-        
-         switch state {                                             // переключение экранов
-         case .initial:
-                         applyInitialState()
-         case .typing:
-                         applyTypingState()
-         case .result:
-                         applyResultState()
-         }
-         
     }
-    }
-    
-    //MARK: extension
-extension ViewController: UITextFieldDelegate {    // расширение функций Тексфилда
+}
+
+//MARK: extension
+extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing (_ textField: UITextField) {
         print("textFieldDidBeginEditing 1")
@@ -313,38 +239,27 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("Entering text finished")
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         
-        //            state = .typing
         return
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return true
     }
-    //включение клавиатуры
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
-    //выключение клавиатуры
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
-    
-    
-    
-    extension ViewController {   // варианты состояний
-        enum State {
-            case initial                 // первый экран. экран загрузки
-            //            case typing(text: String)    //  text - текст юзера? второй экран. когда набирают текст
-//            case typing(reversedText: String)    //  text - текст юзера? второй экран. когда набирают текст
-            case typing    //  text - текст юзера? второй экран. когда набирают текст
-            
-//            case result(result: String)  // третий экран. результат + подготовка к очистке
-            case result
-        }
+
+extension ViewController {
+    enum State {
+        case initial
+        case typing
+        case result
     }
-    
-   
+}
+
+
