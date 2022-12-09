@@ -4,8 +4,6 @@
 //
 //  Created by Alex on 17.11.2022.
 
-
-
 import UIKit
 import SnapKit
 import Foundation
@@ -19,7 +17,6 @@ class ViewController: UIViewController  {
             applyState(state)
         }
     }
-    
     
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
@@ -95,7 +92,6 @@ class ViewController: UIViewController  {
             state = .typing
             displayButton.isEnabled = true
         }
-        
         return true
     }
     
@@ -131,7 +127,6 @@ class ViewController: UIViewController  {
         //answerTextView
         view.addSubview(answerTextView) //7
         
-        
         //displayButton
         view.addSubview(displayButton)  //6
         displayButton.snp.makeConstraints { make in
@@ -152,13 +147,11 @@ class ViewController: UIViewController  {
         self.title = "Reverse words"
     }
     
-    
     private var clearAction = false
     private var flag =  false // one more flag
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            
             answerTextView.isHidden = true
             answerTextView.isEditable = false
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
@@ -167,7 +160,6 @@ class ViewController: UIViewController  {
         }
         
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
-            
             if clearAction == false {
                 answerTextView.isHidden = false
                 answerTextView.isEditable = false
@@ -180,7 +172,6 @@ class ViewController: UIViewController  {
                 print(reversedText)
                 displayButton.setTitle("Clear", for: .normal)
                 clearAction = true
-                
             } else {
                 self.state = .result
             }
@@ -206,7 +197,6 @@ class ViewController: UIViewController  {
         case .result:
             applyResultState()
         }
-        
     }
 }
 
