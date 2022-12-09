@@ -104,8 +104,12 @@ class ViewController: UIViewController  {
         
 //        let buttonPressedString = String()
 //        applyTypingState()
-        
-        state = .typing
+        if flag == true && userText.text == "" {
+            userText.text = "enter yout text here"
+        } else {
+            
+            state = .typing
+        }
 //        state = .result   -не работает - сразу кидает на 3й экран
 
         print("Button pressed str 108")
@@ -191,6 +195,7 @@ class ViewController: UIViewController  {
     
     
     private var clearAction = false
+    private var flag =  false
 //    private var userTextEditable = false
     
 //    private var displayButtonChangeColor(touchesEnded) {
@@ -204,33 +209,25 @@ class ViewController: UIViewController  {
         func applyInitialState() {
             
 //            guard userText.text?.isEmpty
-                
-//            if clearAction == false {
-                print("func 1 applyInitialState сработала")
+//
+//            if clearAction == false && flag == false
+//            if userText.text == "" && clearAction == true
+//                {
+////                self.state = .result
+//                              displayButton.isEnabled = true
+//                              userText.text = "Enter your text here"
+//                              print("here")
+//            } else {
+print("func 1 applyInitialState сработала")
                 answerTextView.isHidden = true
                 answerTextView.isEditable = false
-
-                //            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-//                divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 displayButton.setTitle("Reverse", for: .normal)
                 userText.isUserInteractionEnabled = true
 //                state = .typing
-//            } else {
-//                    self.state = .result
-//                displayButton.isEnabled = true
-//                userText.text = "Enter your text here"
-//                print("here")
-                    clearAction = false
                 }
-
 //        }
-                //TODO divivder color\
-                
-                //            state = .typing
-//            }
-//        }
-//
+         
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
             //                        state = .typing
             
@@ -246,20 +243,16 @@ class ViewController: UIViewController  {
                 answerTextView.text = reversedText
                 print(reversedText)
                 
-                //            answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898,
-                //                                                     blue: 0.898, alpha: 1)
-                //            answerTextView.backgroundColor = UIColor.red
                 
                 displayButton.setTitle("Clear", for: .normal)
-//                displayButton.backgroundColor = UIColor(red: 0.0, green: 122/255,
-//                                                        blue: 255/255, alpha: 1)
-                                
+//
                 clearAction = true
 //            self.state = .result
 
         } else {
+            print("ты пришёл сюда")
             self.state = .result
-            clearAction = false
+//            clearAction = true
         }
         }
         
@@ -271,13 +264,13 @@ class ViewController: UIViewController  {
             self.displayButton.setTitle("Reverse", for: .normal)
             
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-//            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-//            divider.backgroundColor = .red
+            
             print("дошел до 255 строки")
                 // почему то не срабатывает смена цвета
 //            clearAction = true
             clearAction = false
-
+//            displayButton.isEnabled = false
+//            flag =  true
             
             self.state = .initial
         }
@@ -287,19 +280,13 @@ class ViewController: UIViewController  {
         
         
         
-        
-        
-        
-        
          switch state {                                             // переключение экранов
-         case .initial:                                         // первый экран
-                         applyInitialState()                           //функция первого экрана   стр 176
-         //            case .typing(let text):                               //оригинал второй экран
-         case .typing:                               // второй экран
-                         applyTypingState()   //функция второго экрана   стр 190
-         //            case .result(let result):                              //оригинал третий экран
-         case .result:                              //оригинал третий экран
-                         applyResultState()        //функция третьего экрана    стр 212
+         case .initial:
+                         applyInitialState()
+         case .typing:
+                         applyTypingState()
+         case .result:
+                         applyResultState()
          }
          
     }
