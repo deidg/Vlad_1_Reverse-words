@@ -109,6 +109,7 @@ class ViewController: UIViewController  {
             answerTextView.isEditable = false
             answerTextView.textColor = .red
             answerTextView.text = "Enter yout text above"
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
 //            userText.placeholder = "Enter your text here"
         } else {
             state = .typing
@@ -312,7 +313,7 @@ extension ViewController: UITextFieldDelegate {    // расширение фу�
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("Entering text finished")
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-        
+//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         
         //            state = .typing
         return
