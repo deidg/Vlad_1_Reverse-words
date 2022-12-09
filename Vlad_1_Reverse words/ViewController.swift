@@ -74,15 +74,12 @@ class ViewController: UIViewController  {
         return displayButton
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         defaultConfiguration()
         setupUI()
         userText.delegate = self
-        
-        
     }
     
     
@@ -92,19 +89,15 @@ class ViewController: UIViewController  {
             answerTextView.isHidden = false
             answerTextView.isEditable = false
             answerTextView.textColor = .red
-            answerTextView.text = "Enter yout text above"
+            answerTextView.text = "Enter your text above"
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         } else {
             state = .typing
             displayButton.isEnabled = true
-            
         }
         
         return true
     }
-    
-    
-    
     
     private func setupUI() {
         
@@ -166,7 +159,6 @@ class ViewController: UIViewController  {
     private func applyState(_ state: State) {
         func applyInitialState() {
             
-            print("func 1 applyInitialState сработала")
             answerTextView.isHidden = true
             answerTextView.isEditable = false
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
@@ -177,7 +169,6 @@ class ViewController: UIViewController  {
         func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
             
             if clearAction == false {
-                print("включился 2 applyTypingState")
                 answerTextView.isHidden = false
                 answerTextView.isEditable = false
                 answerTextView.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
@@ -191,22 +182,16 @@ class ViewController: UIViewController  {
                 clearAction = true
                 
             } else {
-                print("ты пришёл сюда")
                 self.state = .result
             }
         }
         
         func applyResultState() { //applyResultState(result: String)
-            print("включился 3 applyResultState 203")
             answerTextView.isHidden = true
             userText.text = ""
             answerTextView.text = ""
             self.displayButton.setTitle("Reverse", for: .normal)
-            
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            
-            print("дошел до 255 строки")
-            // почему то не срабатывает смена цвета
             clearAction = false
             displayButton.isEnabled = false
             
@@ -229,17 +214,13 @@ class ViewController: UIViewController  {
 extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing (_ textField: UITextField) {
-        print("textFieldDidBeginEditing 1")
         state = .initial
-        print(".initial сработал")
         divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         return
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("Entering text finished")
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-        
         return
     }
     
