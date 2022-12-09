@@ -240,6 +240,7 @@ print("func 1 applyInitialState сработала")
                 print("включился 2 applyTypingState")
                 answerTextView.isHidden = false
                 answerTextView.isEditable = false
+                answerTextView.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 userText.isUserInteractionEnabled = false
                 //            answerTextView.backgroundColor = .red
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
