@@ -31,7 +31,7 @@ class ViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-    var userText: UITextField = { //4
+    public var userText: UITextField = { //4
         let userText = UITextField()
         userText.font = UIFont.systemFont(ofSize: 17)
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
@@ -81,9 +81,17 @@ class ViewController: UIViewController  {
    
     
     @objc func buttonPressed(sender: UIButton) {
-        func reverseText(text: String) {
-            let result = answerTextView.text
-            state = .result(result: result ?? "Enter your text")
+//        func reverseText(text: String) {
+        //            let result = "RESULT"
+        
+        
+        var answer = Reverser()
+        answer.reverseFunc(userText)
+
+//            let result = answerTextView.text
+//            state = .result(result: result ?? "Enter your text")
+
+        state = .result(result: )
         }
         func clear() {
             state = .initial
@@ -185,6 +193,7 @@ class ViewController: UIViewController  {
         }
     }
 }
+
 
 //MARK: extension
 extension ViewController: UITextFieldDelegate {
