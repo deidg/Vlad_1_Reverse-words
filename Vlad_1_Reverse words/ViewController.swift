@@ -68,6 +68,9 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let reverser =  Reverser()
+        
         defaultConfiguration()
         setupUI()
         userText.delegate = self
@@ -75,10 +78,12 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
+   
+    
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
-            let result = "RESULT"
-            state = .result(result: result)
+            let result = answerTextView.text
+            state = .result(result: result ?? "Enter your text")
         }
         func clear() {
             state = .initial
