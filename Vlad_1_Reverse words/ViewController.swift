@@ -8,16 +8,12 @@ import UIKit
 import SnapKit
 import Foundation
 
-
-
 class ViewController: UIViewController  {
-    
     private var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
-    
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
@@ -57,6 +53,7 @@ class ViewController: UIViewController  {
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
+        answerTextView.isEditable = false
         return answerTextView
     }()
     
@@ -66,37 +63,38 @@ class ViewController: UIViewController  {
         displayButton.setTitle("Reverse", for: .normal)
         displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         displayButton.layer.cornerRadius = 14
-        displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        
         return displayButton
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         defaultConfiguration()
         setupUI()
         userText.delegate = self
+        
+        displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-    
-    @objc func buttonPressed(sender: UIButton!) -> Bool {
-        
-        if flag == false && userText.text == "" {
-            answerTextView.isHidden = false
-            answerTextView.isEditable = false
-            answerTextView.textColor = .red
-            answerTextView.text = "Enter your text above"
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-        } else {
-            state = .typing
-            displayButton.isEnabled = true
+    @objc func buttonPressed(sender: UIButton) {
+        func reverseText(text: String) {
+            let result = "RESULT"
+            state = .result(result: result)
         }
-        return true
+        func clear() {
+            state = .initial
+        }
+        
+        switch state {
+        case .initial:
+            break
+        case .typing(let text):
+            reverseText(text: text)
+        case .result:
+            clear()
+        }
     }
     
     private func setupUI() {
-        
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
@@ -146,56 +144,39 @@ class ViewController: UIViewController  {
         //title for Navigation Controller
         self.title = "Reverse words"
     }
-    
-    private var clearAction = false
-    private var flag =  false // one more flag
+
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            answerTextView.isHidden = true
-            answerTextView.isEditable = false
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            answerTextView.text = ""
+            userText.text = ""
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
             displayButton.setTitle("Reverse", for: .normal)
-            userText.isUserInteractionEnabled = true
+            displayButton.isEnabled = false
         }
         
-        func applyTypingState() {  //applyTypingState(hasEnteredText: Bool)
-            if clearAction == false {
-                answerTextView.isHidden = false
-                answerTextView.isEditable = false
-                answerTextView.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                userText.isUserInteractionEnabled = false
+        func applyTypingText(hasEnteredText: Bool) {
+            if hasEnteredText {
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                let text = userText.text!
-                let reversedText = String(text.reversed())
-                answerTextView.text = reversedText
-                print(reversedText)
-                displayButton.setTitle("Clear", for: .normal)
-                clearAction = true
+                displayButton.isEnabled = true
+                displayButton.setTitle("Reverse", for: .normal)
             } else {
-                self.state = .result
+                applyInitialState()
             }
         }
         
-        func applyResultState() { //applyResultState(result: String)
-            answerTextView.isHidden = true
-            userText.text = ""
-            answerTextView.text = ""
-            self.displayButton.setTitle("Reverse", for: .normal)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            clearAction = false
-            displayButton.isEnabled = false
-            
-            self.state = .initial
+        func applyResultState(result: String) {
+            answerTextView.text = result
+            displayButton.setTitle("Clear", for: .normal)
         }
         
         switch state {
         case .initial:
             applyInitialState()
-        case .typing:
-            applyTypingState()
-        case .result:
-            applyResultState()
+        case .typing(let text):
+            applyTypingText(hasEnteredText: !text.isEmpty)
+        case .result(let result):
+            applyResultState(result: result)
         }
     }
 }
@@ -204,7 +185,6 @@ class ViewController: UIViewController  {
 extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing (_ textField: UITextField) {
-        state = .initial
         divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         return
     }
@@ -215,8 +195,14 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            state = .typing(text: updatedText)
+        }
         return true
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -228,8 +214,8 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController {
     enum State {
         case initial
-        case typing
-        case result
+        case typing(text: String)
+        case result(result: String)
     }
 }
 
