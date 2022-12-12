@@ -66,7 +66,7 @@ class ViewController: UIViewController  {
         return displayButton
     }()
     let reverser =  Reverser()
-    
+    var reverseText = String()
     
     
     override func viewDidLoad() {
@@ -80,25 +80,33 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-   
+    
     
     @objc func buttonPressed(sender: UIButton) {
-        func reverseText(text: String) {
-                    let result = "RESULT"
-//        reverser.reverserPrint()
-
-//        var answer = Reverser()
-//        answer.reverseFunc(userText)
-
-//            let result = answerTextView.text
-//            state = .result(result: result ?? "Enter your text")
-
-//        state = .result(result: )
+        //         var userText = userText
+        
+        
+        func funcReverse(reverserPrint: ()) -> String {
+            var result = String()
+            var reverseText = String()
+            
+            result =  answerTextView.text
+            reverseText =  result
+            return reverseText
+        
+            state = .result(result: result)
         }
+//    }
+        
+        //        state = .result(result: )
+//                }
     
-        func clear() {
-            state = .initial
-        }
+    func clear() {
+        state = .initial
+    }
+//}
+
+
         
         switch state {
         case .initial:
