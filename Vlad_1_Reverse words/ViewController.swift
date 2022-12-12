@@ -69,7 +69,7 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let reverser =  Reverser()
+//        let reverser =  Reverser()
         
         defaultConfiguration()
         setupUI()
@@ -81,18 +81,19 @@ class ViewController: UIViewController  {
    
     
     @objc func buttonPressed(sender: UIButton) {
-//        func reverseText(text: String) {
-        //            let result = "RESULT"
-        
-        
-        var answer = Reverser()
-        answer.reverseFunc(userText)
+        func reverseText(text: String) {
+                    let result = "RESULT"
+
+
+//        var answer = Reverser()
+//        answer.reverseFunc(userText)
 
 //            let result = answerTextView.text
 //            state = .result(result: result ?? "Enter your text")
 
-        state = .result(result: )
+//        state = .result(result: )
         }
+    
         func clear() {
             state = .initial
         }
