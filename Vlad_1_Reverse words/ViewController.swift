@@ -85,7 +85,6 @@ class ViewController: UIViewController  {
     @objc func buttonPressed(sender: UIButton) {
         //         var userText = userText
         
-        
         func funcReverse(reverserPrint: ()) -> String {
             var result = String()
             var reverseText = String()
@@ -96,18 +95,11 @@ class ViewController: UIViewController  {
         
             state = .result(result: result)
         }
-//    }
-        
-        //        state = .result(result: )
-//                }
-    
+
     func clear() {
         state = .initial
     }
-//}
-
-
-        
+  
         switch state {
         case .initial:
             break
