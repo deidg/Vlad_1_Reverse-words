@@ -65,11 +65,13 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
+    let reverser =  Reverser()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let reverser =  Reverser()
         
         defaultConfiguration()
         setupUI()
@@ -83,7 +85,7 @@ class ViewController: UIViewController  {
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
                     let result = "RESULT"
-
+//        reverser.reverserPrint()
 
 //        var answer = Reverser()
 //        answer.reverseFunc(userText)

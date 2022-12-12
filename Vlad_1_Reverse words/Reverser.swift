@@ -12,9 +12,14 @@ public class Reverser {
     var userText = UITextField()
     var answerTextView = UITextView()
     
-    func reverseFunc() {
-        let text = userText.text!
+    func reverserPrint() {
+        print("Its reverse print")
+    }
+    
+    func reverseFunc(userText: String) -> String {
+        let text = userText
            let reversedText = String(text.reversed())
            answerTextView.text = reversedText
+        return answerTextView.text
     }
 }
