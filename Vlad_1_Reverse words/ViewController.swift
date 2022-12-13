@@ -49,8 +49,12 @@ class ViewController: UIViewController  {
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
         answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
+
+//        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.backgroundColor = .red
+
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -86,6 +90,32 @@ class ViewController: UIViewController  {
     
     @objc func buttonPressed(sender: UIButton) {
         
+        func reverseText(text: String) {
+            let result = "RESULT"
+            state = .result(result: result)
+        }
+        func clear() {
+            state = .initial
+        }
+        
+        switch state {
+        case .initial:
+            break
+        case .typing(let text):
+            reverseText(text: text)
+        case .result:
+            clear()
+        }
+    }
+        
+        
+        
+        
+        
+        
+        
+       //====
+        
 //        func reverseText(userText: String) -> String {
 //            var text = reverseFunc()
 //            let answerTextView = text
@@ -94,9 +124,9 @@ class ViewController: UIViewController  {
 //            state = .typing(text: text)
 //        }
     
-    func clear() {
-        state = .initial
-    }
+//    func clear() {
+//        state = .initial
+//    }
     
 //    switch state {
 //    case .initial:
@@ -106,8 +136,8 @@ class ViewController: UIViewController  {
 //    case .result:
 //        clear()
 //    }
-}
-
+//}
+//===
 
 private func setupUI() {
     //largeLabel
@@ -139,6 +169,12 @@ private func setupUI() {
     
     //answerTextView
     view.addSubview(answerTextView) //7
+//    answerTextView.snp.makeConstraints { make in
+//        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+//        make.top.equalTo(divider.snp.bottom).offset(24.5)
+        //        make.height.equalTo(5)
+//        make.bottom.equalTo(displayButton.snp.top).offset(40)
+//    }
     
     //displayButton
     view.addSubview(displayButton)  //6
@@ -165,7 +201,7 @@ private func applyState(_ state: State) {
     func applyInitialState() {
         answerTextView.text = ""
         userText.text = ""
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         displayButton.setTitle("Reverse", for: .normal)
         displayButton.isEnabled = false
     }
@@ -202,6 +238,8 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing (_ textField: UITextField) {
         divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+
         return
     }
     
