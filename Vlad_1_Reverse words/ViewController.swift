@@ -14,6 +14,11 @@ class ViewController: UIViewController  {
             applyState(state)
         }
     }
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
+        return view
+    }()
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
@@ -49,12 +54,12 @@ class ViewController: UIViewController  {
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
         answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
-
-//        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
+        
+        //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.backgroundColor = .red
-
+        
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -71,19 +76,19 @@ class ViewController: UIViewController  {
     }()
     
     let reverser =  Reverser()
-
+    
     var reverseText = String()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.done
-//
-
-//        self.liveChatMessage.returnKeyType = .Send
-//        ViewController.introspectTextField { textfield in
-//            textfield.returnKeyType = .done
-//          }
+        //
+        
+        //        self.liveChatMessage.returnKeyType = .Send
+        //        ViewController.introspectTextField { textfield in
+        //            textfield.returnKeyType = .done
+        //          }
         
         defaultConfiguration()
         setupUI()
@@ -113,133 +118,138 @@ class ViewController: UIViewController  {
             clear()
         }
     }
-        
-        
-        
-        
-        
-        
-        
-       //====
-        
-//        func reverseText(userText: String) -> String {
-//            var text = reverseFunc()
-//            let answerTextView = text
-//            return answerTextView
-//
-//            state = .typing(text: text)
-//        }
     
-//    func clear() {
-//        state = .initial
-//    }
     
-//    switch state {
-//    case .initial:
-//        break
-//    case .typing(let text):
-////        reverseText(userText: text)  // (text: text)
-//    case .result:
-//        clear()
-//    }
-//}
-//===
-
-private func setupUI() {
-    //largeLabel
-    view.addSubview(largeLabel)  //2
-    largeLabel.snp.makeConstraints { make in
-        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-        make.top.equalToSuperview().offset(152)  // привщяат к safe area - выоста статус бара
-    }
-    // mainLabel
-    view.addSubview(mainLabel)  //3
-    mainLabel.snp.makeConstraints { make in
-        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
-        make.top.equalTo(largeLabel.snp.bottom).offset(16)
-    }
-    //userTextField
-    view.addSubview(userText) //4
-    userText.snp.makeConstraints { make in
-        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-        make.top.equalTo(mainLabel.snp.bottom).offset(59)
-    }
     
-    //        divider
-    view.addSubview(divider)  //5
-    divider.snp.makeConstraints { make in
-        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-        make.top.equalTo(userText.snp.bottom).offset(18.5)
-        make.height.equalTo(5)
-    }
     
-    //answerTextView
-    view.addSubview(answerTextView) //7
-//    answerTextView.snp.makeConstraints { make in
-//        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-//        make.top.equalTo(divider.snp.bottom).offset(24.5)
+    
+    
+    
+    //====
+    
+    //        func reverseText(userText: String) -> String {
+    //            var text = reverseFunc()
+    //            let answerTextView = text
+    //            return answerTextView
+    //
+    //            state = .typing(text: text)
+    //        }
+    
+    //    func clear() {
+    //        state = .initial
+    //    }
+    
+    //    switch state {
+    //    case .initial:
+    //        break
+    //    case .typing(let text):
+    ////        reverseText(userText: text)  // (text: text)
+    //    case .result:
+    //        clear()
+    //    }
+    //}
+    //===
+    
+    private func setupUI() {
+        //scrollView
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        //largeLabel
+        view.addSubview(largeLabel)  //2
+        largeLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalToSuperview().offset(152)  // привщяат к safe area - выоста статус бара
+        }
+        // mainLabel
+        view.addSubview(mainLabel)  //3
+        mainLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
+            make.top.equalTo(largeLabel.snp.bottom).offset(16)
+        }
+        //userTextField
+        view.addSubview(userText) //4
+        userText.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+        }
+        
+        //        divider
+        view.addSubview(divider)  //5
+        divider.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(userText.snp.bottom).offset(18.5)
+            make.height.equalTo(5)
+        }
+        
+        //answerTextView
+        view.addSubview(answerTextView) //7
+        //    answerTextView.snp.makeConstraints { make in
+        //        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        //        make.top.equalTo(divider.snp.bottom).offset(24.5)
         //        make.height.equalTo(5)
-//        make.bottom.equalTo(displayButton.snp.top).offset(40)
-//    }
-    
-    //displayButton
-    view.addSubview(displayButton)  //6
-    displayButton.snp.makeConstraints { make in
-        make.leading.trailing.equalToSuperview().inset(16)
-        make.height.equalTo(60)
-        make.bottom.equalToSuperview().offset(-66)
-    }
-}
-
-private func defaultConfiguration() {
-    self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-    
-    //MARK: navigationView
-    navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
-    navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
-    view.addSubview(navigationView)
-    //title for Navigation Controller
-    self.title = "Reverse words"
-}
-
-
-private func applyState(_ state: State) {
-    func applyInitialState() {
-        answerTextView.text = ""
-        userText.text = ""
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        displayButton.setTitle("Reverse", for: .normal)
-        displayButton.isEnabled = false
-    }
-    
-    func applyTypingText(hasEnteredText: Bool) {
-        if hasEnteredText {
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            displayButton.isEnabled = true
-            displayButton.setTitle("Reverse", for: .normal)
-        } else {
-            applyInitialState()
+        //        make.bottom.equalTo(displayButton.snp.top).offset(40)
+        //    }
+        
+        //displayButton
+        view.addSubview(displayButton)  //6
+        displayButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+            make.bottom.equalToSuperview().offset(-66)
         }
     }
     
-    func applyResultState(result: String) {
-        answerTextView.text = result
-        displayButton.setTitle("Clear", for: .normal)
+    private func defaultConfiguration() {
+        self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
+        //MARK: navigationView
+        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
+        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
+        view.addSubview(navigationView)
+        //title for Navigation Controller
+        self.title = "Reverse words"
     }
     
-    switch state {
-    case .initial:
-        applyInitialState()
-    case .typing(let text):
-        applyTypingText(hasEnteredText: !text.isEmpty)
-    case .result(let result):
-        applyResultState(result: result)
+    
+    private func applyState(_ state: State) {
+        func applyInitialState() {
+            answerTextView.text = ""
+            userText.text = ""
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.setTitle("Reverse", for: .normal)
+            displayButton.isEnabled = false
+        }
+        
+        func applyTypingText(hasEnteredText: Bool) {
+            if hasEnteredText {
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                displayButton.isEnabled = true
+                displayButton.setTitle("Reverse", for: .normal)
+            } else {
+                applyInitialState()
+            }
+        }
+        
+        func applyResultState(result: String) {
+            answerTextView.text = result
+            displayButton.setTitle("Clear", for: .normal)
+        }
+        
+        switch state {
+        case .initial:
+            applyInitialState()
+        case .typing(let text):
+            applyTypingText(hasEnteredText: !text.isEmpty)
+        case .result(let result):
+            applyResultState(result: result)
+        }
     }
-}
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        textField.returnKeyType = .done
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        textField.returnKeyType = .done
+    //    }
 }
 
 
@@ -254,7 +264,7 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing (_ textField: UITextField) {
         divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-
+        
         return
     }
     
