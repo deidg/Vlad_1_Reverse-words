@@ -15,9 +15,9 @@ class ViewController: UIViewController  {
         }
     }
     private let scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
-        return view
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
+        return scrollView
     }()
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
@@ -53,7 +53,7 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 30)
+        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
         
         //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
@@ -83,7 +83,7 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.done
-        //
+        //TODO: запрограммировать кнопку DONE
         
         //        self.liveChatMessage.returnKeyType = .Send
         //        ViewController.introspectTextField { textfield in
@@ -92,6 +92,8 @@ class ViewController: UIViewController  {
         
         defaultConfiguration()
         setupUI()
+//        initialSetup()
+        
         userText.delegate = self
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
@@ -119,9 +121,32 @@ class ViewController: UIViewController  {
         }
     }
     
+    private func initialSetup() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+        
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+        
+        @objc private func keyboardWillShow(notification: NSNotification) {
+            
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                
+                let keyboardHeight = keyboardFrame.cgRectValue.height
+                let bottomSpace = self.view.frame.height - (displayButton.frame.origin.y + displayButton.frame.height)
+                self.view.frame.origin.y -= keyboardHeight - bottomSpace + 10
+            }
+        }
     
     
-    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+
+    }
+
     
     
     
@@ -252,6 +277,8 @@ class ViewController: UIViewController  {
     //    }
 }
 
+    
+    
 
 
 
