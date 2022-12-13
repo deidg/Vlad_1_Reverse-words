@@ -77,7 +77,13 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userText.returnKeyType = UIReturnKeyType.done
+//
+
+//        self.liveChatMessage.returnKeyType = .Send
+//        ViewController.introspectTextField { textfield in
+//            textfield.returnKeyType = .done
+//          }
         
         defaultConfiguration()
         setupUI()
@@ -230,7 +236,13 @@ private func applyState(_ state: State) {
         applyResultState(result: result)
     }
 }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        textField.returnKeyType = .done
+//    }
 }
+
+
 
 
 //MARK: extension
