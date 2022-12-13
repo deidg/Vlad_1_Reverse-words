@@ -65,7 +65,9 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
+    
     let reverser =  Reverser()
+
     var reverseText = String()
     
     
@@ -83,118 +85,116 @@ class ViewController: UIViewController  {
     
     
     @objc func buttonPressed(sender: UIButton) {
-        //         var userText = userText
         
-        func funcReverse(reverserPrint: ()) -> String {
-            var result = String()
-            var reverseText = String()
+        func reverseText(userText: String) -> String {
+            var text = reverseFunc()
+            let answerTextView = text
+            return answerTextView
             
-            result =  answerTextView.text
-            reverseText =  result
-            return reverseText
-        
-            state = .result(result: result)
+            state = .typing(text: text)
         }
-
+    
+        
     func clear() {
         state = .initial
     }
-  
-        switch state {
-        case .initial:
-            break
-        case .typing(let text):
-            reverseText(text: text)
-        case .result:
-            clear()
-        }
-    }
     
-    private func setupUI() {
-        //largeLabel
-        view.addSubview(largeLabel)  //2
-        largeLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalToSuperview().offset(152)  // привщяат к safe area - выоста статус бара
-        }
-        // mainLabel
-        view.addSubview(mainLabel)  //3
-        mainLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
-            make.top.equalTo(largeLabel.snp.bottom).offset(16)
-        }
-        //userTextField
-        view.addSubview(userText) //4
-        userText.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(mainLabel.snp.bottom).offset(59)
-        }
-        
-        //        divider
-        view.addSubview(divider)  //5
-        divider.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(userText.snp.bottom).offset(18.5)
-            make.height.equalTo(5)
-        }
-        
-        //answerTextView
-        view.addSubview(answerTextView) //7
-        
-        //displayButton
-        view.addSubview(displayButton)  //6
-        displayButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-66)
-        }
+    switch state {
+    case .initial:
+        break
+    case .typing(let text):
+        reverseText(userText: text)  // (text: text)
+    case .result:
+        clear()
     }
-    
-    private func defaultConfiguration() {
-        self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
-        //MARK: navigationView
-        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
-        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
-        view.addSubview(navigationView)
-        //title for Navigation Controller
-        self.title = "Reverse words"
-    }
+}
 
+
+private func setupUI() {
+    //largeLabel
+    view.addSubview(largeLabel)  //2
+    largeLabel.snp.makeConstraints { make in
+        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        make.top.equalToSuperview().offset(152)  // привщяат к safe area - выоста статус бара
+    }
+    // mainLabel
+    view.addSubview(mainLabel)  //3
+    mainLabel.snp.makeConstraints { make in
+        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
+        make.top.equalTo(largeLabel.snp.bottom).offset(16)
+    }
+    //userTextField
+    view.addSubview(userText) //4
+    userText.snp.makeConstraints { make in
+        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        make.top.equalTo(mainLabel.snp.bottom).offset(59)
+    }
     
-    private func applyState(_ state: State) {
-        func applyInitialState() {
-            answerTextView.text = ""
-            userText.text = ""
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+    //        divider
+    view.addSubview(divider)  //5
+    divider.snp.makeConstraints { make in
+        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        make.top.equalTo(userText.snp.bottom).offset(18.5)
+        make.height.equalTo(5)
+    }
+    
+    //answerTextView
+    view.addSubview(answerTextView) //7
+    
+    //displayButton
+    view.addSubview(displayButton)  //6
+    displayButton.snp.makeConstraints { make in
+        make.leading.trailing.equalToSuperview().inset(16)
+        make.height.equalTo(60)
+        make.bottom.equalToSuperview().offset(-66)
+    }
+}
+
+private func defaultConfiguration() {
+    self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+    
+    //MARK: navigationView
+    navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
+    navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
+    view.addSubview(navigationView)
+    //title for Navigation Controller
+    self.title = "Reverse words"
+}
+
+
+private func applyState(_ state: State) {
+    func applyInitialState() {
+        answerTextView.text = ""
+        userText.text = ""
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        displayButton.setTitle("Reverse", for: .normal)
+        displayButton.isEnabled = false
+    }
+    
+    func applyTypingText(hasEnteredText: Bool) {
+        if hasEnteredText {
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.isEnabled = true
             displayButton.setTitle("Reverse", for: .normal)
-            displayButton.isEnabled = false
-        }
-        
-        func applyTypingText(hasEnteredText: Bool) {
-            if hasEnteredText {
-                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                displayButton.isEnabled = true
-                displayButton.setTitle("Reverse", for: .normal)
-            } else {
-                applyInitialState()
-            }
-        }
-        
-        func applyResultState(result: String) {
-            answerTextView.text = result
-            displayButton.setTitle("Clear", for: .normal)
-        }
-        
-        switch state {
-        case .initial:
+        } else {
             applyInitialState()
-        case .typing(let text):
-            applyTypingText(hasEnteredText: !text.isEmpty)
-        case .result(let result):
-            applyResultState(result: result)
         }
     }
+    
+    func applyResultState(result: String) {
+        answerTextView.text = result
+        displayButton.setTitle("Clear", for: .normal)
+    }
+    
+    switch state {
+    case .initial:
+        applyInitialState()
+    case .typing(let text):
+        applyTypingText(hasEnteredText: !text.isEmpty)
+    case .result(let result):
+        applyResultState(result: result)
+    }
+}
 }
 
 
