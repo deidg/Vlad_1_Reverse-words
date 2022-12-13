@@ -53,7 +53,7 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
+        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250) // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
         
         //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
@@ -92,7 +92,7 @@ class ViewController: UIViewController  {
         
         defaultConfiguration()
         setupUI()
-//        initialSetup()
+        initialSetup()
         
         userText.delegate = self
         
