@@ -86,27 +86,26 @@ class ViewController: UIViewController  {
     
     @objc func buttonPressed(sender: UIButton) {
         
-        func reverseText(userText: String) -> String {
-            var text = reverseFunc()
-            let answerTextView = text
-            return answerTextView
-            
-            state = .typing(text: text)
-        }
+//        func reverseText(userText: String) -> String {
+//            var text = reverseFunc()
+//            let answerTextView = text
+//            return answerTextView
+//
+//            state = .typing(text: text)
+//        }
     
-        
     func clear() {
         state = .initial
     }
     
-    switch state {
-    case .initial:
-        break
-    case .typing(let text):
-        reverseText(userText: text)  // (text: text)
-    case .result:
-        clear()
-    }
+//    switch state {
+//    case .initial:
+//        break
+//    case .typing(let text):
+////        reverseText(userText: text)  // (text: text)
+//    case .result:
+//        clear()
+//    }
 }
 
 
