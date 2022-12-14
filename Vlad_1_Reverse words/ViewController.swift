@@ -92,6 +92,8 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
+//        self.inputText.delegate = self;
+        
         //TODO: запрограммировать кнопку DONE
         
         //        self.liveChatMessage.returnKeyType = .Send
@@ -120,12 +122,16 @@ class ViewController: UIViewController  {
     }
     
     
-//    @objc func myTextFieldAction(sender: UITextField) {    //   переименовать функцию
-//        func reverseText(userText: String) {
-//            let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
-//            state = .result(result: result)
-//        }
-//        }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Tell the keyboard where to go on next / go button.
+        if textField == userText {
+            let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
+            state = .result(result: result)
+        }
+        return true
+    }
+    
+    
     
     @objc func buttonPressed(sender: UIButton) {
         
@@ -133,12 +139,9 @@ class ViewController: UIViewController  {
             let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
         }
-        
-        
         func clear() {
             state = .initial
         }
-        
         switch state {
         case .initial:
             break
@@ -149,12 +152,21 @@ class ViewController: UIViewController  {
         }
     }
     
-    func continueButtonFunc(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            userText.resignFirstResponder()
-        }
-        return true
-    }
+//    func textFieldShouldReturn(userText textField: UITextField) -> Bool {
+//        if userText == inputText {
+//            textField.resignFirstResponder()
+//            return false
+//        }
+//        return true
+//    }
+    
+ //========
+//    func continueButtonFunc(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if (text == "\n") {
+//            userText.resignFirstResponder()
+//        }
+//        return true
+//    }
     
     private func initialSetup() {
 //        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
