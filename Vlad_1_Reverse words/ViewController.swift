@@ -3,6 +3,10 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
+//  разобраться почему экран уходит за потолок.  Скролл вью виноват?  дальше по листку
+
+//279, 263 убрать коммент
+
 
 import UIKit
 import SnapKit
@@ -16,7 +20,11 @@ class ViewController: UIViewController  {
     }
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
+        scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
+        scrollView.backgroundColor = .red
+        // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
+
+//        scrollView.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
         return scrollView
     }()
     let navigationView = UIView() //1
@@ -51,9 +59,9 @@ class ViewController: UIViewController  {
         return divider
     }()
     
-    var answerTextView: UITextView = { // 7 - поле с ответом
+  /*  var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250) // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
+        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 30) // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
         
         //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
@@ -64,7 +72,7 @@ class ViewController: UIViewController  {
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
         return answerTextView
-    }()
+    }()    */
     
     var displayButton: UIButton = { // 6
         let displayButton = UIButton()
@@ -142,9 +150,8 @@ class ViewController: UIViewController  {
             }
         }
     
-    
     @objc private func keyboardWillHide(notification: NSNotification) {
-
+        self.view.frame.origin.y = 0
     }
 
     
@@ -178,9 +185,25 @@ class ViewController: UIViewController  {
     private func setupUI() {
         //scrollView
         view.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        scrollView.snp.makeConstraints { make in
+//                    make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+//                    make.top.equalTo(view).offset(377)
+
+//            make.top.equalTo(view.).offset(377)
+//                    make.height.equalTo(300)
+//                    make.bottom.equalTo(displayButton.snp.top).offset(40)
+        
+        //            make.edges.equalToSuperview()
+
+//                }
+            
+            
+//            make.edges.equalTo(answerTextView)
+//            make.edges.equalToSuperview()
+            
+            
+//            scrollView.frame == answerTextView.frame
+//        }
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
@@ -209,13 +232,19 @@ class ViewController: UIViewController  {
         }
         
         //answerTextView
-        view.addSubview(answerTextView) //7
-        //    answerTextView.snp.makeConstraints { make in
+   /*     view.addSubview(answerTextView) //7
+//        answerTextView.snp.makeConstraints { make in
+//            make.edges.equalTo(scrollView)
+//        }
+             
+                
+                
         //        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
         //        make.top.equalTo(divider.snp.bottom).offset(24.5)
         //        make.height.equalTo(5)
         //        make.bottom.equalTo(displayButton.snp.top).offset(40)
         //    }
+    */
         
         //displayButton
         view.addSubview(displayButton)  //6
@@ -240,7 +269,7 @@ class ViewController: UIViewController  {
     
     private func applyState(_ state: State) {
         func applyInitialState() {
-            answerTextView.text = ""
+//            answerTextView.text = ""
             userText.text = ""
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.setTitle("Reverse", for: .normal)
@@ -258,7 +287,7 @@ class ViewController: UIViewController  {
         }
         
         func applyResultState(result: String) {
-            answerTextView.text = result
+//            answerTextView.text = result
             displayButton.setTitle("Clear", for: .normal)
         }
         
