@@ -21,8 +21,9 @@ class ViewController: UIViewController  {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
+////
 //        scrollView.backgroundColor = .red
-        // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
+//        // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
 
 //        scrollView.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
         return scrollView
@@ -185,10 +186,11 @@ class ViewController: UIViewController  {
     private func setupUI() {
         //scrollView
         view.addSubview(scrollView)
-        scrollView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(view).offset(377)
-        }
+//        scrollView.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+//            make.top.equalTo(view).inset(377)
+//            make.bottom.equalTo(displayButton).offset(16)
+//        }
 //            make.top.equalTo(view.).offset(377)
 //                    make.height.equalTo(300)
 //                    make.bottom.equalTo(displayButton.snp.top).offset(40)
@@ -232,10 +234,14 @@ class ViewController: UIViewController  {
         }
         
 //        answerTextView
-        scrollView.addSubview(answerTextView)  //7
-        answerTextView.snp.makeConstraints{ make in
-            make.edges.equalTo(scrollView)
-        }
+        view.addSubview(answerTextView)  //7
+
+//        scrollView.addSubview(answerTextView)  //7
+//        answerTextView.snp.makeConstraints{ make in
+//            make.edges.equalTo(scrollView)
+//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+//            make.top.equalTo(view).offset(377)
+//        }
         
 //        view.addSubview(answerTextView) //7
 
