@@ -5,7 +5,6 @@
 //  Created by Alex on 17.11.2022.
 //  разобраться почему экран уходит за потолок.  Скролл вью виноват?  дальше по листку
 
-//279, 263 убрать коммент
 
 
 import UIKit
@@ -21,11 +20,6 @@ class ViewController: UIViewController  {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
-////
-//        scrollView.backgroundColor = .red
-//        // странно при нажатии на поле ответа клава уходит, а на лейблы сверху - не уходит
-
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false   // translatesAutoresizingMaskIntoConstraints
         return scrollView
     }()
     let navigationView = UIView() //1
@@ -92,20 +86,12 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
-//        self.inputText.delegate = self;
-        
-        //TODO: запрограммировать кнопку DONE
-        
-        //        self.liveChatMessage.returnKeyType = .Send
-        //        ViewController.introspectTextField { textfield in
-        //            textfield.returnKeyType = .done
-        //          }
-        
+        userText.delegate = self
+
         defaultConfiguration()
         setupUI()
         initialSetup()
         
-        userText.delegate = self
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
 //        userText.addTarget(self, action: #selector(myTextFieldAction),
@@ -127,6 +113,7 @@ class ViewController: UIViewController  {
         if textField == userText {
             let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
+            view.endEditing(true)
         }
         return true
     }
@@ -352,14 +339,7 @@ extension ViewController: UITextFieldDelegate {
         return
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text,
-           let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string)
-            state = .typing(text: updatedText)
-        }
-        return true
-    }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
