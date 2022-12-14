@@ -106,6 +106,16 @@ class ViewController: UIViewController  {
         userText.delegate = self
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), // наименование селектора
+                                               name:  UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     
@@ -131,29 +141,29 @@ class ViewController: UIViewController  {
     }
     
     private func initialSetup() {
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    @objc private func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-        
-        @objc private func keyboardWillShow(notification: NSNotification) {
-            
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                
-                let keyboardHeight = keyboardFrame.cgRectValue.height
-                let bottomSpace = self.view.frame.height - (displayButton.frame.origin.y + displayButton.frame.height)
-                self.view.frame.origin.y -= keyboardHeight - bottomSpace + 10
-            }
-        }
-    
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
-    }
+//    @objc private func hideKeyboard() {
+//        self.view.endEditing(true)
+//    }
+//
+//        @objc private func keyboardWillShow(notification: NSNotification) {
+//
+//            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//
+//                let keyboardHeight = keyboardFrame.cgRectValue.height
+//                let bottomSpace = self.view.frame.height - (displayButton.frame.origin.y + displayButton.frame.height)
+//                self.view.frame.origin.y -= keyboardHeight - bottomSpace + 10
+//            }
+//        }
+//
+//    @objc private func keyboardWillHide(notification: NSNotification) {
+//        self.view.frame.origin.y = 0
+//    }
 
     
     
@@ -276,9 +286,29 @@ class ViewController: UIViewController  {
     //        super.viewWillAppear(animated)
     //        textField.returnKeyType = .done
     //    }
+    
+    @objc func updateTextView(notification: Notification) {
+
+        guard
+            let userInfo =  notification.userInfo as? [String: Any],
+              let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else {  return }
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            answerTextView.contentInset = UIEdgeInsets.zero
+        } else {
+            answerTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height - 30, right: 0) // он тут создает аутлет?? констрейнта?? к нижней границе экрана
+            answerTextView.scrollIndicatorInsets = answerTextView.contentInset
+        }
+        answerTextView.scrollRangeToVisible(answerTextView.selectedRange)
+    }
+    
 }
 
     
+
+
+
     
 
 
