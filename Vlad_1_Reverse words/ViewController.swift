@@ -67,7 +67,7 @@ class ViewController: UIViewController  {
         //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        answerTextView.backgroundColor = .green
+//        answerTextView.backgroundColor = .green
         
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
@@ -297,19 +297,16 @@ class ViewController: UIViewController  {
         if notification.name == UIResponder.keyboardWillHideNotification {
             answerTextView.contentInset = UIEdgeInsets.zero
         } else {
-            answerTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height - 30, right: 0) // он тут создает аутлет?? констрейнта?? к нижней границе экрана
+            answerTextView.contentInset = UIEdgeInsets(top: 0,
+                                                       left: 0,
+                                                       bottom: keyboardFrame.height, // он тут создает аутлет?? констрейнта?? к нижней границе экрана
+                                                       right: 0)
             answerTextView.scrollIndicatorInsets = answerTextView.contentInset
         }
         answerTextView.scrollRangeToVisible(answerTextView.selectedRange)
     }
     
 }
-
-    
-
-
-
-    
 
 
 
