@@ -113,7 +113,7 @@ class ViewController: UIViewController  {
     @objc func buttonPressed(sender: UIButton) {
         
         func reverseText(text: String) {
-            let result = "RESULT"
+            let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
         }
         func clear() {
@@ -186,26 +186,7 @@ class ViewController: UIViewController  {
     private func setupUI() {
         //scrollView
         view.addSubview(scrollView)
-//        scrollView.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            make.top.equalTo(view).inset(377)
-//            make.bottom.equalTo(displayButton).offset(16)
-//        }
-//            make.top.equalTo(view.).offset(377)
-//                    make.height.equalTo(300)
-//                    make.bottom.equalTo(displayButton.snp.top).offset(40)
-        
-        //            make.edges.equalToSuperview()
 
-//                }
-            
-            
-//            make.edges.equalTo(answerTextView)
-//            make.edges.equalToSuperview()
-            
-            
-//            scrollView.frame == answerTextView.frame
-//        }
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
@@ -236,27 +217,6 @@ class ViewController: UIViewController  {
 //        answerTextView
         view.addSubview(answerTextView)  //7
 
-//        scrollView.addSubview(answerTextView)  //7
-//        answerTextView.snp.makeConstraints{ make in
-//            make.edges.equalTo(scrollView)
-//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            make.top.equalTo(view).offset(377)
-//        }
-        
-//        view.addSubview(answerTextView) //7
-
-//        answerTextView.snp.makeConstraints { make in
-//            make.edges.equalTo(scrollView)
-//        }
-             
-                
-                
-        //        make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-        //        make.top.equalTo(divider.snp.bottom).offset(24.5)
-        //        make.height.equalTo(5)
-        //        make.bottom.equalTo(displayButton.snp.top).offset(40)
-        //    }
-    
         
         //displayButton
         view.addSubview(displayButton)  //6
