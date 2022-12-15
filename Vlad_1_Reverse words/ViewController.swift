@@ -16,11 +16,11 @@ class ViewController: UIViewController  {
             applyState(state)
         }
     }
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
-        return scrollView
-    }()
+//    private let scrollView: UIScrollView = {
+//        let scrollView = UIScrollView()
+//        scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
+//        return scrollView
+//    }()
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
@@ -92,13 +92,13 @@ class ViewController: UIViewController  {
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), // наименование селектора
-                                               name:  UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), // наименование селектора
+//                                               name:  UIResponder.keyboardWillShowNotification,
+//                                               object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )),
+//                                               name: UIResponder.keyboardWillHideNotification,
+//                                               object: nil)
         
         
         
@@ -209,7 +209,7 @@ class ViewController: UIViewController  {
     
     private func setupUI() {
         //scrollView
-        view.addSubview(scrollView)
+//        view.addSubview(scrollView)
         
         //largeLabel
         view.addSubview(largeLabel)  //2
@@ -302,24 +302,24 @@ class ViewController: UIViewController  {
     //        textField.returnKeyType = .done
     //    }
     
-    @objc func updateTextView(notification: Notification) {    // регулировка появления клавиатуры
-        
-        guard
-            let userInfo =  notification.userInfo as? [String: Any],
-            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        else {  return }
-        
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            answerTextView.contentInset = UIEdgeInsets.zero
-        } else {
-            answerTextView.contentInset = UIEdgeInsets(top: 0,
-                                                       left: 0,
-                                                       bottom: keyboardFrame.height, // он тут создает аутлет! констрейнта?? к нижней границе экрана
-                                                       right: 0)
-            answerTextView.scrollIndicatorInsets = answerTextView.contentInset
-        }
-        answerTextView.scrollRangeToVisible(answerTextView.selectedRange)
-    }  // регулировка появления клавиатуры
+//    @objc func updateTextView(notification: Notification) {    // регулировка появления клавиатуры
+//
+//        guard
+//            let userInfo =  notification.userInfo as? [String: Any],
+//            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+//        else {  return }
+//
+//        if notification.name == UIResponder.keyboardWillHideNotification {
+//            answerTextView.contentInset = UIEdgeInsets.zero
+//        } else {
+//            answerTextView.contentInset = UIEdgeInsets(top: 0,
+//                                                       left: 0,
+//                                                       bottom: keyboardFrame.height, // он тут создает аутлет! констрейнта?? к нижней границе экрана
+//                                                       right: 0)
+//            answerTextView.scrollIndicatorInsets = answerTextView.contentInset
+//        }
+//        answerTextView.scrollRangeToVisible(answerTextView.selectedRange)
+//    }  // регулировка появления клавиатуры
     
     }
     
