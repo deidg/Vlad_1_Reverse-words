@@ -79,14 +79,14 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Tell the keyboard where to go on next / go button.
-        if textField == userText {
-            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu. Donec in sapien ut nunc suscipit consectetur. Aenean aliquet risus sit amet sodales commodo. Vestibulum vitae facilisis lacus. Sed a ante facilisis, hendrerit erat vitae, faucibus nulla. Donec suscipit augue at urna dictum sodales. Nulla ut arcu velit. Integer imperdiet magna in urna fermentum laoreet. Nam et auctor risus. Cras ornare augue ante, ut dictum neque efficitur ut."
+    func textFieldShouldReturn(_ textField: UITextField) {
+       
+        func reverseFunc(userText: String) {
+            let result = String(reverser.self)   //.reversedText
             state = .result(result: result)
             view.endEditing(true)
         }
-        return true
+        return
     }
     
     @objc func buttonPressed(sender: UIButton) {
