@@ -18,7 +18,6 @@ public class Reverser {
 //           answerTextView.text = reversedText
 //        return answerTextView.text
         
-//        answerTextView = reversedText
      return reversedText
     }
 }
