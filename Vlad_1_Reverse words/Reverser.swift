@@ -8,16 +8,10 @@
 import Foundation
 import UIKit
 
-public class Reverser {
-//    var userText = UITextField()
-//    var answerTextView = UITextView()
-    
-    public func reverseFunc(userText: String) -> String {
+class Reverser {
+    private func reverseFunc(userText: String) -> String {
         let text = userText
            let reversedText = String(text.reversed())
-//           answerTextView.text = reversedText
-//        return answerTextView.text
-        
      return reversedText
     }
 }
