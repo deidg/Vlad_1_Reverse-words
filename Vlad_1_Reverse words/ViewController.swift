@@ -64,6 +64,14 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
+        
+    class Reverser {
+         func reverseFunc(userText: String) -> String {
+               let reversedText = String(userText.reversed())
+         return reversedText
+        }
+    }
+    
     
     let reverser =  Reverser()
     var reverseText = String()
@@ -79,15 +87,9 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) {
-       
-        func reverseFunc(userText: String) {
-            let result = String(reverser.self)   //.reversedText
-            state = .result(result: result)
-            view.endEditing(true)
-        }
-        return
-    }
+
+    
+
     
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -212,6 +214,15 @@ extension ViewController: UITextFieldDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+            func reverseFunc(userText: String) {
+                let result = reverser.reverseFunc(userText: userText)
+                state = .result(result: result)
+            }
+        return true
+    }
 }
 
 extension ViewController {
@@ -222,5 +233,10 @@ extension ViewController {
     }
 }
 
-
+//class Reverser {
+//     func reverseFunc(userText: String) -> String {
+//           let reversedText = String(userText.reversed())
+//     return reversedText
+//    }
+//}
 

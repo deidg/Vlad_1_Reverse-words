@@ -15,7 +15,6 @@
 		FA8BDED52925EF3B00F88713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED32925EF3B00F88713 /* Main.storyboard */; };
 		FA8BDED72925EF3D00F88713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED62925EF3D00F88713 /* Assets.xcassets */; };
 		FA8BDEDA2925EF3D00F88713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED82925EF3D00F88713 /* LaunchScreen.storyboard */; };
-		FA9FA6002945AF20001844CC /* Reverser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FA5FF2945AF20001844CC /* Reverser.swift */; };
 		FAF853F9292BE49900FCE681 /* sempl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF853F8292BE49900FCE681 /* sempl.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		FA8BDED62925EF3D00F88713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8BDED92925EF3D00F88713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8BDEDB2925EF3D00F88713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA9FA5FF2945AF20001844CC /* Reverser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reverser.swift; sourceTree = "<group>"; };
 		FAF853F8292BE49900FCE681 /* sempl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sempl.swift; sourceTree = "<group>"; };
 		FAF853FB292BE59100FCE681 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile.lock; path = ../../../../../Snapkit3/Podfile.lock; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +71,6 @@
 				FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */,
 				FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */,
 				FA8BDED12925EF3B00F88713 /* ViewController.swift */,
-				FA9FA5FF2945AF20001844CC /* Reverser.swift */,
 				FA8519A829363AED00F345F8 /* DisplayButton.swift */,
 				FA8BDED32925EF3B00F88713 /* Main.storyboard */,
 				FA8BDED62925EF3D00F88713 /* Assets.xcassets */,
@@ -222,7 +219,6 @@
 				FA8BDECE2925EF3B00F88713 /* AppDelegate.swift in Sources */,
 				FA8BDED02925EF3B00F88713 /* SceneDelegate.swift in Sources */,
 				FAF853F9292BE49900FCE681 /* sempl.swift in Sources */,
-				FA9FA6002945AF20001844CC /* Reverser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
