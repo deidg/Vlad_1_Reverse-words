@@ -66,8 +66,8 @@ class ViewController: UIViewController  {
     }()
         
     class Reverser {
-         func reverseFunc(userText: String) -> String {
-               let reversedText = String(userText.reversed())
+         func reverseFunc(textToReverse: String) -> String {
+               let reversedText = String(textToReverse.reversed())
          return reversedText
         }
     }
@@ -214,15 +214,17 @@ extension ViewController: UITextFieldDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-            func reverseFunc(userText: String) {
-                let result = reverser.reverseFunc(userText: userText)
-                state = .result(result: result)
-            }
+        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
+        view.endEditing(true)
+        state = .result(result: result)
         return true
     }
+    
+    
+    
+    
 }
 
 extension ViewController {
@@ -233,10 +235,5 @@ extension ViewController {
     }
 }
 
-//class Reverser {
-//     func reverseFunc(userText: String) -> String {
-//           let reversedText = String(userText.reversed())
-//     return reversedText
-//    }
-//}
+
 
