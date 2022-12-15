@@ -3,8 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//  разобраться почему экран уходит за потолок.  Скролл вью виноват?  дальше по листку
-
+//  продолжить поиск почему не срабатывает кнопка. если не получится - откатиться назад.
 
 
 import UIKit
@@ -47,7 +46,6 @@ class ViewController: UIViewController  {
         userText.isUserInteractionEnabled = true
         return userText
     }()
-    
     var divider: UIView = {  //5
         let divider = UIView()
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
@@ -61,7 +59,7 @@ class ViewController: UIViewController  {
         //        answerTextView.frame = CGRect(x: 15, y: 378, width: 198, height: 230)   рыба
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//        answerTextView.backgroundColor = .green
+        //        answerTextView.backgroundColor = .green
         
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
@@ -87,16 +85,12 @@ class ViewController: UIViewController  {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
         userText.delegate = self
-
+        
         defaultConfiguration()
         setupUI()
-        initialSetup()
-        
+        //        initialSetup()
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-//        userText.addTarget(self, action: #selector(myTextFieldAction),
-//                           for: UIControl.Event.primaryActionTriggered)
-//
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )), // наименование селектора
                                                name:  UIResponder.keyboardWillShowNotification,
@@ -105,7 +99,14 @@ class ViewController: UIViewController  {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTextView(notification: )),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+        
+        
+        
     }
+    
+    
+    
+    
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -113,7 +114,6 @@ class ViewController: UIViewController  {
         if textField == userText {
             let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
-            view.endEditing(true)
         }
         return true
     }
@@ -121,7 +121,6 @@ class ViewController: UIViewController  {
     
     
     @objc func buttonPressed(sender: UIButton) {
-        
         func reverseText(text: String) {
             let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
@@ -139,47 +138,47 @@ class ViewController: UIViewController  {
         }
     }
     
-//    func textFieldShouldReturn(userText textField: UITextField) -> Bool {
-//        if userText == inputText {
-//            textField.resignFirstResponder()
-//            return false
-//        }
-//        return true
-//    }
+    //    func textFieldShouldReturn(userText textField: UITextField) -> Bool {
+    //        if userText == inputText {
+    //            textField.resignFirstResponder()
+    //            return false
+    //        }
+    //        return true
+    //    }
     
- //========
-//    func continueButtonFunc(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if (text == "\n") {
-//            userText.resignFirstResponder()
-//        }
-//        return true
-//    }
+    //========
+    //    func continueButtonFunc(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    //        if (text == "\n") {
+    //            userText.resignFirstResponder()
+    //        }
+    //        return true
+    //    }
     
-    private func initialSetup() {
-//        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-        
-//    @objc private func hideKeyboard() {
-//        self.view.endEditing(true)
-//    }
-//
-//        @objc private func keyboardWillShow(notification: NSNotification) {
-//
-//            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//
-//                let keyboardHeight = keyboardFrame.cgRectValue.height
-//                let bottomSpace = self.view.frame.height - (displayButton.frame.origin.y + displayButton.frame.height)
-//                self.view.frame.origin.y -= keyboardHeight - bottomSpace + 10
-//            }
-//        }
-//
-//    @objc private func keyboardWillHide(notification: NSNotification) {
-//        self.view.frame.origin.y = 0
-//    }
-
+    //    private func initialSetup() {
+    //        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+    
+    //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+    //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    //    }
+    
+    //    @objc private func hideKeyboard() {
+    //        self.view.endEditing(true)
+    //    }
+    //
+    //        @objc private func keyboardWillShow(notification: NSNotification) {
+    //
+    //            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+    //
+    //                let keyboardHeight = keyboardFrame.cgRectValue.height
+    //                let bottomSpace = self.view.frame.height - (displayButton.frame.origin.y + displayButton.frame.height)
+    //                self.view.frame.origin.y -= keyboardHeight - bottomSpace + 10
+    //            }
+    //        }
+    //
+    //    @objc private func keyboardWillHide(notification: NSNotification) {
+    //        self.view.frame.origin.y = 0
+    //    }
+    
     
     
     
@@ -211,7 +210,7 @@ class ViewController: UIViewController  {
     private func setupUI() {
         //scrollView
         view.addSubview(scrollView)
-
+        
         //largeLabel
         view.addSubview(largeLabel)  //2
         largeLabel.snp.makeConstraints { make in
@@ -239,9 +238,9 @@ class ViewController: UIViewController  {
             make.height.equalTo(5)
         }
         
-//        answerTextView
+        //        answerTextView
         view.addSubview(answerTextView)  //7
-
+        
         
         //displayButton
         view.addSubview(displayButton)  //6
@@ -297,16 +296,17 @@ class ViewController: UIViewController  {
             applyResultState(result: result)
         }
     }
+    
     //    override func viewWillAppear(_ animated: Bool) {
     //        super.viewWillAppear(animated)
     //        textField.returnKeyType = .done
     //    }
     
-    @objc func updateTextView(notification: Notification) {
-
+    @objc func updateTextView(notification: Notification) {    // регулировка появления клавиатуры
+        
         guard
             let userInfo =  notification.userInfo as? [String: Any],
-              let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         else {  return }
         
         if notification.name == UIResponder.keyboardWillHideNotification {
@@ -314,47 +314,46 @@ class ViewController: UIViewController  {
         } else {
             answerTextView.contentInset = UIEdgeInsets(top: 0,
                                                        left: 0,
-                                                       bottom: keyboardFrame.height, // он тут создает аутлет?? констрейнта?? к нижней границе экрана
+                                                       bottom: keyboardFrame.height, // он тут создает аутлет! констрейнта?? к нижней границе экрана
                                                        right: 0)
             answerTextView.scrollIndicatorInsets = answerTextView.contentInset
         }
         answerTextView.scrollRangeToVisible(answerTextView.selectedRange)
+    }  // регулировка появления клавиатуры
+    
     }
     
-}
-
-
-//MARK: extension
-
-extension ViewController: UITextFieldDelegate {
+   
     
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        return
+    
+    //MARK: extension
+    
+    extension ViewController: UITextFieldDelegate {
+        
+        func textFieldDidBeginEditing (_ textField: UITextField) {
+            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            return
+        }
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+            return
+        }
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-        return
+    extension ViewController {
+        enum State {
+            case initial
+            case typing(text: String)
+            case result(result: String)
+        }
     }
     
-
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-}
-
-extension ViewController {
-    enum State {
-        case initial
-        case typing(text: String)
-        case result(result: String)
-    }
-}
-
 
