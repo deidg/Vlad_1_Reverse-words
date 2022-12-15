@@ -3,7 +3,6 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//  продолжить поиск почему не срабатывает кнопка. если не получится - откатиться назад.
 
 
 import UIKit
@@ -16,11 +15,6 @@ class ViewController: UIViewController  {
             applyState(state)
         }
     }
-//    private let scrollView: UIScrollView = {
-//        let scrollView = UIScrollView()
-//        scrollView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
-//        return scrollView
-//    }()
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
@@ -114,6 +108,8 @@ class ViewController: UIViewController  {
         if textField == userText {
             let result = "RESULT. words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>.words[14821:531296] Unbalanced calls to begin/end appearance transitions for <Vlad_1_Reverse_words.ViewController: 0x7ff4f3d06920>."
             state = .result(result: result)
+            view.endEditing(true)
+
         }
         return true
     }
