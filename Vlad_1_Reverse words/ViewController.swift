@@ -48,9 +48,10 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
+        answerTextView.frame = CGRect(x: 16, y: 378, width: 343, height: 650)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.backgroundColor = .green
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -139,13 +140,18 @@ class ViewController: UIViewController  {
         }
         //        answerTextView
         view.addSubview(answerTextView)  //7
-        
+//        answerTextView.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(16)
+//        }
+            
         //displayButton
         view.addSubview(displayButton)  //6
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-66)
+//            make.bottom.equalToSuperview().offset(-66)
+            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+
         }
     }
     
