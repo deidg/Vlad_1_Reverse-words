@@ -10,6 +10,18 @@ import SnapKit
 import Foundation
 
 class ViewController: UIViewController  {
+    //====
+    
+    private let scrollView: UIScrollView = {
+    let view = UIScrollView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+    }()
+    
+    //====
+    
+    
+    
     private var state: State = .initial {
         didSet {
             applyState(state)
@@ -79,6 +91,7 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupScrollView()
         userText.returnKeyType = UIReturnKeyType.continue
         userText.delegate = self
         
@@ -110,8 +123,22 @@ class ViewController: UIViewController  {
         }
     }
     
+    private func setupScrollView() {
+        let margins = view.layoutMarginsGuide
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    
     private func setupUI() {
         //scrollView
+//        view.addSubview(scrollView)
+//        scrollView.snp.makeConstraints{ make in
+//            make.edges.equalToSuperview()
+//        }
+        
         
         //largeLabel
         view.addSubview(largeLabel)  //2
