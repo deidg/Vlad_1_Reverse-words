@@ -17,6 +17,14 @@ class ViewController: UIViewController  {
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
     }()
+    private let scrollStackViewContainer: UIStackView = {
+    let view = UIStackView()
+    view.axis = .vertical
+    view.spacing = 0
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+    }()
+    
     
     //====
     
@@ -60,10 +68,10 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 16, y: 378, width: 343, height: 650)
+//        answerTextView.frame = CGRect(x: 16, y: 378, width: 0, height: 0)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        answerTextView.backgroundColor = .green
+//        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.backgroundColor = .green   //!!!! убрать
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -129,6 +137,19 @@ class ViewController: UIViewController  {
         scrollView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
+        scrollView.addSubview(scrollStackViewContainer)
+        scrollStackViewContainer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        configureConteinerView()
+    }
+    private func configureConteinerView() {
+        scrollStackViewContainer.addArrangedSubview(largeLabel)
+        scrollStackViewContainer.addArrangedSubview(mainLabel)
+        scrollStackViewContainer.addArrangedSubview(userText)
+        scrollStackViewContainer.addArrangedSubview(divider)
+        scrollStackViewContainer.addArrangedSubview(answerTextView)
+        scrollStackViewContainer.addArrangedSubview(displayButton)
     }
     
     
@@ -167,17 +188,23 @@ class ViewController: UIViewController  {
         }
         //        answerTextView
         view.addSubview(answerTextView)  //7
-//        answerTextView.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(16)
-//        }
+        answerTextView.snp.makeConstraints { make in
+            //            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(16)
+            //            make.top.equalTo(divider.snp.bottom).offset(18)
             
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(divider.snp.bottom).offset(16)
+            make.height.equalTo(150)
+        }
+        
         //displayButton
         view.addSubview(displayButton)  //6
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
-//            make.bottom.equalToSuperview().offset(-66)
-            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-66)
+//            make.top.equalTo(answerTextView.snp.bottom).offset(20)
 
         }
     }
