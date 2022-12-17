@@ -3,15 +3,14 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//  искать дальше причину почему не скроилться....
-
+//
 
 import UIKit
 import SnapKit
 import Foundation
 
 class ViewController: UIViewController  {
-
+    
     
     //====  надо это инициализировать
     private lazy var scrollView: UIScrollView = {
@@ -34,7 +33,7 @@ class ViewController: UIViewController  {
         contentView.backgroundColor = .yellow
         contentView.frame.size = contentSize
         //            contentView.translatesAutoresizingMaskIntoConstraints = false
-                    return contentView
+        return contentView
     }()
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -43,15 +42,15 @@ class ViewController: UIViewController  {
         stackView.spacing = 20
         return stackView
     }()
-               //====
+    //====
     
     private var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
-  
-        let navigationView = UIView() //1
+    
+    let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
         largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
@@ -84,9 +83,9 @@ class ViewController: UIViewController  {
     
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-//        answerTextView.frame = CGRect(x: 16, y: 378, width: 0, height: 0)
+        //        answerTextView.frame = CGRect(x: 16, y: 378, width: 0, height: 0)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-//        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.backgroundColor = .green   //!!!! убрать
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
@@ -101,11 +100,11 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
-        
+    
     class Reverser {
-         func reverseFunc(textToReverse: String) -> String {
-               let reversedText = String(textToReverse.reversed())
-         return reversedText
+        func reverseFunc(textToReverse: String) -> String {
+            let reversedText = String(textToReverse.reversed())
+            return reversedText
         }
     }
     
@@ -115,15 +114,15 @@ class ViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupScrollView()        //а он точно нужен? надо пересмотреть
+        //        setupScrollView()        //а он точно нужен? надо пересмотреть
         userText.returnKeyType = UIReturnKeyType.continue
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
-//        configureContainerView()
-//        setupViewsConstraints()
+        //        configureContainerView()
+        //        setupViewsConstraints()
         
         
         userText.delegate = self
@@ -134,7 +133,7 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-
+    
     
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -154,61 +153,49 @@ class ViewController: UIViewController  {
         }
     }
     
-//    private func setupScrollView() {
-//        //        let margins = view.layoutMarginsGuide
-//        view.addSubview(scrollView)
-//        scrollView.snp.makeConstraints{ make in
-//            make.edges.equalToSuperview()
-//        }
-//        scrollView.addSubview(containerView)
-//        containerView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
-        
-        //        configureContainerView()
-        //    }
-        //    private func configureContainerView() {
-        //        containerView.addSubview(largeLabel)
-        //        containerView.addSubview(mainLabel)
-        //        containerView.addSubview(userText)
-        //        containerView.addSubview(divider)
-        //        containerView.addSubview(answerTextView)
-        //        containerView.addSubview(displayButton)
-        //    }
-//    }
+    //    private func setupScrollView() {
+    //        //        let margins = view.layoutMarginsGuide
+    //        view.addSubview(scrollView)
+    //        scrollView.snp.makeConstraints{ make in
+    //            make.edges.equalToSuperview()
+    //        }
+    //        scrollView.addSubview(containerView)
+    //        containerView.snp.makeConstraints { make in
+    //            make.edges.equalToSuperview()
+    //        }
     
-    
-    
-   
+    //        configureContainerView()
+    //    }
+    //    private func configureContainerView() {
+    //        containerView.addSubview(largeLabel)
+    //        containerView.addSubview(mainLabel)
+    //        containerView.addSubview(userText)
+    //        containerView.addSubview(divider)
+    //        containerView.addSubview(answerTextView)
+    //        containerView.addSubview(displayButton)
+    //    }
+    //    }
     
     private func setupUI() {
         //scrollView
-//        view.addSubview(scrollView)
-//        scrollView.snp.makeConstraints{ make in
-//            make.edges.equalToSuperview()
-//        }
+        //        view.addSubview(scrollView)
+        //        scrollView.snp.makeConstraints{ make in
+        //            make.edges.equalToSuperview()
+        //        }
         
         stackView.snp.makeConstraints { make in
-                make.top.equalTo(contentView)
-                make.leading.trailing.equalTo(contentView)
-            }
-    //        configureContainerView()
-    
-             func configureContainerView() {
-                
-            }
+            make.top.equalTo(contentView)
+            make.leading.trailing.equalTo(contentView)
+        }
+        //        configureContainerView()
         
-        
-        
-        
-        
-        
-        
-        
+        func configureContainerView() {
+            
+        }
         
         //largeLabel
-//        view.addSubview(largeLabel)  //2
-//                containerView.addSubview(largeLabel)
+        //        view.addSubview(largeLabel)  //2
+        //                containerView.addSubview(largeLabel)
         stackView.addSubview(largeLabel)
         
         largeLabel.snp.makeConstraints { make in
@@ -216,26 +203,26 @@ class ViewController: UIViewController  {
             make.top.equalTo(view).offset(152)  // привщяат к safe area - выоста статус бара
         }
         // mainLabel
-//        view.addSubview(mainLabel)  //3
-//                containerView.addSubview(mainLabel)
+        //        view.addSubview(mainLabel)  //3
+        //                containerView.addSubview(mainLabel)
         stackView.addSubview(mainLabel)
-      
+        
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
             make.top.equalTo(largeLabel.snp.bottom).offset(16)
         }
         //userTextField
-//        view.addSubview(userText) //4
-//                containerView.addSubview(userText)
+        //        view.addSubview(userText) //4
+        //                containerView.addSubview(userText)
         stackView.addSubview(userText)
-       
+        
         userText.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+            make.top.equalTo(mainLabel.snp.bottom).offset(359)
         }
         //        divider
-//        view.addSubview(divider)  //5
-//                containerView.addSubview(divider)
+        //        view.addSubview(divider)  //5
+        //                containerView.addSubview(divider)
         stackView.addSubview(divider)
         
         divider.snp.makeConstraints { make in
@@ -244,32 +231,31 @@ class ViewController: UIViewController  {
             make.height.equalTo(5)
         }
         //        answerTextView
-//        view.addSubview(answerTextView)  //7
-//                containerView.addSubview(answerTextView)
+        //        view.addSubview(answerTextView)  //7
+        //                containerView.addSubview(answerTextView)
         stackView.addSubview(answerTextView)
-       
         answerTextView.snp.makeConstraints { make in
             //            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(16)
             //            make.top.equalTo(divider.snp.bottom).offset(18)
             
-//            make.leading.equalTo(containerView).offset(16)
-//            make.trailing.equalTo(containerView).offset(-16)
+            //            make.leading.equalTo(containerView).offset(16)
+            //            make.trailing.equalTo(containerView).offset(-16)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-//            make.top.equalTo(divider.snp.bottom).offset(16)
-            make.height.equalTo(150)
+            make.top.equalTo(divider.snp.bottom).offset(16)
+            make.height.equalTo(250)
         }
         
         //displayButton
-//        view.addSubview(displayButton)  //6
-//                containerView.addSubview(displayButton)
+        //        view.addSubview(displayButton)  //6
+        //                containerView.addSubview(displayButton)
         stackView.addSubview(displayButton)
         
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
-//            make.bottom.equalToSuperview().offset(-66)
+            //            make.bottom.equalToSuperview().offset(-66)
             make.top.equalTo(answerTextView.snp.bottom).offset(20)
-
+            
         }
     }
     
@@ -341,7 +327,7 @@ extension ViewController: UITextFieldDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
         view.endEditing(true)
@@ -352,37 +338,37 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     
-//    private func setupViewsConstraints() {
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        stackView.snp.makeConstraints { make in
-//            make.top.equalTo(contentView)
-//            make.leading.trailing.equalTo(contentView)
-//        }
-////        configureContainerView()
-//
-//         func configureContainerView() {
-//            stackView.addSubview(largeLabel)
-//            stackView.addSubview(mainLabel)
-//            stackView.addSubview(userText)
-//            stackView.addSubview(divider)
-//            stackView.addSubview(answerTextView)
-//            stackView.addSubview(displayButton)
-//        }
-//    }
-        
-        
-//        scrollView.snp.makeConstraints{ make in
-        //            make.edges.equalToSuperview()
-        //        }
-        
-//        child.snp.makeConstraints { make in
-//          make.leading.equalToSuperview()
-//          make.top.equalToSuperview()
-//          make.trailing.equalToSuperview()
-//          make.bottom.equalToSuperview()
-//        }
-        
+    //    private func setupViewsConstraints() {
+    //        stackView.translatesAutoresizingMaskIntoConstraints = false
+    //
+    //        stackView.snp.makeConstraints { make in
+    //            make.top.equalTo(contentView)
+    //            make.leading.trailing.equalTo(contentView)
+    //        }
+    ////        configureContainerView()
+    //
+    //         func configureContainerView() {
+    //            stackView.addSubview(largeLabel)
+    //            stackView.addSubview(mainLabel)
+    //            stackView.addSubview(userText)
+    //            stackView.addSubview(divider)
+    //            stackView.addSubview(answerTextView)
+    //            stackView.addSubview(displayButton)
+    //        }
+    //    }
+    
+    
+    //        scrollView.snp.makeConstraints{ make in
+    //            make.edges.equalToSuperview()
+    //        }
+    
+    //        child.snp.makeConstraints { make in
+    //          make.leading.equalToSuperview()
+    //          make.top.equalToSuperview()
+    //          make.trailing.equalToSuperview()
+    //          make.bottom.equalToSuperview()
+    //        }
+    
     
     
     
