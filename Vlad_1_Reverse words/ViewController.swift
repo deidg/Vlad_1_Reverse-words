@@ -28,14 +28,7 @@ class ViewController: UIViewController  {
         contentView.frame.size = contentSize
         return contentView
     }()
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 20
-        stackView.distribution = .equalCentering
-        return stackView
-    }()
+    
     
     private var state: State = .initial {
         didSet {
@@ -76,7 +69,9 @@ class ViewController: UIViewController  {
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.backgroundColor = .green
+        
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -105,11 +100,13 @@ class ViewController: UIViewController  {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
         
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(stackView)
         
-        setupStackViewOnToContentView() // раствляет констрейнты stackView к contentView
+        
+        
+        //        scrollView.addSubview(contentView)
+        //        contentView.addSubview(stackView)
+        
+        setupItemsOnScrollView()
         
         userText.delegate = self
         
@@ -138,7 +135,7 @@ class ViewController: UIViewController  {
     
     private func defaultConfiguration() {
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-    
+        
         //MARK: navigationView
         navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
         navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
@@ -205,52 +202,73 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension ViewController {
-    private func setupStackViewOnToContentView() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        // раставляю констрейнт stackview к contentView
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(contentView)
-            make.leading.trailing.equalTo(contentView)
+    private func setupItemsOnScrollView() {
+        //        contentView.addSubview(largeLabel)
+        //        contentView.addSubview(mainLabel)
+        //        contentView.addSubview(userText)
+        //        contentView.addSubview(divider)
+        //        contentView.addSubview(answerTextView)
+        //        contentView.addSubview(displayButton)
+        //
+        
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
         }
+        
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        
         // присоединяю элементы к stackVIew
         //largeLabel
-        stackView.addSubview(largeLabel)
+        contentView.addSubview(largeLabel)
         largeLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-            make.top.equalTo(view).offset(152)
+            //            make.top.equalTo(view).offset(152)
+            make.top.equalToSuperview().inset(152)
+            //            make.bottom.equalToSuperview().offset()
+//            make.bottom.equalTo(mainLabel.snp.top).inset(-16)
         }
         // mainLabel
-        stackView.addSubview(mainLabel)
+        contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
-            make.top.equalTo(largeLabel.snp.bottom).offset(16)
+                        make.top.equalTo(largeLabel.snp.bottom).offset(16)
+//            make.bottom.equalTo(userText.snp.top).inset(-59)
         }
         //userTextField
-        stackView.addSubview(userText)
+        contentView.addSubview(userText)
         userText.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+                        make.top.equalTo(mainLabel.snp.bottom).offset(59)
+//            make.bottom.equalTo(divider.snp.top).inset(-18.5)
         }
         //divider
-        stackView.addSubview(divider)
+        contentView.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(userText.snp.bottom).offset(18.5)
+                        make.top.equalTo(userText.snp.bottom).offset(18.5)
+//            make.bottom.equalTo(answerTextView.snp.top).inset(-16)
             make.height.equalTo(5)
         }
         //answerTextView
-        stackView.addSubview(answerTextView)
+        contentView.addSubview(answerTextView)
         answerTextView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(divider.snp.bottom).offset(16)
-            make.height.equalTo(288)
+                        make.top.equalTo(divider.snp.bottom).offset(16)
+//            make.bottom.equalTo(displayButton.snp.top).inset(-20)
+            make.height.equalTo(388)  //288
         }
         //displayButton
-        stackView.addSubview(displayButton)
+        contentView.addSubview(displayButton)
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
-            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+                        make.top.equalTo(answerTextView.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().inset(-20)
         }
     }
     enum State {
@@ -259,6 +277,7 @@ extension ViewController {
         case result(result: String)
     }
 }
+
 
 
 
