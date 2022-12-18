@@ -3,8 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//не нажимается тексфилд
-//  выключить ответ и начать делать логику
+
 
 import UIKit
 import SnapKit
@@ -12,9 +11,8 @@ import Foundation
 
 class ViewController: UIViewController  {
     
-        private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()   //(frame: .zero)
-//        scrollView.backgroundColor = .yellow
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
         scrollView.frame = self.view.bounds
         scrollView.contentSize = contentSize
         return scrollView
@@ -22,7 +20,7 @@ class ViewController: UIViewController  {
     //    переменная для установки размера контента
     private var contentSize: CGSize {
         CGSize(width: view.frame.width,
-               height: view.frame.height) //+ 400)   //   убрать доп значени?
+               height: view.frame.height)
     }
     private lazy var contentView: UIView = {
         let contentView = UIView()
@@ -34,11 +32,10 @@ class ViewController: UIViewController  {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 20    // наверное надо убрать - т.к. расстояние между объектами
+        stackView.spacing = 20
         stackView.distribution = .equalCentering
         return stackView
     }()
-    //====
     
     private var state: State = .initial {
         didSet {
@@ -76,13 +73,10 @@ class ViewController: UIViewController  {
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return divider
     }()
-    
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        //        answerTextView.frame = CGRect(x: 16, y: 378, width: 0, height: 0)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
-        //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        answerTextView.backgroundColor = .green   //!!!! убрать
+        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 20)
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -115,7 +109,7 @@ class ViewController: UIViewController  {
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
-        setupStackViewOnToContentView()
+        setupStackViewOnToContentView() // раствляет констрейнты stackView к contentView
         
         userText.delegate = self
         
@@ -123,7 +117,6 @@ class ViewController: UIViewController  {
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
-    
     
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -143,156 +136,129 @@ class ViewController: UIViewController  {
         }
     }
     
-    private func setupUI() {
-        
-//        stackView.snp.makeConstraints { make in
-//            make.top.equalTo(contentView)
-//            make.leading.trailing.equalTo(contentView)
-//        }
-//        func configureContainerView() {
-//        }
-    }
-        
-        private func defaultConfiguration() {
-            self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-            
-            //MARK: navigationView
-            navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
-            navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
-            view.addSubview(navigationView)
-            //title for Navigation Controller
-            self.title = "Reverse words"
-        }
-        
-        private func applyState(_ state: State) {
-            func applyInitialState() {
-                answerTextView.text = ""
-                userText.text = ""
-                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                displayButton.setTitle("Reverse", for: .normal)
-                displayButton.isEnabled = false
-            }
-            
-            func applyTypingText(hasEnteredText: Bool) {
-                if hasEnteredText {
-                    displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                    displayButton.isEnabled = true
-                    displayButton.setTitle("Reverse", for: .normal)
-                } else {
-                    applyInitialState()
-                }
-            }
-            
-            func applyResultState(result: String) {
-                answerTextView.text = result
-                displayButton.setTitle("Clear", for: .normal)
-            }
-            
-            switch state {
-            case .initial:
-                applyInitialState()
-            case .typing(let text):
-                applyTypingText(hasEnteredText: !text.isEmpty)
-            case .result(let result):
-                applyResultState(result: result)
-            }
-        }
-    }
+    private func defaultConfiguration() {
+        self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
     
-    //MARK: extension
-    
-    extension ViewController: UITextFieldDelegate {
-        
-        func textFieldDidBeginEditing (_ textField: UITextField) {
-            divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        //MARK: navigationView
+        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
+        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
+        view.addSubview(navigationView)
+        //title for Navigation Controller
+        self.title = "Reverse words"
+    }
+    private func applyState(_ state: State) {
+        func applyInitialState() {
+            answerTextView.text = ""
+            userText.text = ""
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-            return
+            displayButton.setTitle("Reverse", for: .normal)
+            displayButton.isEnabled = false
         }
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-            return
+        func applyTypingText(hasEnteredText: Bool) {
+            if hasEnteredText {
+                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                displayButton.isEnabled = true
+                displayButton.setTitle("Reverse", for: .normal)
+            } else {
+                applyInitialState()
+            }
         }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
-        }
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-            view.endEditing(true)
+        func applyResultState(result: String) {
+            answerTextView.text = result
+            displayButton.setTitle("Clear", for: .normal)
         }
         
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
-            view.endEditing(true)
-            state = .result(result: result)
-            return true
+        switch state {
+        case .initial:
+            applyInitialState()
+        case .typing(let text):
+            applyTypingText(hasEnteredText: !text.isEmpty)
+        case .result(let result):
+            applyResultState(result: result)
         }
     }
-    
-    extension ViewController {
-        //                              contentView.addSubview(stackView)
-        
-        private func setupStackViewOnToContentView() {
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            
-            // раставляю констрейнт stackview к contentView
-            stackView.snp.makeConstraints { make in
-                make.top.equalTo(contentView)
-                make.leading.trailing.equalTo(contentView)
-//                make.edges.equalToSuperview()   // если так то пропадает функционал скроллинга.
-            }
-            
-            // присоединяю лейблы к stackVIew
-            
-            //largeLabel
-            stackView.addSubview(largeLabel)
-            largeLabel.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(16) // может тут поплыть!!!
-                make.top.equalTo(view).offset(152)  // или equalToSuperview   !!!!
-            }
-            
-            // mainLabel
-            stackView.addSubview(mainLabel)
-            mainLabel.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(33)
-                make.top.equalTo(largeLabel.snp.bottom).offset(16)
-            }
-            //userTextField
-            stackView.addSubview(userText)
-            userText.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(mainLabel.snp.bottom).offset(59)
-            }
-            //        divider
-            stackView.addSubview(divider)
-            divider.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(userText.snp.bottom).offset(18.5)
-                make.height.equalTo(5)
-            }
-            //        answerTextView
-            stackView.addSubview(answerTextView)
-            answerTextView.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(divider.snp.bottom).offset(16)
-                make.height.equalTo(288)
-            }
-            
-            //displayButton
-            stackView.addSubview(displayButton)
-            displayButton.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(16)
-                make.height.equalTo(60)
-                make.top.equalTo(answerTextView.snp.bottom).offset(20)
-            }
+}
+
+//MARK: extension
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        return
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+        return
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
+        view.endEditing(true)
+        state = .result(result: result)
+        return true
+    }
+}
+
+extension ViewController {
+    private func setupStackViewOnToContentView() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        // раставляю констрейнт stackview к contentView
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(contentView)
+            make.leading.trailing.equalTo(contentView)
         }
-        
-        
-        //==
-        enum State {
-            case initial
-            case typing(text: String)
-            case result(result: String)
+        // присоединяю элементы к stackVIew
+        //largeLabel
+        stackView.addSubview(largeLabel)
+        largeLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16) //
+            make.top.equalTo(view).offset(152)
+        }
+        // mainLabel
+        stackView.addSubview(mainLabel)
+        mainLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(33)
+            make.top.equalTo(largeLabel.snp.bottom).offset(16)
+        }
+        //userTextField
+        stackView.addSubview(userText)
+        userText.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+        }
+        //divider
+        stackView.addSubview(divider)
+        divider.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(userText.snp.bottom).offset(18.5)
+            make.height.equalTo(5)
+        }
+        //answerTextView
+        stackView.addSubview(answerTextView)
+        answerTextView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(divider.snp.bottom).offset(16)
+            make.height.equalTo(288)
+        }
+        //displayButton
+        stackView.addSubview(displayButton)
+        displayButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+            make.top.equalTo(answerTextView.snp.bottom).offset(20)
         }
     }
+    enum State {
+        case initial
+        case typing(text: String)
+        case result(result: String)
+    }
+}
 
 
 
