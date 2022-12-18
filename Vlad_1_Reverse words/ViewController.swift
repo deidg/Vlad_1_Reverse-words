@@ -100,12 +100,6 @@ class ViewController: UIViewController  {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
         
-        
-        
-        
-        //        scrollView.addSubview(contentView)
-        //        contentView.addSubview(stackView)
-        
         setupItemsOnScrollView()
         
         userText.delegate = self
@@ -203,55 +197,38 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     private func setupItemsOnScrollView() {
-        //        contentView.addSubview(largeLabel)
-        //        contentView.addSubview(mainLabel)
-        //        contentView.addSubview(userText)
-        //        contentView.addSubview(divider)
-        //        contentView.addSubview(answerTextView)
-        //        contentView.addSubview(displayButton)
-        //
-        
+     
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
         }
-        
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        
-        // присоединяю элементы к stackVIew
         //largeLabel
         contentView.addSubview(largeLabel)
         largeLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-            //            make.top.equalTo(view).offset(152)
             make.top.equalToSuperview().inset(152)
-            //            make.bottom.equalToSuperview().offset()
-//            make.bottom.equalTo(mainLabel.snp.top).inset(-16)
         }
         // mainLabel
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
                         make.top.equalTo(largeLabel.snp.bottom).offset(16)
-//            make.bottom.equalTo(userText.snp.top).inset(-59)
         }
         //userTextField
         contentView.addSubview(userText)
         userText.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
                         make.top.equalTo(mainLabel.snp.bottom).offset(59)
-//            make.bottom.equalTo(divider.snp.top).inset(-18.5)
         }
         //divider
         contentView.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-                        make.top.equalTo(userText.snp.bottom).offset(18.5)
-//            make.bottom.equalTo(answerTextView.snp.top).inset(-16)
+                make.top.equalTo(userText.snp.bottom).offset(18.5)
             make.height.equalTo(5)
         }
         //answerTextView
@@ -259,7 +236,6 @@ extension ViewController {
         answerTextView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
                         make.top.equalTo(divider.snp.bottom).offset(16)
-//            make.bottom.equalTo(displayButton.snp.top).inset(-20)
             make.height.equalTo(388)  //288
         }
         //displayButton
