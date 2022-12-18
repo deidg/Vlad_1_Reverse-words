@@ -10,11 +10,39 @@ import SnapKit
 import Foundation
 
 class ViewController: UIViewController  {
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.frame = self.view.bounds
+        scrollView.contentSize = contentSize
+        return scrollView
+    }()
+    //    переменная для установки размера контента
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width,
+               height: view.frame.height)
+    }
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        contentView.frame.size = contentSize
+        return contentView
+    }()
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 20
+        stackView.distribution = .equalCentering
+        return stackView
+    }()
+    
     private var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
+    
     let navigationView = UIView() //1
     private let largeLabel: UILabel = {  //2
         let largeLabel = UILabel()
@@ -45,10 +73,8 @@ class ViewController: UIViewController  {
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return divider
     }()
-    
     var answerTextView: UITextView = { // 7 - поле с ответом
         let answerTextView = UITextView()
-        answerTextView.frame = CGRect(x: 15, y: 378, width: 345, height: 250)
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.font = UIFont.systemFont(ofSize: 20)
@@ -64,14 +90,13 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
-        
+    
     class Reverser {
-         func reverseFunc(textToReverse: String) -> String {
-               let reversedText = String(textToReverse.reversed())
-         return reversedText
+        func reverseFunc(textToReverse: String) -> String {
+            let reversedText = String(textToReverse.reversed())
+            return reversedText
         }
     }
-    
     
     let reverser =  Reverser()
     var reverseText = String()
@@ -79,21 +104,23 @@ class ViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         userText.returnKeyType = UIReturnKeyType.continue
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(stackView)
+        
+        setupStackViewOnToContentView() // раствляет констрейнты stackView к contentView
+        
         userText.delegate = self
         
         defaultConfiguration()
-        setupUI()
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
-
-    
-
-    
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
-            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu. Donec in sapien ut nunc suscipit consectetur. Aenean aliquet risus sit amet sodales commodo. Vestibulum vitae facilisis lacus. Sed a ante facilisis, hendrerit erat vitae, faucibus nulla. Donec suscipit augue at urna dictum sodales. Nulla ut arcu velit. Integer imperdiet magna in urna fermentum laoreet. Nam et auctor risus. Cras ornare augue ante, ut dictum neque efficitur ut."
+            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu."
             state = .result(result: result)
         }
         func clear() {
@@ -109,49 +136,9 @@ class ViewController: UIViewController  {
         }
     }
     
-    private func setupUI() {
-        //scrollView
-        
-        //largeLabel
-        view.addSubview(largeLabel)  //2
-        largeLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalToSuperview().offset(152)  // привщяат к safe area - выоста статус бара
-        }
-        // mainLabel
-        view.addSubview(mainLabel)  //3
-        mainLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
-            make.top.equalTo(largeLabel.snp.bottom).offset(16)
-        }
-        //userTextField
-        view.addSubview(userText) //4
-        userText.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(mainLabel.snp.bottom).offset(59)
-        }
-        //        divider
-        view.addSubview(divider)  //5
-        divider.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.top.equalTo(userText.snp.bottom).offset(18.5)
-            make.height.equalTo(5)
-        }
-        //        answerTextView
-        view.addSubview(answerTextView)  //7
-        
-        //displayButton
-        view.addSubview(displayButton)  //6
-        displayButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)
-            make.bottom.equalToSuperview().offset(-66)
-        }
-    }
-    
     private func defaultConfiguration() {
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
+    
         //MARK: navigationView
         navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
         navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
@@ -159,7 +146,6 @@ class ViewController: UIViewController  {
         //title for Navigation Controller
         self.title = "Reverse words"
     }
-    
     private func applyState(_ state: State) {
         func applyInitialState() {
             answerTextView.text = ""
@@ -168,7 +154,6 @@ class ViewController: UIViewController  {
             displayButton.setTitle("Reverse", for: .normal)
             displayButton.isEnabled = false
         }
-        
         func applyTypingText(hasEnteredText: Bool) {
             if hasEnteredText {
                 displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
@@ -178,7 +163,6 @@ class ViewController: UIViewController  {
                 applyInitialState()
             }
         }
-        
         func applyResultState(result: String) {
             answerTextView.text = result
             displayButton.setTitle("Clear", for: .normal)
@@ -196,9 +180,7 @@ class ViewController: UIViewController  {
 }
 
 //MARK: extension
-
 extension ViewController: UITextFieldDelegate {
-    
     func textFieldDidBeginEditing (_ textField: UITextField) {
         divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
@@ -214,26 +196,72 @@ extension ViewController: UITextFieldDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
         view.endEditing(true)
         state = .result(result: result)
         return true
     }
-    
-    
-    
-    
 }
 
 extension ViewController {
+    private func setupStackViewOnToContentView() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        // раставляю констрейнт stackview к contentView
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(contentView)
+            make.leading.trailing.equalTo(contentView)
+        }
+        // присоединяю элементы к stackVIew
+        //largeLabel
+        stackView.addSubview(largeLabel)
+        largeLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16) //
+            make.top.equalTo(view).offset(152)
+        }
+        // mainLabel
+        stackView.addSubview(mainLabel)
+        mainLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(33)
+            make.top.equalTo(largeLabel.snp.bottom).offset(16)
+        }
+        //userTextField
+        stackView.addSubview(userText)
+        userText.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+        }
+        //divider
+        stackView.addSubview(divider)
+        divider.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(userText.snp.bottom).offset(18.5)
+            make.height.equalTo(5)
+        }
+        //answerTextView
+        stackView.addSubview(answerTextView)
+        answerTextView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.equalTo(divider.snp.bottom).offset(16)
+            make.height.equalTo(288)
+        }
+        //displayButton
+        stackView.addSubview(displayButton)
+        displayButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(60)
+            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+        }
+    }
     enum State {
         case initial
         case typing(text: String)
         case result(result: String)
     }
 }
+
+
+
 
 
 
