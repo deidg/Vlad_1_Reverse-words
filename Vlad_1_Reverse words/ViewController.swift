@@ -11,11 +11,9 @@ import Foundation
 
 class ViewController: UIViewController  {
     
-    
-    //====  надо это инициализировать
-    private lazy var scrollView: UIScrollView = {
+        private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()   //(frame: .zero)
-        scrollView.backgroundColor = .yellow
+//        scrollView.backgroundColor = .yellow
         scrollView.frame = self.view.bounds
         scrollView.contentSize = contentSize
         return scrollView
@@ -23,11 +21,11 @@ class ViewController: UIViewController  {
     //    переменная для установки размера контента
     private var contentSize: CGSize {
         CGSize(width: view.frame.width,
-               height: view.frame.height + 400)   //   убрать доп значени?
+               height: view.frame.height) //+ 400)   //   убрать доп значени?
     }
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         contentView.frame.size = contentSize
         return contentView
     }()
@@ -159,75 +157,6 @@ class ViewController: UIViewController  {
         func configureContainerView() {
         }
         
-        /*
-         
-         //largeLabel
-         //        view.addSubview(largeLabel)  //2
-         //                containerView.addSubview(largeLabel)
-         stackView.addSubview(largeLabel)
-         
-         largeLabel.snp.makeConstraints { make in
-         make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-         make.top.equalTo(view).offset(152)  // привщяат к safe area - выоста статус бара
-         }
-         // mainLabel
-         //        view.addSubview(mainLabel)  //3
-         //                containerView.addSubview(mainLabel)
-         stackView.addSubview(mainLabel)
-         
-         mainLabel.snp.makeConstraints { make in
-         make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(33)
-         make.top.equalTo(largeLabel.snp.bottom).offset(16)
-         }
-         //userTextField
-         //        view.addSubview(userText) //4
-         //                containerView.addSubview(userText)
-         stackView.addSubview(userText)
-         
-         userText.snp.makeConstraints { make in
-         make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-         make.top.equalTo(mainLabel.snp.bottom).offset(359)
-         }
-         //        divider
-         //        view.addSubview(divider)  //5
-         //                containerView.addSubview(divider)
-         stackView.addSubview(divider)
-         
-         divider.snp.makeConstraints { make in
-         make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-         make.top.equalTo(userText.snp.bottom).offset(18.5)
-         make.height.equalTo(5)
-         }
-         //        answerTextView
-         //        view.addSubview(answerTextView)  //7
-         //                containerView.addSubview(answerTextView)
-         stackView.addSubview(answerTextView)
-         answerTextView.snp.makeConstraints { make in
-         //            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(16)
-         //            make.top.equalTo(divider.snp.bottom).offset(18)
-         
-         //            make.leading.equalTo(containerView).offset(16)
-         //            make.trailing.equalTo(containerView).offset(-16)
-         make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-         make.top.equalTo(divider.snp.bottom).offset(16)
-         make.height.equalTo(250)
-         }
-         
-         //displayButton
-         //        view.addSubview(displayButton)  //6
-         //                containerView.addSubview(displayButton)
-         stackView.addSubview(displayButton)
-         
-         displayButton.snp.makeConstraints { make in
-         make.leading.trailing.equalToSuperview().inset(16)
-         make.height.equalTo(60)
-         //            make.bottom.equalToSuperview().offset(-66)
-         make.top.equalTo(answerTextView.snp.bottom).offset(20)
-         
-         }
-         }
-         
-         */
     }
         
         private func defaultConfiguration() {
@@ -322,7 +251,7 @@ class ViewController: UIViewController  {
             stackView.addSubview(largeLabel)
             largeLabel.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16) // может тут поплыть!!!
-                make.top.equalToSuperview().offset(152)  //
+                make.top.equalTo(view).offset(152)  // или equalToSuperview   !!!!
             }
             
             // mainLabel
@@ -335,7 +264,7 @@ class ViewController: UIViewController  {
             stackView.addSubview(userText)
             userText.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(mainLabel.snp.bottom).offset(359)
+                make.top.equalTo(mainLabel.snp.bottom).offset(59)
             }
             //        divider
             stackView.addSubview(divider)
@@ -349,7 +278,7 @@ class ViewController: UIViewController  {
             answerTextView.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
                 make.top.equalTo(divider.snp.bottom).offset(16)
-                make.height.equalTo(250)
+                make.height.equalTo(288)
             }
             
             //displayButton
