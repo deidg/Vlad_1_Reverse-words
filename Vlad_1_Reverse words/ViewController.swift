@@ -3,7 +3,8 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//
+//не нажимается тексфилд
+//  выключить ответ и начать делать логику
 
 import UIKit
 import SnapKit
@@ -34,6 +35,7 @@ class ViewController: UIViewController  {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 20    // наверное надо убрать - т.к. расстояние между объектами
+        stackView.distribution = .equalCentering
         return stackView
     }()
     //====
@@ -102,28 +104,22 @@ class ViewController: UIViewController  {
         }
     }
     
-    
     let reverser =  Reverser()
     var reverseText = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         userText.returnKeyType = UIReturnKeyType.continue
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
         
-//        setupViewsConstraints()
-//        configureContainerView()
         setupStackViewOnToContentView()
-        
         
         userText.delegate = self
         
         defaultConfiguration()
-        //        setupUI()
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
@@ -149,14 +145,12 @@ class ViewController: UIViewController  {
     
     private func setupUI() {
         
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(contentView)
-            make.leading.trailing.equalTo(contentView)
-        }
-        
-        func configureContainerView() {
-        }
-        
+//        stackView.snp.makeConstraints { make in
+//            make.top.equalTo(contentView)
+//            make.leading.trailing.equalTo(contentView)
+//        }
+//        func configureContainerView() {
+//        }
     }
         
         private func defaultConfiguration() {
@@ -243,6 +237,7 @@ class ViewController: UIViewController  {
             stackView.snp.makeConstraints { make in
                 make.top.equalTo(contentView)
                 make.leading.trailing.equalTo(contentView)
+//                make.edges.equalToSuperview()   // если так то пропадает функционал скроллинга.
             }
             
             // присоединяю лейблы к stackVIew
