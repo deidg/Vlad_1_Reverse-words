@@ -106,10 +106,6 @@ class ViewController: UIViewController  {
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         
-        //MARK: navigationView
-//        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)  // убрать, задать с помощью констрейнтов
-        
-        
         //title for Navigation Controller
         self.title = "Reverse words"
     }
@@ -174,6 +170,13 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController {
     private func setupItemsOnScrollView() {
         view.addSubview(navigationView)
+        navigationView.snp.makeConstraints{ make in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.width.equalTo(400)
+            make.height.equalTo(88)
+        }
+        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
             make.edges.width.height.equalToSuperview()
