@@ -10,41 +10,27 @@ import SnapKit
 import Foundation
 
 class ViewController: UIViewController  {
-    
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.frame = self.view.bounds
-        scrollView.contentSize = contentSize
-        return scrollView
-    }()
-    //    переменная для установки размера контента
-    private var contentSize: CGSize {
-        CGSize(width: view.frame.width,
-               height: view.frame.height)
-    }
-    private lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        contentView.frame.size = contentSize
-        return contentView
-    }()
-    
-    
     private var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
-    
-    let navigationView = UIView() //1
-    private let largeLabel: UILabel = {  //2
+    //MARK: UI Elements
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let navigationView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
+        return view
+    }()
+    private let largeLabel: UILabel = {
         let largeLabel = UILabel()
         largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         largeLabel.textAlignment = .center
         largeLabel.text = "Reverse words"
         return largeLabel
     }()
-    let mainLabel: UILabel = {  //3
+    let mainLabel: UILabel = {
         let mainLabel = UILabel()
         mainLabel.font = UIFont.systemFont(ofSize: 17)
         mainLabel.textAlignment = .center
@@ -53,20 +39,21 @@ class ViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-    public var userText: UITextField = { //4
+    public var userText: UITextField = {
         let userText = UITextField()
         userText.font = UIFont.systemFont(ofSize: 17)
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userText.placeholder = "Text to reverse"
         userText.isUserInteractionEnabled = true
+        userText.returnKeyType = .continue
         return userText
     }()
-    var divider: UIView = {  //5
+    var divider: UIView = {
         let divider = UIView()
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return divider
     }()
-    var answerTextView: UITextView = { // 7 - поле с ответом
+    var answerTextView: UITextView = {
         let answerTextView = UITextView()
         answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
         //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
@@ -86,26 +73,13 @@ class ViewController: UIViewController  {
         return displayButton
     }()
     
-    class Reverser {
-        func reverseFunc(textToReverse: String) -> String {
-            let reversedText = String(textToReverse.reversed())
-            return reversedText
-        }
-    }
     
     let reverser =  Reverser()
-    var reverseText = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userText.returnKeyType = UIReturnKeyType.continue
-        
         setupItemsOnScrollView()
-        
-        userText.delegate = self
-        
         defaultConfiguration()
-        
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
@@ -128,12 +102,14 @@ class ViewController: UIViewController  {
     }
     
     private func defaultConfiguration() {
+        userText.delegate = self
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
+        
         //MARK: navigationView
-        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)
-        navigationView.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
-        view.addSubview(navigationView)
+//        navigationView.frame = CGRect(x: 0, y: 0, width: 400, height: 88)  // убрать, задать с помощью констрейнтов
+        
+        
         //title for Navigation Controller
         self.title = "Reverse words"
     }
@@ -197,14 +173,14 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     private func setupItemsOnScrollView() {
-     
+        view.addSubview(navigationView)
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-            make.edges.equalToSuperview()
+            make.edges.width.height.equalToSuperview()
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.width.height.equalToSuperview()
         }
         //largeLabel
         contentView.addSubview(largeLabel)
@@ -216,35 +192,34 @@ extension ViewController {
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
-                        make.top.equalTo(largeLabel.snp.bottom).offset(16)
+            make.top.equalTo(largeLabel.snp.bottom).offset(16)
         }
         //userTextField
         contentView.addSubview(userText)
         userText.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-                        make.top.equalTo(mainLabel.snp.bottom).offset(59)
+            make.top.equalTo(mainLabel.snp.bottom).offset(59)
         }
         //divider
         contentView.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(userText.snp.bottom).offset(18.5)
-            make.height.equalTo(5)
+            make.top.equalTo(userText.snp.bottom).offset(18.5)
+            make.height.equalTo(1)
         }
         //answerTextView
         contentView.addSubview(answerTextView)
         answerTextView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-                        make.top.equalTo(divider.snp.bottom).offset(16)
-            make.height.equalTo(388)  //288
+            make.top.equalTo(divider.snp.bottom).offset(16)
         }
         //displayButton
         contentView.addSubview(displayButton)
         displayButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
-                        make.top.equalTo(answerTextView.snp.bottom).offset(20)
-            make.bottom.equalToSuperview().inset(-20)
+            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+            make.bottom.equalToSuperview().offset(-66)
         }
     }
     enum State {
