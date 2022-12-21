@@ -81,6 +81,8 @@ class ViewController: UIViewController  {
         setupItemsOnScrollView()
         defaultConfiguration()
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        
     }
     
     @objc func buttonPressed(sender: UIButton) {
@@ -230,7 +232,47 @@ extension ViewController {
         case typing(text: String)
         case result(result: String)
     }
-}
+    
+        //MARK: регулировка экрана при появлении клавиатуры
+//        private func addTapToHideKeyboard() {
+//            let tap = UITapGestureRecognizer(
+//                target: self,
+//                action: #selector(hideKeyboard(gesture:))
+//            )
+//            contentView.addGestureRecognizer(tap) //
+//        }
+        
+//        private func observeKeyboardNotificaton() {
+//            NotificationCenter.default.addObserver(self,
+//                                                   selector: #selector(keyboardWillShow(sender:)),
+//                                                   name: UIResponder.keyboardWillShowNotification,
+//                                                   object: nil)
+//            NotificationCenter.default.addObserver(self,
+//                                                   selector: #selector(keyboardWillHide(sender:)),
+//                                                   name: UIResponder.keyboardWillHideNotification,
+//                                                   object: nil)
+//        }
+        
+        @objc private func keyboardWillShow(sender: NSNotification) {
+            guard let userInfo = sender.userInfo else { return }
+            guard var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+            var contentInset: UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = keyboardFrame.size.height
+            scrollView.contentInset = contentInset
+        }
+        
+        @objc private func keyboardWillHide(sender: NSNotification) {
+            let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+            scrollView.contentInset = contentInset
+        }
+        
+        @objc private func hideKeyboard(gesture: UITapGestureRecognizer) {
+            view.endEditing(true)
+        }
+    }
+   
+
 
 
 
