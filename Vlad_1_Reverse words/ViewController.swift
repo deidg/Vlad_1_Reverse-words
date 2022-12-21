@@ -15,6 +15,19 @@ class ViewController: UIViewController  {
             applyState(state)
         }
     }
+    
+//    //MARK: font Roboto
+//
+//    let customFont = UIFont(name: "Roboto", size: UIFont.labelFontSize) else {
+//        print("Problem with fonts")
+//    }
+//    label.font = UIFontMetrics.default.scaledFont(for: customFont)
+//    label.adjustsFontForContentSizeCategory = true
+//
+    
+    
+    
+    
     //MARK: UI Elements
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -25,7 +38,10 @@ class ViewController: UIViewController  {
     }()
     private let largeLabel: UILabel = {
         let largeLabel = UILabel()
-        largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+        
+//        largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+//        largeLabel.font = UIFont(name: "Roboto", size: 34)
+        
         largeLabel.textAlignment = .center
         largeLabel.text = "Reverse words"
         return largeLabel
@@ -81,6 +97,19 @@ class ViewController: UIViewController  {
         setupItemsOnScrollView()
         defaultConfiguration()
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        addTapToHideKeyboard()
+        
+        for family in UIFont.familyNames {
+            for font in UIFont.fontNames(forFamilyName: family){
+                print(font)
+            }
+        }
+        
+        print(UIFont.familyNames)//     останови
+        
+        
+        let font = UIFont(name: "Roboto", size: 24)// проверить другие методы. т.к. результат не очень
     }
     
     @objc func buttonPressed(sender: UIButton) {
@@ -102,7 +131,7 @@ class ViewController: UIViewController  {
     }
     
     private func defaultConfiguration() {
-        userText.delegate = self
+//        userText.delegate = self
         self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         
@@ -143,29 +172,36 @@ class ViewController: UIViewController  {
 }
 
 //MARK: extension
-extension ViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        return
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-        return
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
-        view.endEditing(true)
-        state = .result(result: result)
-        return true
-    }
-}
+
+//extension ViewController: UITextFieldDelegate {
+    
+    
+    
+    
+    
+    
+//    func textFieldDidBeginEditing (_ textField: UITextField) {
+//        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+//        return
+//    }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+//        return
+//    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
+//        view.endEditing(true)
+//        state = .result(result: result)
+//        return true
+//    }
+//}
 
 extension ViewController {
     private func setupItemsOnScrollView() {
@@ -230,7 +266,51 @@ extension ViewController {
         case typing(text: String)
         case result(result: String)
     }
-}
+    
+        //MARK: регулировка экрана при появлении клавиатуры
+        private func addTapToHideKeyboard() {
+            let tap = UITapGestureRecognizer(
+                target: self,
+                action: #selector(hideKeyboard(gesture:))
+            )
+            contentView.addGestureRecognizer(tap) //
+//            scrollView.addGestureRecognizer(tap) //
+
+        }
+
+        private func observeKeyboardNotificaton() {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(keyboardWillShow(sender:)),
+                                                   name: UIResponder.keyboardWillShowNotification,
+                                                   object: nil)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(keyboardWillHide(sender:)),
+                                                   name: UIResponder.keyboardWillHideNotification,
+                                                   object: nil)
+        }
+
+        @objc private func keyboardWillShow(sender: NSNotification) {
+            guard let userInfo = sender.userInfo else { return }
+            guard var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+            var contentInset: UIEdgeInsets = self.scrollView.contentInset
+            contentInset.bottom = keyboardFrame.size.height
+            scrollView.contentInset = contentInset
+        }
+
+        @objc private func keyboardWillHide(sender: NSNotification) {
+            let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+            scrollView.contentInset = contentInset
+        }
+
+        @objc private func hideKeyboard(gesture: UITapGestureRecognizer) {
+            view.endEditing(true)
+        }
+    }
+   
+
+
+
 
 
 
