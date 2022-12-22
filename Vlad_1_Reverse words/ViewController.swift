@@ -41,12 +41,13 @@ class ViewController: UIViewController  {
         return mainLabel
     }()
     public var userText: UITextField = {
-        let userText = UITextField()
+        var userText = UITextField()
         userText.font = UIFont(name: "Roboto-Regular", size: 17 )
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userText.placeholder = "Text to reverse"
         userText.isUserInteractionEnabled = true
         userText.returnKeyType = .continue
+        userText.text = String(userText.text ?? "")  // СПРОСИТЬ вариант децйствий
         return userText
     }()
     var divider: UIView = {
@@ -89,7 +90,6 @@ class ViewController: UIViewController  {
     }
     
     @objc func buttonPressed(sender: UIButton) {
-        
         func reverseText(text: String) {
 //            print("displayButton pressed")
 //            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu."
