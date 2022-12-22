@@ -26,17 +26,14 @@ class ViewController: UIViewController  {
     }()
     private let largeLabel: UILabel = {
         let largeLabel = UILabel()
-        
-//        largeLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-//        largeLabel.font = UIFont(name: "Roboto", size: 34)
-        
+        largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
         largeLabel.textAlignment = .center
         largeLabel.text = "Reverse words"
         return largeLabel
     }()
     let mainLabel: UILabel = {
         let mainLabel = UILabel()
-        mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 ) //
+        mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
         mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
@@ -45,7 +42,7 @@ class ViewController: UIViewController  {
     }()
     public var userText: UITextField = {
         let userText = UITextField()
-        userText.font = UIFont.systemFont(ofSize: 17)
+        userText.font = UIFont(name: "Roboto-Regular", size: 17 )
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userText.placeholder = "Text to reverse"
         userText.isUserInteractionEnabled = true
@@ -63,7 +60,7 @@ class ViewController: UIViewController  {
         //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.backgroundColor = .green
         
-        answerTextView.font = UIFont.systemFont(ofSize: 20)
+        answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
         return answerTextView
@@ -76,11 +73,8 @@ class ViewController: UIViewController  {
         displayButton.layer.cornerRadius = 14
         return displayButton
     }()
-    
     //setup Roboto font
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
-    let customFont2 = UIFont(name: "Menlo-Italic", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
-    
     
     let reverser =  Reverser()
     
@@ -88,25 +82,20 @@ class ViewController: UIViewController  {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
+        
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         addTapToHideKeyboard()
-        
-        for family in UIFont.familyNames {
-            for font in UIFont.fontNames(forFamilyName: family){
-                print(font)
-            }
-        }
-        
-        print(UIFont.familyNames)//     останови
-        
-        
-//        let font = UIFont(name: "Roboto", size: 24)// проверить другие методы. т.к. результат не очень
     }
     
     @objc func buttonPressed(sender: UIButton) {
+        
         func reverseText(text: String) {
-            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu."
+//            print("displayButton pressed")
+//            let result = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non dignissim odio. Donec turpis turpis, laoreet quis risus pulvinar, vestibulum pellentesque enim. Nulla a aliquam enim. Quisque scelerisque nulla quis felis aliquet luctus. Pellentesque vehicula mattis ligula, ut sollicitudin odio consequat eu."
+            reverser.reverseFunc(textToReverse: userText)
+            
+            
             state = .result(result: result)
         }
         func clear() {
@@ -201,7 +190,7 @@ extension ViewController {
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.width.equalTo(400)
+            make.width.equalTo(375) //400
             make.height.equalTo(88)
         }
         
