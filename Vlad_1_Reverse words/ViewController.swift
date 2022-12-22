@@ -24,7 +24,7 @@ class ViewController: UIViewController  {
         view.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
         return view
     }()
-    private let largeLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let largeLabel = UILabel()
         largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
         largeLabel.textAlignment = .center
@@ -40,14 +40,13 @@ class ViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-     var userText: UITextField = {
+     var userTextField: UITextField = {
         let userText = UITextField()
         userText.font = UIFont(name: "Roboto-Regular", size: 17 )
         userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userText.placeholder = "Text to reverse"
         userText.isUserInteractionEnabled = true
         userText.returnKeyType = .continue
-        userText.text = String(userText.text ?? "")  // СПРОСИТЬ вариант децйствий
         return userText
     }()
     var divider: UIView = {
@@ -90,16 +89,10 @@ class ViewController: UIViewController  {
     }
     
     @objc func buttonPressed(sender: UIButton) {
-                func reverseText(text: String) {     //
-                    let result = "Lorem ipsum dolor ....."
-        
-//        func reverseFunc(textToReverse: String) {   //вар 1
-//            return result
-//        }
-                    
-//        reverser.reverseFunc(textToReverse: userText)  // вар 2
+        func reverseText(text: String) {
+            let reversedText = reverser.reverseFunc(textToReverse: text)
             
-            state = .result(result: result)
+            state = .result(result: reversedText)
         }
         func clear() {
             state = .initial
@@ -107,7 +100,7 @@ class ViewController: UIViewController  {
         switch state {
         case .initial:
             break
-        case .typing(let text):
+        case .typing(let text): // updated text из делегата уходит func reverseText
             reverseText(text: text)
         case .result:
             clear()
@@ -125,7 +118,7 @@ class ViewController: UIViewController  {
     private func applyState(_ state: State) {
         func applyInitialState() {
             answerTextView.text = ""
-            userText.text = ""
+            userTextField.text = ""
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.setTitle("Reverse", for: .normal)
             displayButton.isEnabled = false
@@ -157,31 +150,40 @@ class ViewController: UIViewController  {
 
 //MARK: extension
 
-//extension ViewController: UITextFieldDelegate {
+extension ViewController: UITextFieldDelegate {
     
     
-//    func textFieldDidBeginEditing (_ textField: UITextField) {
-//        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-//        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-//        return
-//    }
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-//        return
-//    }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        view.endEditing(true)
-//    }
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        view.endEditing(true)
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
-//        view.endEditing(true)
-//        state = .result(result: result)
-//        return true
-//    }
-//}
+    func textFieldDidBeginEditing (_ textField: UITextField) {
+        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+        return
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+        return
+    }
+    //отслеживает изменение текста в моменте
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+           let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
+            state = .typing(text: updatedText)
+        }
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
+        view.endEditing(true)
+        state = .result(result: result)
+        return true
+    }
+}
 
 extension ViewController {
     private func setupItemsOnScrollView() {
@@ -202,8 +204,8 @@ extension ViewController {
             make.edges.width.height.equalToSuperview()
         }
         //largeLabel
-        contentView.addSubview(largeLabel)
-        largeLabel.snp.makeConstraints { make in
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
             make.top.equalToSuperview().inset(152)
         }
@@ -211,11 +213,11 @@ extension ViewController {
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
-            make.top.equalTo(largeLabel.snp.bottom).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
         }
         //userTextField
-        contentView.addSubview(userText)
-        userText.snp.makeConstraints { make in
+        contentView.addSubview(userTextField)
+        userTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.top.equalTo(mainLabel.snp.bottom).offset(59)
         }
@@ -223,7 +225,7 @@ extension ViewController {
         contentView.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(userText.snp.bottom).offset(18.5)
+            make.top.equalTo(userTextField.snp.bottom).offset(18.5)
             make.height.equalTo(1)
         }
         //answerTextView

@@ -10,7 +10,7 @@ import Foundation
 
 class Reverser {
     func reverseFunc(textToReverse: String) -> String {
-        let reversedText = String(textToReverse.reversed())
-        return reversedText
+        let result = String(textToReverse.reversed())
+        return result
     }
 }
