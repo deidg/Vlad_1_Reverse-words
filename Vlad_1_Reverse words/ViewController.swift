@@ -16,18 +16,6 @@ class ViewController: UIViewController  {
         }
     }
     
-//    //MARK: font Roboto
-//
-//    let customFont = UIFont(name: "Roboto", size: UIFont.labelFontSize) else {
-//        print("Problem with fonts")
-//    }
-//    label.font = UIFontMetrics.default.scaledFont(for: customFont)
-//    label.adjustsFontForContentSizeCategory = true
-//
-    
-    
-    
-    
     //MARK: UI Elements
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -48,7 +36,7 @@ class ViewController: UIViewController  {
     }()
     let mainLabel: UILabel = {
         let mainLabel = UILabel()
-        mainLabel.font = UIFont.systemFont(ofSize: 17)
+        mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 ) //
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
         mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
@@ -89,6 +77,10 @@ class ViewController: UIViewController  {
         return displayButton
     }()
     
+    //setup Roboto font
+    let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
+    let customFont2 = UIFont(name: "Menlo-Italic", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
+    
     
     let reverser =  Reverser()
     
@@ -109,7 +101,7 @@ class ViewController: UIViewController  {
         print(UIFont.familyNames)//     останови
         
         
-        let font = UIFont(name: "Roboto", size: 24)// проверить другие методы. т.к. результат не очень
+//        let font = UIFont(name: "Roboto", size: 24)// проверить другие методы. т.к. результат не очень
     }
     
     @objc func buttonPressed(sender: UIButton) {
