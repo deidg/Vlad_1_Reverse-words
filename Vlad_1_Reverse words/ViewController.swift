@@ -21,7 +21,7 @@ class ViewController: UIViewController  {
     private let contentView = UIView()
     private let navigationView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 249/255, green: 249/255,blue: 249/255, alpha: 0.94)
+        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         return view
     }()
     private let titleLabel: UILabel = {
@@ -36,7 +36,7 @@ class ViewController: UIViewController  {
         mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
-        mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        mainLabel.textColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
@@ -56,10 +56,10 @@ class ViewController: UIViewController  {
     }()
     var answerTextView: UITextView = {
         let answerTextView = UITextView()
-        answerTextView.textColor = UIColor(red: 0, green: 122/255, blue: 255/255, alpha: 1)
+        answerTextView.textColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         answerTextView.backgroundColor = .green
-        
+    
         answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
