@@ -29,7 +29,7 @@ class ViewController: UIViewController  {
         largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
         largeLabel.textAlignment = .center
         largeLabel.backgroundColor = .white
-        largeLabel.text = "Reverse words"
+        largeLabel.text = "Reverse Words"
         return largeLabel
     }()
     let mainLabel: UILabel = {
@@ -49,7 +49,7 @@ class ViewController: UIViewController  {
              //.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userTextField.placeholder = "Text to reverse"
         userTextField.isUserInteractionEnabled = true
-        userTextField.returnKeyType = .continue
+//        userTextField.returnKeyType = .default
         return userTextField
     }()
     var divider: UIView = {
@@ -88,9 +88,12 @@ class ViewController: UIViewController  {
         defaultConfiguration()
         userTextField.delegate = self
         
+        
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         addTapToHideKeyboard()
+        
+//        observeKeyboardNotificaton()
                 
     }
     
@@ -120,7 +123,7 @@ class ViewController: UIViewController  {
         
         
         //title for Navigation Controller
-        self.title = "Reverse words"
+        self.title = "Reverse Words"
     }
     private func applyState(_ state: State) {
         func applyInitialState() {
@@ -171,11 +174,15 @@ extension ViewController: UITextFieldDelegate {
     }
     //отслеживает изменение текста в моменте
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        print("you are printing")
         if let text = textField.text,
            let textRange = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: textRange, with: string)
-            state = .typing(text: updatedText)
+            var updatedText = text.replacingCharacters(in: textRange, with: string)
+            if updatedText == "" {
+                divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+            } else {
+                divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                state = .typing(text: updatedText)
+            }
         }
         return true
     }
