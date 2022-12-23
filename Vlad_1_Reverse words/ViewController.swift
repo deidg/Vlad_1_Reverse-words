@@ -86,6 +86,13 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         addTapToHideKeyboard()
+        
+        
+         for family in UIFont.familyNames {
+                    for font in UIFont.fontNames(forFamilyName: family){
+                        print(font)
+                    }
+                }
     }
     
     @objc func buttonPressed(sender: UIButton) {
