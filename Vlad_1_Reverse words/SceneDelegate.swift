@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController = UINavigationController(rootViewController: controller)
         window?.rootViewController = navController
         
-        navController.navigationBar.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
+        navController.navigationBar.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //        navController.navigationBar.backgroundColor = .green
         navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         

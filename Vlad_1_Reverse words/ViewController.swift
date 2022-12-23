@@ -28,6 +28,7 @@ class ViewController: UIViewController  {
         let largeLabel = UILabel()
         largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
         largeLabel.textAlignment = .center
+        largeLabel.backgroundColor = .white
         largeLabel.text = "Reverse words"
         return largeLabel
     }()
@@ -36,14 +37,16 @@ class ViewController: UIViewController  {
         mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
-        mainLabel.textColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        mainLabel.textColor = .black
+        mainLabel.backgroundColor = .white
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
      var userTextField: UITextField = {
         let userTextField = UITextField()
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
-        userTextField.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        userTextField.backgroundColor = .white
+             //.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userTextField.placeholder = "Text to reverse"
         userTextField.isUserInteractionEnabled = true
         userTextField.returnKeyType = .continue
@@ -58,7 +61,7 @@ class ViewController: UIViewController  {
         let answerTextView = UITextView()
         answerTextView.textColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        answerTextView.backgroundColor = .green
+//        answerTextView.backgroundColor = .green
     
         answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
         answerTextView.textAlignment = .left
@@ -112,7 +115,8 @@ class ViewController: UIViewController  {
 
     private func defaultConfiguration() {
 //        userText.delegate = self
-        self.view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        self.view.backgroundColor = .white
+        //UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         
         //title for Navigation Controller

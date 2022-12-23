@@ -30,15 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var navController = UINavigationController()
-    
-
-    
-    
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-//        var navController = UINavigationController()
         
        let viewController = ViewController()
         self.navController = UINavigationController(rootViewController: viewController)
@@ -47,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = self.navController
         
 //        self.window?.backgroundColor =  UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
-        self.window?.backgroundColor = UIColor.white
+        self.window?.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         //        self.window?.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
 
 
