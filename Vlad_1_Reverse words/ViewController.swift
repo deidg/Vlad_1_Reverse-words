@@ -46,7 +46,6 @@ class ViewController: UIViewController  {
         let userTextField = UITextField()
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
-             //.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         userTextField.placeholder = "Text to reverse"
         userTextField.isUserInteractionEnabled = true
 //        userTextField.returnKeyType = .default
@@ -129,6 +128,7 @@ class ViewController: UIViewController  {
         func applyInitialState() {
             answerTextView.text = ""
             userTextField.text = ""
+            divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
             displayButton.setTitle("Reverse", for: .normal)
             displayButton.isEnabled = false
@@ -176,9 +176,9 @@ extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text,
            let textRange = Range(range, in: text) {
-            var updatedText = text.replacingCharacters(in: textRange, with: string)
+            let updatedText = text.replacingCharacters(in: textRange, with: string)
             if updatedText == "" {
-                divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+                state = .initial
             } else {
                 divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
                 state = .typing(text: updatedText)
