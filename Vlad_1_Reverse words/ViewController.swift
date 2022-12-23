@@ -129,7 +129,7 @@ class ViewController: UIViewController  {
             answerTextView.text = ""
             userTextField.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
             displayButton.setTitle("Reverse", for: .normal)
             displayButton.isEnabled = false
         }
@@ -164,12 +164,9 @@ extension ViewController: UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing (_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
         return
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return
     }
     //отслеживает изменение текста в моменте
