@@ -41,13 +41,13 @@ class ViewController: UIViewController  {
         return mainLabel
     }()
      var userTextField: UITextField = {
-        let userText = UITextField()
-        userText.font = UIFont(name: "Roboto-Regular", size: 17 )
-        userText.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        userText.placeholder = "Text to reverse"
-        userText.isUserInteractionEnabled = true
-        userText.returnKeyType = .continue
-        return userText
+        let userTextField = UITextField()
+        userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
+        userTextField.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        userTextField.placeholder = "Text to reverse"
+        userTextField.isUserInteractionEnabled = true
+        userTextField.returnKeyType = .continue
+        return userTextField
     }()
     var divider: UIView = {
         let divider = UIView()
@@ -77,22 +77,18 @@ class ViewController: UIViewController  {
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     let reverser =  Reverser()
-    
+//    var delegate: UITextFieldDelegate
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
+        userTextField.delegate = self
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         addTapToHideKeyboard()
-        
-        
-         for family in UIFont.familyNames {
-                    for font in UIFont.fontNames(forFamilyName: family){
-                        print(font)
-                    }
-                }
+                
     }
     
     @objc func buttonPressed(sender: UIButton) {
@@ -171,6 +167,7 @@ extension ViewController: UITextFieldDelegate {
     }
     //отслеживает изменение текста в моменте
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        print("you are printing")
         if let text = textField.text,
            let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange, with: string)
