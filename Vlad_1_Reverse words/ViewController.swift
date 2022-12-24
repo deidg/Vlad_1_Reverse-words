@@ -3,7 +3,9 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-
+// стр 211- настройить констрейнты для contentVIew
+//  включить функцию getStatusBarHeight   стр90  надо ее куда то в начало метода перести.
+//   прочитать переписку в тг
 
 import UIKit
 import SnapKit
@@ -85,6 +87,21 @@ class ViewController: UIViewController  {
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
     }
+    
+    func getStatusBarHeight() -> CGFloat {
+    var statusBarHeight: CGFloat = 0
+    if #available(iOS 13.0, *) {
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+    } else {
+        statusBarHeight = UIApplication.shared.statusBarFrame.height
+    }
+    return statusBarHeight
+}
+//var statusBarHeight: CGFloat
+//    statusBarHeight  = getStatusBarHeight()
+    
+    
     
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -175,31 +192,33 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
 }
+
 extension ViewController {
     private func setupItemsOnScrollView() {
         view.addSubview(navigationView)
         navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-//            make.width.equalTo(375) //400
-            make.height.equalTo(88)
+            make.top.equalToSuperview()  //+
+            make.leading.trailing.equalToSuperview()//+
+//            make.height.equalTo(statusBarHeight)   //+-
         }
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().inset(88)
-            make.bottom.leading.trailing.equalToSuperview()
+            make.top.equalTo(navigationView.snp.bottom)//+
+//            make.leading.trailing.equalToSuperview()
+            make.bottom.leading.trailing.equalToSuperview()//+
+
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.top.width.height.equalToSuperview()
+            make.bottom.top.width.height.equalToSuperview() //+
         }
-        //titleLabel
+        //titleLabel   +
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
             make.top.equalToSuperview().inset(152)
         }
-        // mainLabel
+        // mainLabel+
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
