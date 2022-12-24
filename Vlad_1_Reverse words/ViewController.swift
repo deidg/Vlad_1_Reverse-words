@@ -3,7 +3,6 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//  не понимаю как перенастроить клавиатуру. где она подключена к переворачиванию
 
 
 import UIKit
@@ -38,7 +37,7 @@ class ViewController: UIViewController  {
         mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
-        mainLabel.textColor = .black
+        mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         mainLabel.backgroundColor = .white
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
@@ -48,8 +47,6 @@ class ViewController: UIViewController  {
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
         userTextField.placeholder = "Text to reverse"
-//        userTextField.isUserInteractionEnabled = true
-//        userTextField.returnKeyType = .default
         return userTextField
     }()
     var divider: UIView = {
@@ -60,9 +57,6 @@ class ViewController: UIViewController  {
     var answerTextView: UITextView = {
         let answerTextView = UITextView()
         answerTextView.textColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
-        //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//        answerTextView.backgroundColor = .green
-    
         answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
@@ -80,27 +74,20 @@ class ViewController: UIViewController  {
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     let reverser =  Reverser()
-//    var delegate: UITextFieldDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
         userTextField.delegate = self
-
-        
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        
         addTapToHideKeyboard()
-        
-//        observeKeyboardNotificaton()
-                
+        observeKeyboardNotificaton()
     }
     
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
             let reversedText = reverser.reverseFunc(textToReverse: text)
-            
             state = .result(result: reversedText)
         }
         func clear() {
@@ -118,8 +105,6 @@ class ViewController: UIViewController  {
 
     private func defaultConfiguration() {
         self.view.backgroundColor = .white
-        //UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
         
         //title for Navigation Controller
         self.title = "Reverse Words"
@@ -146,7 +131,6 @@ class ViewController: UIViewController  {
             answerTextView.text = result
             displayButton.setTitle("Clear", for: .normal)
         }
-        
         switch state {
         case .initial:
             applyInitialState()
@@ -157,12 +141,8 @@ class ViewController: UIViewController  {
         }
     }
 }
-
 //MARK: extension
-
 extension ViewController: UITextFieldDelegate {
-    
-    
     func textFieldDidBeginEditing (_ textField: UITextField) {
         return
     }
@@ -190,12 +170,10 @@ extension ViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
         view.endEditing(true)
         return true
     }
 }
-
 extension ViewController {
     private func setupItemsOnScrollView() {
         view.addSubview(navigationView)
@@ -205,7 +183,6 @@ extension ViewController {
             make.width.equalTo(375) //400
             make.height.equalTo(88)
         }
-        
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
             make.edges.width.height.equalToSuperview()
@@ -214,7 +191,7 @@ extension ViewController {
         contentView.snp.makeConstraints { make in
             make.edges.width.height.equalToSuperview()
         }
-        //largeLabel
+        //titleLabel
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
@@ -259,7 +236,6 @@ extension ViewController {
         case typing(text: String)
         case result(result: String)
     }
-    
         //MARK: регулировка экрана при появлении клавиатуры
         private func addTapToHideKeyboard() {
             let tap = UITapGestureRecognizer(
@@ -267,10 +243,7 @@ extension ViewController {
                 action: #selector(hideKeyboard(gesture:))
             )
             contentView.addGestureRecognizer(tap) //
-//            scrollView.addGestureRecognizer(tap) //
-
         }
-
         private func observeKeyboardNotificaton() {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(keyboardWillShow(sender:)),
@@ -295,7 +268,6 @@ extension ViewController {
             let contentInset: UIEdgeInsets = UIEdgeInsets.zero
             scrollView.contentInset = contentInset
         }
-
         @objc private func hideKeyboard(gesture: UITapGestureRecognizer) {
             view.endEditing(true)
         }
