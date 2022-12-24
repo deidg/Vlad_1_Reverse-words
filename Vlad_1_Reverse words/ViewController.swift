@@ -46,6 +46,7 @@ class ViewController: UIViewController  {
         let userTextField = UITextField()
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
+        userTextField.isUserInteractionEnabled = true
         userTextField.placeholder = "Text to reverse"
         return userTextField
     }()
@@ -185,7 +186,8 @@ extension ViewController {
         }
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-            make.edges.width.height.equalToSuperview()
+            make.top.equalToSuperview().inset(88)
+            make.edges.width.equalToSuperview()
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
