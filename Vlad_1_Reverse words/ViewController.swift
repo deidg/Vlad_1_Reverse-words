@@ -181,6 +181,7 @@ extension ViewController {
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
+//            make.width.equalTo(375) //400
             make.height.equalTo(88)
         }
         view.addSubview(scrollView)
@@ -190,7 +191,7 @@ extension ViewController {
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.edges.width.height.equalToSuperview()
+            make.top.width.height.equalToSuperview()
         }
         //titleLabel
         contentView.addSubview(titleLabel)
