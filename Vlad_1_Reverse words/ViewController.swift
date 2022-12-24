@@ -3,6 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
+//  не понимаю как перенастроить клавиатуру. где она подключена к переворачиванию
 
 
 import UIKit
@@ -47,7 +48,7 @@ class ViewController: UIViewController  {
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
         userTextField.placeholder = "Text to reverse"
-        userTextField.isUserInteractionEnabled = true
+//        userTextField.isUserInteractionEnabled = true
 //        userTextField.returnKeyType = .default
         return userTextField
     }()
@@ -58,7 +59,7 @@ class ViewController: UIViewController  {
     }()
     var answerTextView: UITextView = {
         let answerTextView = UITextView()
-        answerTextView.textColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        answerTextView.textColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
         //        answerTextView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
 //        answerTextView.backgroundColor = .green
     
@@ -86,7 +87,7 @@ class ViewController: UIViewController  {
         setupItemsOnScrollView()
         defaultConfiguration()
         userTextField.delegate = self
-        
+
         
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
@@ -116,7 +117,6 @@ class ViewController: UIViewController  {
     }
 
     private func defaultConfiguration() {
-//        userText.delegate = self
         self.view.backgroundColor = .white
         //UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
@@ -190,9 +190,8 @@ extension ViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
+//        let result = reverser.reverseFunc(textToReverse: textField.text ?? "")
         view.endEditing(true)
-        state = .result(result: result)
         return true
     }
 }

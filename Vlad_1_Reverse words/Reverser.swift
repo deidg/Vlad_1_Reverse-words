@@ -11,6 +11,7 @@ import Foundation
 class Reverser {
     func reverseFunc(textToReverse: String) -> String {
         let result = String(textToReverse.reversed())
+        
         return result
     }
 }
