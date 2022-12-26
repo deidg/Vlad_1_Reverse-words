@@ -3,6 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
+//    стр 218
 // стр 211- настройить констрейнты для contentVIew
 //  включить функцию getStatusBarHeight   стр90  надо ее куда то в начало метода перести.
 //   прочитать переписку в тг
@@ -206,7 +207,6 @@ extension ViewController {
             make.top.equalTo(navigationView.snp.bottom)//+
 //            make.leading.trailing.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()//+
-
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
@@ -216,7 +216,7 @@ extension ViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-            make.top.equalToSuperview().inset(152)
+            make.top.equalTo(navigationView.snp.bottom)///
         }
         // mainLabel+
         contentView.addSubview(mainLabel)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4D15D35E902F454A56C87EE /* Pods_Vlad_1_Reverse_words.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24098BF0EFA694BB8CD905A /* Pods_Vlad_1_Reverse_words.framework */; };
 		FA84D1EE2952013600F6FE44 /* Reverser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84D1ED2952013600F6FE44 /* Reverser.swift */; };
+		FA884215295A0DB0000E016A /* apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA884214295A0DB0000E016A /* apple.swift */; };
 		FA8BDECE2925EF3B00F88713 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */; };
 		FA8BDED02925EF3B00F88713 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */; };
 		FA8BDED22925EF3B00F88713 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8BDED12925EF3B00F88713 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		C24098BF0EFA694BB8CD905A /* Pods_Vlad_1_Reverse_words.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vlad_1_Reverse_words.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE974731E0896A90E41AC4BE /* Pods-Vlad_1_Reverse words.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vlad_1_Reverse words.release.xcconfig"; path = "Target Support Files/Pods-Vlad_1_Reverse words/Pods-Vlad_1_Reverse words.release.xcconfig"; sourceTree = "<group>"; };
 		FA84D1ED2952013600F6FE44 /* Reverser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reverser.swift; sourceTree = "<group>"; };
+		FA884214295A0DB0000E016A /* apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apple.swift; sourceTree = "<group>"; };
 		FA8BDECA2925EF3B00F88713 /* Vlad_1_Reverse words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vlad_1_Reverse words.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */,
 				FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */,
 				FA8BDED12925EF3B00F88713 /* ViewController.swift */,
+				FA884214295A0DB0000E016A /* apple.swift */,
 				FA96A9532955BCAD00DB7B7D /* Roboto */,
 				FA84D1ED2952013600F6FE44 /* Reverser.swift */,
 				FA8BDED32925EF3B00F88713 /* Main.storyboard */,
@@ -230,6 +233,7 @@
 				FA8BDED22925EF3B00F88713 /* ViewController.swift in Sources */,
 				FA8BDECE2925EF3B00F88713 /* AppDelegate.swift in Sources */,
 				FA8BDED02925EF3B00F88713 /* SceneDelegate.swift in Sources */,
+				FA884215295A0DB0000E016A /* apple.swift in Sources */,
 				FA84D1EE2952013600F6FE44 /* Reverser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
