@@ -3,7 +3,11 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//    стр 218
+//
+   кеще раз посмотреть куда тянуться x и y
+    и прододжить настраивать contentview?
+
+стр 218
 // стр 211- настройить констрейнты для contentVIew
 //  включить функцию getStatusBarHeight   стр90  надо ее куда то в начало метода перести.
 //   прочитать переписку в тг
@@ -78,6 +82,8 @@ class ViewController: UIViewController  {
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     let reverser =  Reverser()
+//    var statusBarHeight = Screen.statusBarHeight
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,20 +93,40 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
+        
+//        print(statusBarHeight)
+        print(Screen.statusBarHeight)
+//        print(navigationView.frame.height)
     }
     
-    func getStatusBarHeight() -> CGFloat {
-    var statusBarHeight: CGFloat = 0
-    if #available(iOS 13.0, *) {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-    } else {
-        statusBarHeight = UIApplication.shared.statusBarFrame.height
+    struct Screen {
+     static var width: CGFloat {
+      return UIScreen.main.bounds.width
+     }
+     static var height: CGFloat {
+      return UIScreen.main.bounds.height
+     }
+     static var statusBarHeight: CGFloat {
+      let viewController = UIApplication.shared.windows.first!.rootViewController
+      return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+     }
     }
-    return statusBarHeight
-}
-//var statusBarHeight: CGFloat
-//    statusBarHeight  = getStatusBarHeight()
+    
+    
+    
+    
+//    func getStatusBarHeight() -> CGFloat {
+//    var statusBarHeight: CGFloat = 0
+//    if #available(iOS 13.0, *) {
+//        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+//        statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+//    } else {
+//        statusBarHeight = UIApplication.shared.statusBarFrame.height
+//    }
+//    return statusBarHeight
+//}
+//    var statusBarHeight: Double
+//    var statusBarHeight = getStatusBarHeight()
     
     
     
@@ -196,18 +222,21 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController {
     private func setupItemsOnScrollView() {
+        //navigationView
         view.addSubview(navigationView)
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()  //+
             make.leading.trailing.equalToSuperview()//+
-//            make.height.equalTo(statusBarHeight)   //+-
+            make.height.equalTo(Screen.statusBarHeight)   //+-
         }
+        //scrollView
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
             make.top.equalTo(navigationView.snp.bottom)//+
-//            make.leading.trailing.equalToSuperview()
-            make.bottom.leading.trailing.equalToSuperview()//+
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()//+
         }
+        //contentView
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.bottom.top.width.height.equalToSuperview() //+
@@ -252,6 +281,8 @@ extension ViewController {
             make.bottom.equalToSuperview().offset(-66)
         }
     }
+ 
+ 
     enum State {
         case initial
         case typing(text: String)
