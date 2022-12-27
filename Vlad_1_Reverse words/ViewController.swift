@@ -4,10 +4,10 @@
 //
 //  Created by Alex on 17.11.2022.
 //
-   кеще раз посмотреть куда тянуться x и y
-    и прододжить настраивать contentview?
-
-стр 218
+//   кеще раз посмотреть куда тянуться x и y
+//    и прододжить настраивать contentview?
+//
+//стр 218
 // стр 211- настройить констрейнты для contentVIew
 //  включить функцию getStatusBarHeight   стр90  надо ее куда то в начало метода перести.
 //   прочитать переписку в тг
@@ -82,8 +82,7 @@ class ViewController: UIViewController  {
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     let reverser =  Reverser()
-//    var statusBarHeight = Screen.statusBarHeight
-
+//    var navBarHeight = UINavigationController.navigat
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,39 +93,31 @@ class ViewController: UIViewController  {
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
         
-//        print(statusBarHeight)
-        print(Screen.statusBarHeight)
-//        print(navigationView.frame.height)
+
+//        print(ScreenUtils.statusBarHeight)
+//        print(topBarHeight)
+//        print(navBarHeight.)
     }
+    
     
     struct Screen {
-     static var width: CGFloat {
-      return UIScreen.main.bounds.width
-     }
-     static var height: CGFloat {
-      return UIScreen.main.bounds.height
-     }
-     static var statusBarHeight: CGFloat {
-      let viewController = UIApplication.shared.windows.first!.rootViewController
-      return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-     }
-    }
+        static var width: CGFloat {
+         return UIScreen.main.bounds.width
+        }
+        static var height: CGFloat {
+         return UIScreen.main.bounds.height
+        }
+        static var statusBarHeight: CGFloat {
+         let viewController = UIApplication.shared.windows.first!.rootViewController
+         return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        }
+       }
     
     
     
     
-//    func getStatusBarHeight() -> CGFloat {
-//    var statusBarHeight: CGFloat = 0
-//    if #available(iOS 13.0, *) {
-//        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-//        statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-//    } else {
-//        statusBarHeight = UIApplication.shared.statusBarFrame.height
-//    }
-//    return statusBarHeight
-//}
-//    var statusBarHeight: Double
-//    var statusBarHeight = getStatusBarHeight()
+    
+    
     
     
     
@@ -245,7 +236,9 @@ extension ViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-            make.top.equalTo(navigationView.snp.bottom)///
+            make.top.equalTo(navigationView.snp.bottom)
+//            make.top.equalTo(navigationView.snp.bottom)
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         // mainLabel+
         contentView.addSubview(mainLabel)
@@ -324,9 +317,39 @@ extension ViewController {
             view.endEditing(true)
         }
     }
-   
-
-
+//status bar height
+extension UIApplication {
+    static var statusBarHeight: CGFloat {
+        if #available(iOS 13.0, *) {
+            let window = shared.windows.filter { $0.isKeyWindow }.first
+            return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        }
+        return shared.statusBarFrame.height
+    }
+}
+struct ScreenUtils {
+    static var width: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+    static var height: CGFloat {
+        return UIScreen.main.bounds.height
+    }
+    static var statusBarHeight: CGFloat {
+        return UIApplication.statusBarHeight
+    }
+}
+//navigation bar height
+extension UIViewController {
+    var topBarHeight: CGFloat {
+        var top = self.navigationController?.navigationBar.frame.height ?? 0.0
+        if #available(iOS 13.0, *) {
+            top += UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        } else {
+            top += UIApplication.shared.statusBarFrame.height
+        }
+        return top
+    }
+}
 
 
 
