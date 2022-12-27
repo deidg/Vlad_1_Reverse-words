@@ -3,14 +3,7 @@
 //  Vlad_1_Reverse words
 //
 //  Created by Alex on 17.11.2022.
-//
-//   кеще раз посмотреть куда тянуться x и y
-//    и прододжить настраивать contentview?
-//
-//стр 218
-// стр 211- настройить констрейнты для contentVIew
-//  включить функцию getStatusBarHeight   стр90  надо ее куда то в начало метода перести.
-//   прочитать переписку в тг
+
 
 import UIKit
 import SnapKit
@@ -82,7 +75,6 @@ class ViewController: UIViewController  {
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     let reverser =  Reverser()
-//    var navBarHeight = UINavigationController.navigat
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +84,9 @@ class ViewController: UIViewController  {
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
-        
-
-//        print(ScreenUtils.statusBarHeight)
-//        print(topBarHeight)
-//        print(navBarHeight.)
     }
     
-    
+    //statusBar height
     struct Screen {
         static var width: CGFloat {
          return UIScreen.main.bounds.width
@@ -112,15 +99,7 @@ class ViewController: UIViewController  {
          return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         }
        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
             let reversedText = reverser.reverseFunc(textToReverse: text)
@@ -216,29 +195,28 @@ extension ViewController {
         //navigationView
         view.addSubview(navigationView)
         navigationView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()  //+
-            make.leading.trailing.equalToSuperview()//+
-            make.height.equalTo(Screen.statusBarHeight)   //+-
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(Screen.statusBarHeight)
         }
         //scrollView
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-            make.top.equalTo(navigationView.snp.bottom)//+
+            make.top.equalTo(navigationView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()//+
+            make.bottom.equalToSuperview()
         }
         //contentView
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { make in
-            make.bottom.top.width.height.equalToSuperview() //+
+            make.bottom.top.width.height.equalToSuperview()
         }
         //titleLabel   +
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
             make.top.equalTo(navigationView.snp.bottom)
-//            make.top.equalTo(navigationView.snp.bottom)
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.height.equalTo(41)//
         }
         // mainLabel+
         contentView.addSubview(mainLabel)
@@ -317,39 +295,7 @@ extension ViewController {
             view.endEditing(true)
         }
     }
-//status bar height
-extension UIApplication {
-    static var statusBarHeight: CGFloat {
-        if #available(iOS 13.0, *) {
-            let window = shared.windows.filter { $0.isKeyWindow }.first
-            return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        }
-        return shared.statusBarFrame.height
-    }
-}
-struct ScreenUtils {
-    static var width: CGFloat {
-        return UIScreen.main.bounds.width
-    }
-    static var height: CGFloat {
-        return UIScreen.main.bounds.height
-    }
-    static var statusBarHeight: CGFloat {
-        return UIApplication.statusBarHeight
-    }
-}
-//navigation bar height
-extension UIViewController {
-    var topBarHeight: CGFloat {
-        var top = self.navigationController?.navigationBar.frame.height ?? 0.0
-        if #available(iOS 13.0, *) {
-            top += UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        } else {
-            top += UIApplication.shared.statusBarFrame.height
-        }
-        return top
-    }
-}
+
 
 
 
