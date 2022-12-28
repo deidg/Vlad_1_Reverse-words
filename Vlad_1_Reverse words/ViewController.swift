@@ -86,19 +86,19 @@ class ViewController: UIViewController  {
         observeKeyboardNotificaton()
     }
     
-    //statusBar height
-    struct Screen {
-        static var width: CGFloat {
-         return UIScreen.main.bounds.width
-        }
-        static var height: CGFloat {
-         return UIScreen.main.bounds.height
-        }
-        static var statusBarHeight: CGFloat {
-         let viewController = UIApplication.shared.windows.first!.rootViewController
-         return viewController!.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-        }
-       }
+//    //statusBar height
+//    struct Screen {
+//        static var width: CGFloat {
+//         return UIScreen.main.bounds.width
+//        }
+//        static var height: CGFloat {
+//         return UIScreen.main.bounds.height
+//        }
+//        static var statusBarHeight: CGFloat {
+//         let viewController = UIApplication.shared.windows.first?.rootViewController
+//         return viewController?.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+//        }
+//       }
   
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -197,7 +197,7 @@ extension ViewController {
         navigationView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(Screen.statusBarHeight)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         //scrollView
         view.addSubview(scrollView)
