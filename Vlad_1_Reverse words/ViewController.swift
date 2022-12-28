@@ -10,21 +10,21 @@ import SnapKit
 import Foundation
 
 class mainViewController: UIViewController  {
-    private var state: State = .initial {
+     var state: State = .initial {
         didSet {
             applyState(state)
         }
     }
-    
+    let reverser =  Reverser()
     //MARK: UI Elements
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let topView: UIView = {
+     let scrollView = UIScrollView()
+     let contentView = UIView()
+     let topView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         return view
     }()
-    private let titleLabel: UILabel = {
+     let titleLabel: UILabel = {
         let largeLabel = UILabel()
         largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
         largeLabel.textAlignment = .center
@@ -42,7 +42,7 @@ class mainViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-     var reverseTextField: UITextField = {
+    let reverseTextField: UITextField = {
         let userTextField = UITextField()
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
@@ -50,12 +50,12 @@ class mainViewController: UIViewController  {
         userTextField.placeholder = "Text to reverse"
         return userTextField
     }()
-    var divider: UIView = {
+    let divider: UIView = {
         let divider = UIView()
         divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         return divider
     }()
-    var answerTextView: UITextView = {
+    let answerTextView: UITextView = {
         let answerTextView = UITextView()
         answerTextView.textColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
         answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
@@ -63,7 +63,7 @@ class mainViewController: UIViewController  {
         answerTextView.isEditable = false
         return answerTextView
     }()
-    var displayButton: UIButton = { // 6
+    let reverseButton: UIButton = { // 6
         let displayButton = UIButton()
         displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         displayButton.setTitle("Reverse", for: .normal)
@@ -74,14 +74,14 @@ class mainViewController: UIViewController  {
     //setup Roboto font
     let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
-    let reverser =  Reverser()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
         reverseTextField.delegate = self
-        displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        reverseButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
     }
@@ -104,33 +104,33 @@ class mainViewController: UIViewController  {
         }
     }
 
-    private func defaultConfiguration() {
+     func defaultConfiguration() {
         self.view.backgroundColor = .white
         
         //title for Navigation Controller
         self.title = "Reverse Words"
     }
-    private func applyState(_ state: State) {
+     func applyState(_ state: State) {
         func applyInitialState() {
             answerTextView.text = ""
             reverseTextField.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
-            displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
-            displayButton.setTitle("Reverse", for: .normal)
-            displayButton.isEnabled = false
+            reverseButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+            reverseButton.setTitle("Reverse", for: .normal)
+            reverseButton.isEnabled = false
         }
         func applyTypingText(hasEnteredText: Bool) {
             if hasEnteredText {
-                displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-                displayButton.isEnabled = true
-                displayButton.setTitle("Reverse", for: .normal)
+                reverseButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
+                reverseButton.isEnabled = true
+                reverseButton.setTitle("Reverse", for: .normal)
             } else {
                 applyInitialState()
             }
         }
         func applyResultState(result: String) {
             answerTextView.text = result
-            displayButton.setTitle("Clear", for: .normal)
+            reverseButton.setTitle("Clear", for: .normal)
         }
         switch state {
         case .initial:
@@ -177,7 +177,7 @@ extension mainViewController: UITextFieldDelegate {
 }
 
 extension mainViewController {
-    private func setupItemsOnScrollView() {
+     func setupItemsOnScrollView() {
         //navigationView
         view.addSubview(topView)
         topView.snp.makeConstraints{ make in
@@ -230,8 +230,8 @@ extension mainViewController {
             make.top.equalTo(divider.snp.bottom).offset(16)
         }
         //displayButton
-        contentView.addSubview(displayButton)
-        displayButton.snp.makeConstraints { make in
+        contentView.addSubview(reverseButton)
+        reverseButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(60)
             make.top.equalTo(answerTextView.snp.bottom).offset(20)
@@ -245,14 +245,14 @@ extension mainViewController {
         case result(result: String)
     }
         //MARK: регулировка экрана при появлении клавиатуры
-        private func addTapToHideKeyboard() {
+         func addTapToHideKeyboard() {
             let tap = UITapGestureRecognizer(
                 target: self,
                 action: #selector(hideKeyboard(gesture:))
             )
             contentView.addGestureRecognizer(tap) //
         }
-        private func observeKeyboardNotificaton() {
+         func observeKeyboardNotificaton() {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(keyboardWillShow(sender:)),
                                                    name: UIResponder.keyboardWillShowNotification,
@@ -263,7 +263,7 @@ extension mainViewController {
                                                    object: nil)
         }
 
-        @objc private func keyboardWillShow(sender: NSNotification) {
+        @objc  func keyboardWillShow(sender: NSNotification) {
             guard let userInfo = sender.userInfo else { return }
             guard var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
             keyboardFrame = self.view.convert(keyboardFrame, from: nil)
@@ -272,11 +272,11 @@ extension mainViewController {
             scrollView.contentInset = contentInset
         }
 
-        @objc private func keyboardWillHide(sender: NSNotification) {
+        @objc func keyboardWillHide(sender: NSNotification) {
             let contentInset: UIEdgeInsets = UIEdgeInsets.zero
             scrollView.contentInset = contentInset
         }
-        @objc private func hideKeyboard(gesture: UITapGestureRecognizer) {
+        @objc func hideKeyboard(gesture: UITapGestureRecognizer) {
             view.endEditing(true)
         }
     }
