@@ -202,7 +202,8 @@ extension ViewController {
         //scrollView
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-            make.top.equalTo(navigationView.snp.bottom)
+//            make.top.equalTo(navigationView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -215,14 +216,15 @@ extension ViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-            make.top.equalTo(navigationView.snp.bottom)
+//            make.top.equalTo(navigationView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.height.equalTo(41)//
         }
         // mainLabel+
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(6)
         }
         //userTextField
         contentView.addSubview(userTextField)
