@@ -73,9 +73,9 @@
 				FA8BDECD2925EF3B00F88713 /* AppDelegate.swift */,
 				FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */,
 				FA8BDED12925EF3B00F88713 /* ViewController.swift */,
-				FA96A9532955BCAD00DB7B7D /* Roboto */,
 				FA84D1ED2952013600F6FE44 /* Reverser.swift */,
 				FA8BDED32925EF3B00F88713 /* Main.storyboard */,
+				FA96A9532955BCAD00DB7B7D /* Fonts */,
 				FA8BDED62925EF3D00F88713 /* Assets.xcassets */,
 				FA8BDED82925EF3D00F88713 /* LaunchScreen.storyboard */,
 				FA8BDEDB2925EF3D00F88713 /* Info.plist */,
@@ -83,13 +83,13 @@
 			path = "Vlad_1_Reverse words";
 			sourceTree = "<group>";
 		};
-		FA96A9532955BCAD00DB7B7D /* Roboto */ = {
+		FA96A9532955BCAD00DB7B7D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				FA96A9562955BCAD00DB7B7D /* Roboto-Regular.ttf */,
 				FA96A95E2955BCAD00DB7B7D /* Roboto-Bold.ttf */,
 			);
-			path = Roboto;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		FAF853FA292BE59100FCE681 /* Frameworks */ = {

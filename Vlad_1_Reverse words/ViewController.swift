@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Foundation
 
-class ViewController: UIViewController  {
+class mainViewController: UIViewController  {
     private var state: State = .initial {
         didSet {
             applyState(state)
@@ -19,7 +19,7 @@ class ViewController: UIViewController  {
     //MARK: UI Elements
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let navigationView: UIView = {
+    private let topView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         return view
@@ -32,7 +32,7 @@ class ViewController: UIViewController  {
         largeLabel.text = "Reverse Words"
         return largeLabel
     }()
-    let mainLabel: UILabel = {
+    let themeLabel: UILabel = {
         let mainLabel = UILabel()
         mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
         mainLabel.textAlignment = .center
@@ -42,7 +42,7 @@ class ViewController: UIViewController  {
         mainLabel.text = "This application will reverse your words. Please type text below"
         return mainLabel
     }()
-     var userTextField: UITextField = {
+     var reverseTextField: UITextField = {
         let userTextField = UITextField()
         userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
         userTextField.backgroundColor = .white
@@ -80,7 +80,7 @@ class ViewController: UIViewController  {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
-        userTextField.delegate = self
+        reverseTextField.delegate = self
         displayButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
@@ -113,7 +113,7 @@ class ViewController: UIViewController  {
     private func applyState(_ state: State) {
         func applyInitialState() {
             answerTextView.text = ""
-            userTextField.text = ""
+            reverseTextField.text = ""
             divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
             displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
             displayButton.setTitle("Reverse", for: .normal)
@@ -143,7 +143,7 @@ class ViewController: UIViewController  {
     }
 }
 //MARK: extension
-extension ViewController: UITextFieldDelegate {
+extension mainViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing (_ textField: UITextField) {
         return
     }
@@ -176,11 +176,11 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension ViewController {
+extension mainViewController {
     private func setupItemsOnScrollView() {
         //navigationView
-        view.addSubview(navigationView)
-        navigationView.snp.makeConstraints{ make in
+        view.addSubview(topView)
+        topView.snp.makeConstraints{ make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -205,22 +205,22 @@ extension ViewController {
             make.height.equalTo(41)//
         }
         // mainLabel
-        contentView.addSubview(mainLabel)
-        mainLabel.snp.makeConstraints { make in
+        contentView.addSubview(themeLabel)
+        themeLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
             make.top.equalTo(titleLabel.snp.bottom).offset(6)
         }
         //userTextField
-        contentView.addSubview(userTextField)
-        userTextField.snp.makeConstraints { make in
+        contentView.addSubview(reverseTextField)
+        reverseTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(mainLabel.snp.bottom).offset(59)
+            make.top.equalTo(themeLabel.snp.bottom).offset(59)
         }
         //divider
         contentView.addSubview(divider)
         divider.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(userTextField.snp.bottom).offset(18.5)
+            make.top.equalTo(reverseTextField.snp.bottom).offset(18.5)
             make.height.equalTo(1)
         }
         //answerTextView
