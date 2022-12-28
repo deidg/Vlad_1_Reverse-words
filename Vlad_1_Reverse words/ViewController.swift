@@ -21,12 +21,12 @@ class mainViewController: UIViewController  {
      let contentView = UIView()
      let topView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+         view.backgroundColor = Constants.topViewBackgroundColor
         return view
     }()
      let titleLabel: UILabel = {
         let largeLabel = UILabel()
-        largeLabel.font = UIFont(name: "Roboto-Bold", size: 34)
+         largeLabel.font = Constants.titleLabelFont
         largeLabel.textAlignment = .center
         largeLabel.backgroundColor = .white
         largeLabel.text = "Reverse Words"
@@ -34,17 +34,17 @@ class mainViewController: UIViewController  {
     }()
     let themeLabel: UILabel = {
         let mainLabel = UILabel()
-        mainLabel.font = UIFont(name: "Roboto-Regular", size: 17 )
+        mainLabel.font = Constants.mainFont
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 0
-        mainLabel.textColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        mainLabel.textColor = Constants.mainLabelTextColor
         mainLabel.backgroundColor = .white
-        mainLabel.text = "This application will reverse your words. Please type text below"
+        mainLabel.text = Constants.mainLabelText
         return mainLabel
     }()
     let reverseTextField: UITextField = {
         let userTextField = UITextField()
-        userTextField.font = UIFont(name: "Roboto-Regular", size: 17 )
+        userTextField.font = Constants.mainFont
         userTextField.backgroundColor = .white
         userTextField.isUserInteractionEnabled = true
         userTextField.placeholder = "Text to reverse"
@@ -52,23 +52,23 @@ class mainViewController: UIViewController  {
     }()
     let divider: UIView = {
         let divider = UIView()
-        divider.backgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+        divider.backgroundColor = Constants.dividerBackgroundColor
         return divider
     }()
     let answerTextView: UITextView = {
         let answerTextView = UITextView()
-        answerTextView.textColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
-        answerTextView.font = UIFont(name: "Roboto-Regular", size: 20 )
+        answerTextView.textColor = Constants.answerTextViewTextColor
+        answerTextView.font = Constants.answerTextViewFont
         answerTextView.textAlignment = .left
         answerTextView.isEditable = false
         return answerTextView
     }()
     let reverseButton: UIButton = { // 6
         let displayButton = UIButton()
-        displayButton.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        displayButton.backgroundColor = Constants.displayButtonBackgroundColor
         displayButton.setTitle("Reverse", for: .normal)
-        displayButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        displayButton.layer.cornerRadius = 14
+        displayButton.titleLabel?.font = Constants.displayButtonTitleLabelFont
+        displayButton.layer.cornerRadius = CGFloat(Constants.displayButtonCornerRadius)
         return displayButton
     }()
     //setup Roboto font
@@ -280,3 +280,22 @@ extension mainViewController {
             view.endEditing(true)
         }
     }
+
+//MARK: Constants
+extension mainViewController {
+    enum Constants {
+        static let topViewBackgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        static let titleLabelFont = UIFont(name: "Roboto-Bold", size: 34)
+        static let mainFont = UIFont(name: "Roboto-Regular", size: 17)
+        static let mainLabelTextColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
+        static let mainLabelText = "This application will reverse your words. Please type text below"
+        static let dividerBackgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
+        static let answerTextViewTextColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
+        static let answerTextViewFont = UIFont(name: "Roboto-Regular", size: 20 )
+        
+        static let displayButtonBackgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
+        static let displayButtonTitleLabelFont = UIFont.systemFont(ofSize: 17)
+        static let displayButtonCornerRadius = 14
+       
+    }
+}
