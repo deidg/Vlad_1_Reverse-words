@@ -8,70 +8,17 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
     var window: UIWindow?
     
-    
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         let controller = mainViewController()
         let navController = UINavigationController(rootViewController: controller)
         window?.rootViewController = navController
-        
         navController.navigationBar.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-//        navController.navigationBar.backgroundColor = .green
-        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        
-        
-        
-        
-//        navController.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
-//                                                      .foregroundColor: UIColor.white]
-        
-        
-        
-        
-        //        navController.navigationBar.frame = CGRect(x: 0, y: 0, width: 375, height: 88);
-        
-        
-//        navController.navigationBar.barTintColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
-        
-        
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
-        
-        
-//        if #available(iOS 15, *) {
-//            let navigationBarAppearance = UINavigationBarAppearance()
-//            navigationBarAppearance.configureWithOpaqueBackground()
-//            navigationBarAppearance.titleTextAttributes = [
-//                NSAttributedString.Key.foregroundColor : UIColor.red
-//            ]
-            
-            //                navigationBarAppearance.shadowColor = nil
-            //                navigationBarAppearance.backgroundColor = UIColor(red: 135/255, green: 134/255, blue: 100/255, alpha: 0.94)
-            ////            UINavigationBar.appearance().barStyle = UIColor(red: 249, green: 249, blue: 249, alpha: 0.94)
-            //                UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            //                UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-            //                UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-            // Defining our screen title
-            //            title = "UINavigationBar on " + UIDevice.current.systemVersion
-            
-//            let appearance = UINavigationBarAppearance()
-//            appearance.configureWithOpaqueBackground()
-//            appearance.backgroundColor = .red
-//            appearance.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
-//                                              .foregroundColor: UIColor.white]
-            
-            
-            
-            
-            
+        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)      
         }
         
         func sceneDidBecomeActive(_ scene: UIScene) {
