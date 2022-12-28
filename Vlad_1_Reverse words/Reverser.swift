@@ -10,8 +10,10 @@ import Foundation
 
 class Reverser {
     func reverseFunc(textToReverse: String) -> String {
-        let result = String(textToReverse.reversed())
-        
-        return result
+        var str = textToReverse
+        str.enumerateSubstrings(in: str.startIndex..., options: .byWords) { _, range, _, _ in
+            str.replaceSubrange(range, with: str[range].reversed())
+        }
+        return str
     }
 }

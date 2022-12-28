@@ -85,20 +85,6 @@ class ViewController: UIViewController  {
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
     }
-    
-//    //statusBar height
-//    struct Screen {
-//        static var width: CGFloat {
-//         return UIScreen.main.bounds.width
-//        }
-//        static var height: CGFloat {
-//         return UIScreen.main.bounds.height
-//        }
-//        static var statusBarHeight: CGFloat {
-//         let viewController = UIApplication.shared.windows.first?.rootViewController
-//         return viewController?.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-//        }
-//       }
   
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
@@ -211,14 +197,14 @@ extension ViewController {
         contentView.snp.makeConstraints { make in
             make.bottom.top.width.height.equalToSuperview()
         }
-        //titleLabel   +
+        //titleLabel
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
             make.height.equalTo(41)//
         }
-        // mainLabel+
+        // mainLabel
         contentView.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(33)
@@ -294,13 +280,3 @@ extension ViewController {
             view.endEditing(true)
         }
     }
-
-
-
-
-
-
-
-
-
-
