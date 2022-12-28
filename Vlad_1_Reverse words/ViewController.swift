@@ -202,7 +202,6 @@ extension ViewController {
         //scrollView
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints{ make in
-//            make.top.equalTo(navigationView.snp.bottom)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -216,8 +215,7 @@ extension ViewController {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16) //
-//            make.top.equalTo(navigationView.snp.bottom)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
             make.height.equalTo(41)//
         }
         // mainLabel+
@@ -254,7 +252,6 @@ extension ViewController {
             make.bottom.equalToSuperview().offset(-66)
         }
     }
- 
  
     enum State {
         case initial
