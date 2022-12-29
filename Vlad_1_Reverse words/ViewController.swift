@@ -72,17 +72,12 @@ class mainViewController: UIViewController  {
         displayButton.layer.cornerRadius = CGFloat(Constants.displayButtonCornerRadius)
         return displayButton
     }()
-//    //setup Roboto font
-//    let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupItemsOnScrollView()
         defaultConfiguration()
         reverseTextField.delegate = self
-//        reverseButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
     }
@@ -148,11 +143,7 @@ class mainViewController: UIViewController  {
                 make.bottom.equalToSuperview().offset(-66)
             }
         }
-    
-    
-    
-    
-    
+ 
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
             let reversedText = reverser.reverseFunc(textToReverse: text)
@@ -178,12 +169,7 @@ class mainViewController: UIViewController  {
             func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                  view.endEditing(true)
              }
-         
-//         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//             view.endEditing(true)
-//             return true
-//         }
-         
+   
         //title for Navigation Controller
         self.title = "Reverse Words"
     }
@@ -221,12 +207,7 @@ class mainViewController: UIViewController  {
 }
 //MARK: extension
 extension mainViewController: UITextFieldDelegate {
-//    func textFieldDidBeginEditing (_ textField: UITextField) {
-//        return
-//    }
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        return
-//    }
+
     //MARK: keyboard
     //отслеживает изменение текста в моменте
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -242,80 +223,9 @@ extension mainViewController: UITextFieldDelegate {
         }
         return true
     }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        view.endEditing(true)
-//    }
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        view.endEditing(true)
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        view.endEditing(true)
-//        return true
-//    }
 }
 
 extension mainViewController {
-//     func setupItemsOnScrollView() {
-//        //navigationView
-//        view.addSubview(topView)
-//        topView.snp.makeConstraints{ make in
-//            make.top.equalToSuperview()
-//            make.leading.trailing.equalToSuperview()
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-//        }
-//        //scrollView
-//        view.addSubview(scrollView)
-//        scrollView.snp.makeConstraints{ make in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.leading.trailing.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//        }
-//        //contentView
-//        scrollView.addSubview(contentView)
-//        contentView.snp.makeConstraints { make in
-//            make.bottom.top.width.height.equalToSuperview()
-//        }
-//        //titleLabel
-//        contentView.addSubview(titleLabel)
-//        titleLabel.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(16) //
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
-//            make.height.equalTo(41)//
-//        }
-//        // mainLabel
-//        contentView.addSubview(themeLabel)
-//        themeLabel.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(33)
-//            make.top.equalTo(titleLabel.snp.bottom).offset(6)
-//        }
-//        //userTextField
-//        contentView.addSubview(reverseTextField)
-//        reverseTextField.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.top.equalTo(themeLabel.snp.bottom).offset(59)
-//        }
-//        //divider
-//        contentView.addSubview(divider)
-//        divider.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.top.equalTo(reverseTextField.snp.bottom).offset(18.5)
-//            make.height.equalTo(1)
-//        }
-//        //answerTextView
-//        contentView.addSubview(answerTextView)
-//        answerTextView.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.top.equalTo(divider.snp.bottom).offset(16)
-//        }
-//        //displayButton
-//        contentView.addSubview(reverseButton)
-//        reverseButton.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.height.equalTo(60)
-//            make.top.equalTo(answerTextView.snp.bottom).offset(20)
-//            make.bottom.equalToSuperview().offset(-66)
-//        }
-//    }
  
     enum State {
         case initial
@@ -373,6 +283,5 @@ extension mainViewController {
         static let displayButtonBackgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         static let displayButtonTitleLabelFont = UIFont.systemFont(ofSize: 17)
         static let displayButtonCornerRadius = 14
-       
     }
 }
