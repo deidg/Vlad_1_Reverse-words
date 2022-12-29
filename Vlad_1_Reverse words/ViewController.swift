@@ -87,6 +87,72 @@ class mainViewController: UIViewController  {
         observeKeyboardNotificaton()
     }
   
+         func setupItemsOnScrollView() {
+            //navigationView
+            view.addSubview(topView)
+            topView.snp.makeConstraints{ make in
+                make.top.equalToSuperview()
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+            }
+            //scrollView
+            view.addSubview(scrollView)
+            scrollView.snp.makeConstraints{ make in
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                make.leading.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+            }
+            //contentView
+            scrollView.addSubview(contentView)
+            contentView.snp.makeConstraints { make in
+                make.bottom.top.width.height.equalToSuperview()
+            }
+            //titleLabel
+            contentView.addSubview(titleLabel)
+            titleLabel.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16) //
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
+                make.height.equalTo(41)//
+            }
+            // mainLabel
+            contentView.addSubview(themeLabel)
+            themeLabel.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(33)
+                make.top.equalTo(titleLabel.snp.bottom).offset(6)
+            }
+            //userTextField
+            contentView.addSubview(reverseTextField)
+            reverseTextField.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.top.equalTo(themeLabel.snp.bottom).offset(59)
+            }
+            //divider
+            contentView.addSubview(divider)
+            divider.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.top.equalTo(reverseTextField.snp.bottom).offset(18.5)
+                make.height.equalTo(1)
+            }
+            //answerTextView
+            contentView.addSubview(answerTextView)
+            answerTextView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.top.equalTo(divider.snp.bottom).offset(16)
+            }
+            //displayButton
+            contentView.addSubview(reverseButton)
+            reverseButton.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview().inset(16)
+                make.height.equalTo(60)
+                make.top.equalTo(answerTextView.snp.bottom).offset(20)
+                make.bottom.equalToSuperview().offset(-66)
+            }
+        }
+    
+    
+    
+    
+    
     @objc func buttonPressed(sender: UIButton) {
         func reverseText(text: String) {
             let reversedText = reverser.reverseFunc(textToReverse: text)
@@ -161,6 +227,7 @@ extension mainViewController: UITextFieldDelegate {
 //    func textFieldDidEndEditing(_ textField: UITextField) {
 //        return
 //    }
+    //MARK: keyboard
     //отслеживает изменение текста в моменте
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text,
@@ -188,67 +255,67 @@ extension mainViewController: UITextFieldDelegate {
 }
 
 extension mainViewController {
-     func setupItemsOnScrollView() {
-        //navigationView
-        view.addSubview(topView)
-        topView.snp.makeConstraints{ make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
-        }
-        //scrollView
-        view.addSubview(scrollView)
-        scrollView.snp.makeConstraints{ make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        //contentView
-        scrollView.addSubview(contentView)
-        contentView.snp.makeConstraints { make in
-            make.bottom.top.width.height.equalToSuperview()
-        }
-        //titleLabel
-        contentView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16) //
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
-            make.height.equalTo(41)//
-        }
-        // mainLabel
-        contentView.addSubview(themeLabel)
-        themeLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(33)
-            make.top.equalTo(titleLabel.snp.bottom).offset(6)
-        }
-        //userTextField
-        contentView.addSubview(reverseTextField)
-        reverseTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(themeLabel.snp.bottom).offset(59)
-        }
-        //divider
-        contentView.addSubview(divider)
-        divider.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(reverseTextField.snp.bottom).offset(18.5)
-            make.height.equalTo(1)
-        }
-        //answerTextView
-        contentView.addSubview(answerTextView)
-        answerTextView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(divider.snp.bottom).offset(16)
-        }
-        //displayButton
-        contentView.addSubview(reverseButton)
-        reverseButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(60)
-            make.top.equalTo(answerTextView.snp.bottom).offset(20)
-            make.bottom.equalToSuperview().offset(-66)
-        }
-    }
+//     func setupItemsOnScrollView() {
+//        //navigationView
+//        view.addSubview(topView)
+//        topView.snp.makeConstraints{ make in
+//            make.top.equalToSuperview()
+//            make.leading.trailing.equalToSuperview()
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+//        }
+//        //scrollView
+//        view.addSubview(scrollView)
+//        scrollView.snp.makeConstraints{ make in
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            make.leading.trailing.equalToSuperview()
+//            make.bottom.equalToSuperview()
+//        }
+//        //contentView
+//        scrollView.addSubview(contentView)
+//        contentView.snp.makeConstraints { make in
+//            make.bottom.top.width.height.equalToSuperview()
+//        }
+//        //titleLabel
+//        contentView.addSubview(titleLabel)
+//        titleLabel.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16) //
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(64)
+//            make.height.equalTo(41)//
+//        }
+//        // mainLabel
+//        contentView.addSubview(themeLabel)
+//        themeLabel.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(33)
+//            make.top.equalTo(titleLabel.snp.bottom).offset(6)
+//        }
+//        //userTextField
+//        contentView.addSubview(reverseTextField)
+//        reverseTextField.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.top.equalTo(themeLabel.snp.bottom).offset(59)
+//        }
+//        //divider
+//        contentView.addSubview(divider)
+//        divider.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.top.equalTo(reverseTextField.snp.bottom).offset(18.5)
+//            make.height.equalTo(1)
+//        }
+//        //answerTextView
+//        contentView.addSubview(answerTextView)
+//        answerTextView.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.top.equalTo(divider.snp.bottom).offset(16)
+//        }
+//        //displayButton
+//        contentView.addSubview(reverseButton)
+//        reverseButton.snp.makeConstraints { make in
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.height.equalTo(60)
+//            make.top.equalTo(answerTextView.snp.bottom).offset(20)
+//            make.bottom.equalToSuperview().offset(-66)
+//        }
+//    }
  
     enum State {
         case initial
