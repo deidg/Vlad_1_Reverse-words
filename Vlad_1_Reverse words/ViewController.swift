@@ -16,6 +16,7 @@ class mainViewController: UIViewController  {
         }
     }
     let reverser =  Reverser()
+    
     //MARK: UI Elements
      let scrollView = UIScrollView()
      let contentView = UIView()
@@ -71,8 +72,8 @@ class mainViewController: UIViewController  {
         displayButton.layer.cornerRadius = CGFloat(Constants.displayButtonCornerRadius)
         return displayButton
     }()
-    //setup Roboto font
-    let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
+//    //setup Roboto font
+//    let customFont = UIFont(name: "Roboto-Regular", size: UIFont.labelFontSize ) ?? UIFont.systemFont(ofSize: 64)
     
     
 
@@ -81,7 +82,7 @@ class mainViewController: UIViewController  {
         setupItemsOnScrollView()
         defaultConfiguration()
         reverseTextField.delegate = self
-        reverseButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        reverseButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         addTapToHideKeyboard()
         observeKeyboardNotificaton()
     }
@@ -106,7 +107,17 @@ class mainViewController: UIViewController  {
 
      func defaultConfiguration() {
         self.view.backgroundColor = .white
-        
+                 reverseButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+         
+            func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+                 view.endEditing(true)
+             }
+         
+//         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//             view.endEditing(true)
+//             return true
+//         }
+         
         //title for Navigation Controller
         self.title = "Reverse Words"
     }
@@ -144,12 +155,12 @@ class mainViewController: UIViewController  {
 }
 //MARK: extension
 extension mainViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing (_ textField: UITextField) {
-        return
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        return
-    }
+//    func textFieldDidBeginEditing (_ textField: UITextField) {
+//        return
+//    }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        return
+//    }
     //отслеживает изменение текста в моменте
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text,
@@ -164,16 +175,16 @@ extension mainViewController: UITextFieldDelegate {
         }
         return true
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        view.endEditing(true)
+//        return true
+//    }
 }
 
 extension mainViewController {
@@ -292,7 +303,6 @@ extension mainViewController {
         static let dividerBackgroundColor = UIColor(red: 0.129, green: 0.129, blue: 0.129, alpha: 0.2)
         static let answerTextViewTextColor = UIColor(red: 0, green: 0.478, blue: 1, alpha: 1)
         static let answerTextViewFont = UIFont(name: "Roboto-Regular", size: 20 )
-        
         static let displayButtonBackgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 0.6)
         static let displayButtonTitleLabelFont = UIFont.systemFont(ofSize: 17)
         static let displayButtonCornerRadius = 14
