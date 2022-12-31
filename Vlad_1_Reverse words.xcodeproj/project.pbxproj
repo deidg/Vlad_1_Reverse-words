@@ -16,6 +16,7 @@
 		FA8BDED52925EF3B00F88713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED32925EF3B00F88713 /* Main.storyboard */; };
 		FA8BDED72925EF3D00F88713 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED62925EF3D00F88713 /* Assets.xcassets */; };
 		FA8BDEDA2925EF3D00F88713 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8BDED82925EF3D00F88713 /* LaunchScreen.storyboard */; };
+		FA95A5982960B61100481E8E /* bull.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95A5972960B61100481E8E /* bull.swift */; };
 		FA96A9632955BCAD00DB7B7D /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA96A9562955BCAD00DB7B7D /* Roboto-Regular.ttf */; };
 		FA96A96B2955BCAD00DB7B7D /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA96A95E2955BCAD00DB7B7D /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		FA8BDED62925EF3D00F88713 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8BDED92925EF3D00F88713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8BDEDB2925EF3D00F88713 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA95A5972960B61100481E8E /* bull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bull.swift; sourceTree = "<group>"; };
 		FA96A9562955BCAD00DB7B7D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		FA96A95E2955BCAD00DB7B7D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		FAF853FB292BE59100FCE681 /* Podfile.lock */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile.lock; path = ../../../../../Snapkit3/Podfile.lock; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				FA8BDECF2925EF3B00F88713 /* SceneDelegate.swift */,
 				FA8BDED12925EF3B00F88713 /* ViewController.swift */,
 				FA84D1ED2952013600F6FE44 /* Reverser.swift */,
+				FA95A5972960B61100481E8E /* bull.swift */,
 				FA8BDED32925EF3B00F88713 /* Main.storyboard */,
 				FA96A9532955BCAD00DB7B7D /* Fonts */,
 				FA8BDED62925EF3D00F88713 /* Assets.xcassets */,
@@ -297,6 +300,7 @@
 			files = (
 				FA8BDED22925EF3B00F88713 /* ViewController.swift in Sources */,
 				FA8BDECE2925EF3B00F88713 /* AppDelegate.swift in Sources */,
+				FA95A5982960B61100481E8E /* bull.swift in Sources */,
 				FA8BDED02925EF3B00F88713 /* SceneDelegate.swift in Sources */,
 				FA84D1EE2952013600F6FE44 /* Reverser.swift in Sources */,
 			);
