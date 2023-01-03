@@ -126,3 +126,69 @@ https://youtu.be/w8mjwvJHc7E?t=278
 
 Мади о нескольких инициализациях сразу, методах (это функция - внутри класса)
 https://youtu.be/bMIY4ojoh5g?t=1440
+
+
+
+// включить клаву в Симуляторе
+// shift + cmd + K
+
+
+extension ViewController: UITextFieldDelegate {
+
+    //включение клавиатуры
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        }
+    
+    //выключение клавиатуры
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    }
+     скрытие клавиатуры для вызванного объекта (выходишь из textView или поля - и клавиатура закрывается)
+       textView.resignFirstResponder(true)
+====
+// замена кнопки Return(аналог Enter) на другую. Пишется в didLoad
+userText.returnKeyType = UIReturnKeyType.done
+
+https://stackoverflow.com/questions/31886720/change-return-button-function-to-done-in-swift-in-uitextview
+Тут варианты на какие еще кнопки можно заменить - https://developer.apple.com/documentation/uikit/uireturnkeytype
+
+программирование "новой" кнопки - https://stackoverflow.com/questions/5210098/call-a-method-with-the-return-done-button-of-the-keyboard
+func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // Tell the keyboard where to go on next / go button.
+    if textField == theTextField {
+        // do stuff
+    }
+
+    return true
+}
+
+====
+Swiftbook - появление и скрытие клавиатуры. с 13.00б   там же с 15.00 настройка отодвигания содержимого при появлении клавиатуры
+https://swiftbook.ru/content/21-video-10/
+
+==
+2 кнопки по патерну  MVVM https://youtu.be/2ApnvSzf6Xo
+
+
+
+
+@objc private func keyboardWillShow(sender: NSNotification) {
+    guard let userInfo = sender.userInfo else { return }
+    guard var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+    keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+    var contentInset: UIEdgeInsets = self.scrollView.contentInset
+    contentInset.bottom = keyboardFrame.size.height
+    scrollView.contentInset = contentInset
+}
+
+@objc private func keyboardWillHide(sender: NSNotification) {
+    let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+    scrollView.contentInset = contentInset
+}
+
+@objc private func hideKeyboard(gesture: UITapGestureRecognizer) {
+    view.endEditing(true)
+}
+}
