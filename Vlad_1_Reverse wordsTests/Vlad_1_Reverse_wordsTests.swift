@@ -6,15 +6,27 @@
 //
 
 import XCTest
+@testable import Vlad_1_Reverse_words
 
 final class Vlad_1_Reverse_wordsTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+
+        super.tearDown()
     }
 
+    func defaultConfigurationIsValid () {
+        let sut = mainViewController()
+        sut.defaultConfiguration()
+        
+        let defaultConfigurationIsValid: () = sut.defaultConfiguration()
+        XCTAssertTrue(defaultConfigurationIsValid == sut.defaultConfiguration())
+        
+    }
+    
+    
 }
