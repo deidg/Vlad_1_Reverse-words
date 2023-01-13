@@ -30,13 +30,28 @@ final class Vlad_1_Reverse_wordsTests: XCTestCase {
         XCTAssertTrue(defaultConfigurationIsValid() == sut.defaultConfiguration())
     }
     
-    func testReverseTextFieldIsEmpty() {
-        let sut = mainViewController().reverseTextField.text //reverseTextField.text
+    //???? проверка на то, что поле reverseTextField пустое
+//    func testReverseTextFieldIsEmpty() {
+//        let sut = mainViewController().reverseTextField.text
+//
+//        let testReverseTextFieldIsEmpty = ""
+//        XCTAssertTrue(sut == testReverseTextFieldIsEmpty) //(sut, testReverseTextFieldIsEmpty)
+//    }
+    
+    // IsAnswerTextViewEditable?
+    func testIsAnswerTextViewEditable() {
+        let sut = mainViewController().answerTextView.isEditable
 
-        let testReverseTextFieldIsEmpty = ""
-        XCTAssertTrue(sut == testReverseTextFieldIsEmpty) //(sut, testReverseTextFieldIsEmpty)
+        let IsAnswerTextViewEditable = false
+        XCTAssert(sut == IsAnswerTextViewEditable) //(sut, testReverseTextFieldIsEmpty)
     }
 }
+  
+
+// IsreverseButtonInActivce?
+
+
+
 
 
 //GIVEN
