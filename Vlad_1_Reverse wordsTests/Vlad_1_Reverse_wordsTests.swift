@@ -19,14 +19,28 @@ final class Vlad_1_Reverse_wordsTests: XCTestCase {
         super.tearDown()
     }
 
-    func defaultConfigurationIsValid () {
+    // выполняется ли функция defaultConfigurationIsValid()
+    func testDefaultConfigurationIsValid () {
+        
         let sut = mainViewController()
         sut.defaultConfiguration()
         
-        let defaultConfigurationIsValid: () = sut.defaultConfiguration()
-        XCTAssertTrue(defaultConfigurationIsValid == sut.defaultConfiguration())
+        let defaultConfigurationIsValid = sut.defaultConfiguration
         
+        XCTAssertTrue(defaultConfigurationIsValid() == sut.defaultConfiguration())
     }
     
-    
+    func testReverseTextFieldIsEmpty() {
+        let sut = mainViewController().reverseTextField.text //reverseTextField.text
+
+        let testReverseTextFieldIsEmpty = ""
+        XCTAssertTrue(sut == testReverseTextFieldIsEmpty) //(sut, testReverseTextFieldIsEmpty)
+    }
 }
+
+
+//GIVEN
+
+//WHEN
+
+//THEN
